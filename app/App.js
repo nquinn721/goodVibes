@@ -1,7 +1,10 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
+import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
+import store from './redux/store';
+import { SearchBar } from 'react-native-elements'
 
 export default class App extends React.Component {
   state = {
@@ -19,12 +22,22 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        <Provider store={store}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <View style={{height: 20}}></View>}
+
+            <SearchBar
+              onChangeText={this.search}
+              placeholder='Search cannabis world' />
+            <AppNavigator store={store}/>
+          </View>
+        </Provider>
       );
     }
+  }
+
+  search(){
+
   }
 
   _loadResourcesAsync = async () => {
