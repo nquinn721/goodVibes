@@ -24,7 +24,7 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <View style={styles.container}>
-            {Platform.OS === 'ios' && <View style={{height: 20}}></View>}
+            <View style={{height: 20}}></View>
 
             <SearchBar
               onChangeText={this.search}
