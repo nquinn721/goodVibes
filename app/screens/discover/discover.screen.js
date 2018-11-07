@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { WebBrowser } from 'expo';
-import { MonoText } from '../components/StyledText';
 import { connect } from 'react-redux'; 
-import HorizontalScroll from '../components/horizontalScroll';
+import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
+import SearchBar from 'goodVibes/components/search';
 
 class Discover extends React.Component {
   static navigationOptions = {
@@ -13,13 +13,14 @@ class Discover extends React.Component {
   render() {
     return (
       <View style={[styles.container, styles.contentContainer]}>
+        <SearchBar />
         <ScrollView>
           <View style={{height: 200}}>
-            <Image style={{height: 200}} source={require('../assets/images/avatar.png')}></Image>
+            <Image style={{height: 200}} source={require('goodVibes/assets/images/avatar.png')}></Image>
           </View>
 
-          <HorizontalScroll title='Dispensaries near Me' data={this.props.dispensaries} />
-          <HorizontalScroll title='Hot Products' data={this.props.dispensaries} />
+          <HorizontalScrollCards title='Dispensaries near Me' data={this.props.dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
+          <HorizontalScrollCards title='Hot Products' data={this.props.dispensaries} />
         </ScrollView>
       </View>
     );
@@ -63,5 +64,5 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  (state) => ({user: state.user, dispensaries: state.dispensaries})
+  ({user, dispensaries}) => ({user, dispensaries})
 )(Discover);

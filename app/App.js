@@ -4,7 +4,6 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
 import store from './redux/store';
-import { SearchBar } from 'react-native-elements'
 
 export default class App extends React.Component {
   state = {
@@ -24,11 +23,7 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <View style={styles.container}>
-            <View style={{height: 20}}></View>
-
-            <SearchBar
-              onChangeText={this.search}
-              placeholder='Search cannabis world' />
+            <View style={{height: 24}}></View>
             <AppNavigator store={store}/>
           </View>
         </Provider>
@@ -36,9 +31,6 @@ export default class App extends React.Component {
     }
   }
 
-  search(){
-
-  }
 
   _loadResourcesAsync = async () => {
     return Promise.all([

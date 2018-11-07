@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import user from './user';
-import dispensaries from './dispensaries';
+import user from './user.reducer';
+import dispensaries from './dispensaries.reducer';
 
 const rootReducer = combineReducers({
 	user,
