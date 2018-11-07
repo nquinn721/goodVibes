@@ -7,7 +7,7 @@ import DoubleListCards from 'goodVibes/components/doubleListCards';
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
-    title: "Dispensary"
+    title: ""
   };
 
   render() {
@@ -30,6 +30,17 @@ class Dispensaries extends React.Component {
             <Icon name="info" type="font-awesome" size={35}/>
           </View>
         </View>
+
+        <View style={{justifyContent: 'space-around', flexDirection: 'row'}}>
+          <View></View>
+          <View style={{alignItems: 'center'}}>
+            <Text style={{fontSize: 20}}>Menu</Text>
+          </View>
+          <View>
+            <Icon name="filter-list" size={25} />
+          </View>
+        </View>
+          
         <DoubleListCards data={this.props.dispensaries} />
       </ScrollView>
     );
