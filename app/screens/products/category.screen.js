@@ -16,8 +16,8 @@ class Products extends React.Component {
   	return (
   		<ScrollView style={styles.container}>
         <View style={{justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 30, paddingTop: 35}}>
-  			  <Text style={{color: '#1e1254', fontSize: 25}}>{title}</Text>
-          <Icon name="filter-list" size={30} color="#1e1254"/>
+  			  <Text style={{color: Layout.purple, fontSize: 25}}>{title}</Text>
+          <Icon name="filter-list" size={30} color={Layout.purple}/>
         </View>
 
         <DoubleListCards data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})}/>

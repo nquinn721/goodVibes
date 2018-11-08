@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Card from 'goodVibes/components/card';
 import { Icon } from 'react-native-elements';
 import DoubleListCards from 'goodVibes/components/doubleListCards';
+import Layout from 'goodVibes/constants/Layout';
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
@@ -23,9 +24,9 @@ class Dispensaries extends React.Component {
         <View style={{padding: 15, justifyContent: 'space-between', flexDirection: 'row'}}>
           <View>
             <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img}} />
-            <Text style={{fontWeight: '900', color: '#1e1254'}}>{name}</Text>
-            <Text style={{color: '#bababa'}}>{distance} mi</Text>
-            <Text style={{color: '#ffb900'}}>{stars} stars ({totalRatings})</Text>
+            <Text style={{fontWeight: '900', color: Layout.purple}}>{name}</Text>
+            <Text style={{color: Layout.lightText}}>{distance} mi</Text>
+            <Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
           </View>
           <View sytle={{alignItems: 'center', backgroundColor: 'red'}}>
             <Icon name="info" type="font-awesome" size={35}/>

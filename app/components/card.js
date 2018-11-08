@@ -3,7 +3,8 @@ import { Image, Platform, StyleSheet, Text, View, TouchableOpacity } from 'react
 import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addToCart } from 'goodVibes/redux/actions/cart.action';
+import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
+import AddToCartButton from './addToCartButton';
 
 class ProductCard extends React.Component {
 
@@ -32,11 +33,8 @@ class ProductCard extends React.Component {
                 </TouchableOpacity>
 
 	          	{
-	          		canAddToCart && 
-		          	<TouchableOpacity style={[styles.addToCart, addedToCart && styles.addedToCart]} onPress={() => this.props.addToCart(this.props.data)}>
-		          		<Icon name="cart-plus" type="font-awesome" size={20} color={(addedToCart ? 'white' : 'black')} />
-		          		<Text style={[addedToCart && {color: 'white'}]}> Add to Cart</Text>
-		          	</TouchableOpacity>
+	          		canAddToCart && <AddToCartButton product={this.props.data} style={styles.addToCart}/>
+
 	          	}
 	        </View>
 		)
@@ -74,5 +72,5 @@ const styles = StyleSheet.create({
 
 export default connect(
 	(state) => ({}),
-	(dispatch) => (bindActionCreators({addToCart}, dispatch))
+	(dispatch) => (bindActionCreators({addToCart, removeFromCart}, dispatch))
 )(ProductCard);

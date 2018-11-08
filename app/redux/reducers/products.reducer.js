@@ -254,10 +254,17 @@ const initialState = {
 initialState.products = initialState.originalProducts;
 
 export default (state = initialState, action) => {
+  let product;
   switch(action.type){
     case 'ADD_TO_CART':
-      let product = findProduct(action.data.id, state);
+       product = findProduct(action.data.id, state);
       product.addedToCart = true;
+      return {
+        ...state
+      }
+    case 'REMOVE_FROM_CART':
+      product = findProduct(action.data.id, state);
+      product.addedToCart = false;
       return {
         ...state
       }

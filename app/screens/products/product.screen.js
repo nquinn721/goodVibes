@@ -5,7 +5,8 @@ import Swiper from 'react-native-swiper';
 import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
-import { addToCart } from 'goodVibes/redux/actions/cart.action';
+import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
+import AddToCartButton from 'goodVibes/components/addToCartButton';
 
 class Products extends React.Component {
   static navigationOptions = {
@@ -13,21 +14,24 @@ class Products extends React.Component {
   };
 
   render() {
-  	const {
-  		name, 
-  		type, 
-  		img, 
-  		images, 
-  		stars, 
-  		totalRatings, 
-  		cost,
-  		description,
-  		addedToCart,
-  		moods
-  	} = this.props.navigation.getParam('product');
+  	const product = this.props.navigation.getParam('product'),
+	  	{
+	  		name, 
+	  		type, 
+	  		img, 
+	  		images, 
+	  		stars, 
+	  		totalRatings, 
+	  		cost,
+	  		description,
+	  		addedToCart,
+	  		moods
+	  	} = product;
 
   	return (
   		<ScrollView style={styles.container}>
+
+  		    {/* PRODUCT IMAGES */}
   		  	<View style={styles.swiper}>
 				<Swiper>
 					{
@@ -43,40 +47,45 @@ class Products extends React.Component {
 					}
 				</Swiper>
 		  	</View>
+  		    {/* END PRODUCT IMAGES */}
+
 			<View style={{padding: 20}}>
+
+			    {/* PRODUCT INFO */}
 				<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-					<View>
-						<Text style={{fontSize: 20, color: '#1e1254'}}>{name}</Text>
-						<Text style={{color: '#bababa'}}>{type}</Text>
-						<Text style={{color: '#ffb900'}}>{stars} stars ({totalRatings})</Text>
+					<View style={{flexWrap: 'wrap'}}>
+						<Text style={{fontSize: 20, color: Layout.purple}}>{name}</Text>
+						<Text style={{color: Layout.lightText}}>{type}</Text>
+						<Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
 					</View>
 					<View>
 					{
 						addedToCart ?
-							(<View style={{backgroundColor: '#43c682', padding: 5, borderRadius: 5}}>
+							(<View style={{backgroundColor: Layout.green, padding: 5, borderRadius: 5}}>
 	 							<Text style={{fontSize: 24, color: 'white'}}>${cost}</Text>
 	 							<View style={{flexDirection: 'row'}}>
 	 								<Text style={{fontSize: 10, color: 'white'}}>In Cart</Text>
 	 								<Icon name="check" color="white" size={10} />
 	 							</View>
 	 						</View>) :
-							<Text style={{fontSize: 24, color: '#1e1254'}}>${cost}</Text>
+							<Text style={{fontSize: 24, color: Layout.purple}}>${cost}</Text>
 					}
 					</View>
 				</View>
 				<View style={{marginTop: 15, marginBottom: 10}}>
 					<Text>{description}</Text>
 				</View>
-				<TouchableOpacity style={{borderColor: '#1e1254', padding: 5, borderWidth: 1, marginTop: 15}} onPress={() => this.props.addToCart(this.props.navigation.getParam('product'))}>
-					<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-						<Icon type="font-awesome" name="cart-plus" size={30} />
-						<Text> Add to Cart</Text>
-					</View>
-				</TouchableOpacity>
+		    	{/* END PRODUCT INFO */}
 
 
+				{/* ADD CART BUTTON */}
+				<AddToCartButton product={product}/>
+				{/*END ADD CART BUTTON */}
+				
+
+				{/* MOODS/MEDICAL/CONS REVIEWS */}
 				<View style={{marginTop: 25}}>
-					<Text style={{fontSize: 15, color: '#1e1254', marginBottom: 15}}>Moods</Text>
+					<Text style={{fontSize: 15, color: Layout.purple, marginBottom: 15}}>Moods</Text>
 					<View>
 						{
 							Object.keys(moods).map((mood, i) => {
@@ -93,6 +102,9 @@ class Products extends React.Component {
 
 					</View>
 				</View>
+				{/* END MOODS/MEDICAL/CONS REVIEWS */}
+
+
 			 </View>
   		</ScrollView>
   	)
@@ -116,5 +128,5 @@ const styles = StyleSheet.create({
 
 export default connect(
 	({products}) => ({products}),
-	(dispatch) => (bindActionCreators({addToCart}, dispatch))
+	(dispatch) => (bindActionCreators({addToCart, removeFromCart}, dispatch))
 )(Products);

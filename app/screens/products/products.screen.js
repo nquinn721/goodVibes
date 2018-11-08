@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import SearchBar from 'goodVibes/components/search';
+import Layout from 'goodVibes/constants/Layout';
 
 class Products extends React.Component {
   static navigationOptions = {
@@ -18,7 +19,7 @@ class Products extends React.Component {
   				Object.keys(productList).map((list, i) => {
   					return (
   						<View key={i}>
-  							<Text style={{fontSize: 18, color: '#1e1254', paddingTop: 30, paddingLeft: 15, paddingBottom: 15, fontWeight: '700'}}>{list}</Text>
+  							<Text style={{fontSize: 18, color: Layout.purple, paddingTop: 30, paddingLeft: 15, paddingBottom: 15, fontWeight: '700'}}>{list}</Text>
   							<View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
   							{
   								productList[list].map((title, j) => {

@@ -9,4 +9,8 @@ export default {
     height,
   },
   isSmallDevice: width < 375,
+  green: '#43c682',
+  purple: '#1e1254',
+  gold: '#ffb900',
+  lightText: '#bababa'
 };
