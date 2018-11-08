@@ -11,8 +11,9 @@ class Dispensaries extends React.Component {
   };
 
   render() {
-    const { navigation } = this.props;
-    const {img, name, distance, stars, totalRatings} = navigation.getParam('dispensary', {});
+    const { navigation } = this.props,
+          { img, name, distance, stars, totalRatings } = navigation.getParam('dispensary', {}),
+          products = this.props.products.filterByDispensary(name);
 
     return (
       <ScrollView style={styles.container}>
@@ -41,7 +42,7 @@ class Dispensaries extends React.Component {
           </View>
         </View>
           
-        <DoubleListCards data={this.props.dispensaries} />
+        <DoubleListCards data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})}/>
       </ScrollView>
     );
   }
@@ -55,5 +56,5 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({dispensaries}) => ({dispensaries})
+  ({products}) => ({products})
 )(Dispensaries);

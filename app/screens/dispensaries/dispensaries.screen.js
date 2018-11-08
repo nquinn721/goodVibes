@@ -28,9 +28,7 @@ class Dispensaries extends React.Component {
          {
           this.props.dispensaries.map((v, i) => {
             return (
-              <TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Dispensary', {dispensary: v})}>
-                <Card data={v}/>
-              </TouchableOpacity>
+              <Card data={v} key={i} onPress={() => this.props.navigation.navigate('Dispensary', {dispensary: v})}/>
             )
           })
          }

@@ -1,17 +1,24 @@
 const img = require('../../assets/images/avatar.png');
-const initialState = [
-  { 
-    img, 
-    name: 'Potimus Maximus',
-    distance: 1.2,
-    stars: 4.5,
-    totalRatings: 435
-  }
-  
-]
+const initialState = {
+  items: {},
+  totalItems: 0,
+  totalDispensaries: 0
+}
 
 export default (state = initialState, action) => {
   switch(action.type){
+    case 'ADD_TO_CART':
+      if(!state.items[action.data.dispensary]){
+      	state.items[action.data.dispensary] = [];
+      }
+      state.items[action.data.dispensary].push(action.data);
+
+
+      return {
+      	...state,
+      	totalItems: state.totalItems + 1,
+      	totalDispensaries: Object.keys(state.items).length
+      };
     default:
       return state;
   }

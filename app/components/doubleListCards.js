@@ -5,15 +5,13 @@ import Card from './card';
 export default class DoubleListCards extends React.Component {
   render(){
     return (
-      <View style={styles.section}>
+      <View>
           <Text>{this.props.title}</Text>
             <View style={styles.doubleList}>
               {
                 this.props.data.map((u, i) => {
                   return (
-                      <TouchableOpacity style={styles.card} key={i} onPress={this.props.onPress ? this.props.onPress.bind(this.props, u) : (() => {})}>
-                        <Card style={styles.card} name={u.name} distance={u.distance} totalRatings={u.totalRatings} img={u.img} stars={u.stars}/>
-                      </TouchableOpacity>
+                    <Card key={i} style={styles.card} data={u} onPress={this.props.onPress}/>
                   );
                 })
               }
@@ -31,9 +29,6 @@ const styles = StyleSheet.create({
   },
   card: {
     flexBasis: '50%'
-  },
-  section: {
-    padding: 10
   },
   
 });

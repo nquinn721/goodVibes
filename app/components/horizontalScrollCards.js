@@ -11,9 +11,7 @@ export default class HorizontalScrollCards extends React.Component {
               {
                 this.props.data.map((u, i) => {
                   return (
-                    <TouchableOpacity key={i} onPress={this.props.onPress ? this.props.onPress.bind(this.props, u) : (() => {})}>
-                      <Card style={styles.card} name={u.name} distance={u.distance} totalRatings={u.totalRatings} img={u.img} stars={u.stars}/>
-                    </TouchableOpacity>
+                      <Card key={i} style={styles.card} data={u} onPress={this.props.onPress}/>
                   );
                 })
               }
@@ -26,7 +24,8 @@ export default class HorizontalScrollCards extends React.Component {
 
 const styles = StyleSheet.create({
   card: {
-    width: 250
+    width: 250,
+    marginRight: 20
   },
   section: {
     padding: 10
