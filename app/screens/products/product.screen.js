@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
-import { bindActionCreators } from 'redux';
-import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
 import AddToCartButton from 'goodVibes/components/addToCartButton';
 
 class Products extends React.Component {
@@ -53,7 +51,7 @@ class Products extends React.Component {
 
 			    {/* PRODUCT INFO */}
 				<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-					<View style={{flexWrap: 'wrap'}}>
+					<View style={{flexWrap: 'wrap', flex: 1}}>
 						<Text style={{fontSize: 20, color: Layout.purple}}>{name}</Text>
 						<Text style={{color: Layout.lightText}}>{type}</Text>
 						<Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
@@ -68,7 +66,9 @@ class Products extends React.Component {
 	 								<Icon name="check" color="white" size={10} />
 	 							</View>
 	 						</View>) :
-							<Text style={{fontSize: 24, color: Layout.purple}}>${cost}</Text>
+	 						<View style={{flex: 1, padding: 5}}>  
+								<Text style={{fontSize: 24, color: Layout.purple}}>${cost}</Text>
+							</View>
 					}
 					</View>
 				</View>
@@ -127,6 +127,5 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-	({products}) => ({products}),
-	(dispatch) => (bindActionCreators({addToCart, removeFromCart}, dispatch))
+	({products}) => ({products})
 )(Products);

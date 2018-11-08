@@ -11,7 +11,6 @@ class AddToCartButton extends React.Component{
 	render(){
 		const { product } = this.props;
 
-		console.log('add to cart button', product.addedToCart);
 		return (
 			<View>
 				{

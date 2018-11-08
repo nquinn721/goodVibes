@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
+import Layout from 'goodVibes/constants/Layout';
 import DoubleListCards from 'goodVibes/components/doubleListCards';
 
 class Products extends React.Component {

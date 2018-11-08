@@ -42,7 +42,9 @@ class Dispensaries extends React.Component {
             <Icon name="filter-list" size={25} />
           </View>
         </View>
-          
+        <View style={{paddingHorizontal: 15}}>
+          <Text style={{color: Layout.purple}}>Flower</Text>
+        </View>
         <DoubleListCards data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})}/>
       </ScrollView>
     );
