@@ -18,11 +18,11 @@ class Dispensaries extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={{height: 200}}>
-          <Image style={{height: 250}} source={img} />
+          <Image style={{height: 250}} source={{uri: img}} />
         </View>
         <View style={{padding: 15, justifyContent: 'space-between', flexDirection: 'row'}}>
           <View>
-            <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={img} />
+            <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img}} />
             <Text style={{fontWeight: '900', color: '#1e1254'}}>{name}</Text>
             <Text style={{color: '#bababa'}}>{distance} mi</Text>
             <Text style={{color: '#ffb900'}}>{stars} stars ({totalRatings})</Text>

@@ -18,13 +18,13 @@ class ProductCard extends React.Component {
 			canAddToCart,
 			type
 		} = this.props.data;
-
+		console.log(img);
 		const { style } = this.props;
 
 		return (
 			<View style={style || {}}>
                 <TouchableOpacity onPress={this.props.onPress ? this.props.onPress.bind(this.props, this.props.data) : (() => {})}>
-					<Card image={img ? img : {}} containerStyle={style || {}}>
+					<Card image={img ? {uri: img} : {}} containerStyle={style || {}}>
 		              	<Text style={styles.title}>{name || "Name"}</Text>
 		              	<Text style={styles.distance}>{distance || type || "N/A"}</Text>
 		              	<Text>{stars || "0"} Stars({totalRatings || "0"})</Text>

@@ -4,7 +4,7 @@ const initialState = {
     { 
       id: 1,
       dispensary: 'Potimus Maximus',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -28,7 +28,7 @@ const initialState = {
     { 
       id: 2,
       dispensary: 'Potimus Maximus',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -52,7 +52,7 @@ const initialState = {
     { 
       id: 3,
       dispensary: 'Potimus Maximus',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -76,7 +76,7 @@ const initialState = {
     { 
       id: 4,
       dispensary: 'Potimus Maximus',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -100,7 +100,7 @@ const initialState = {
     { 
       id: 5,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -124,7 +124,7 @@ const initialState = {
     { 
       id: 6,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -148,7 +148,7 @@ const initialState = {
     { 
       id: 7,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -172,7 +172,7 @@ const initialState = {
     { 
       id: 8,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -196,7 +196,7 @@ const initialState = {
     { 
       id: 9,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
@@ -220,7 +220,7 @@ const initialState = {
     { 
       id: 10,
       dispensary: 'New aged weed',
-      img, 
+      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
       cost: 45,
