@@ -2,8 +2,18 @@ import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Card from './card';
 
+/*
+
+<HorizontalScrollCards title={title} data={data} onPress={onPressMethod} />
+
+*/
+
 export default class HorizontalScrollCards extends React.Component {
   render(){
+    const style = {
+      ...styles.card,
+      ...this.props.style
+    }
     return (
       <View style={styles.section}>
           <Text>{this.props.title}</Text>
@@ -11,7 +21,7 @@ export default class HorizontalScrollCards extends React.Component {
               {
                 this.props.data.map((u, i) => {
                   return (
-                      <Card key={i} style={styles.card} data={u} onPress={this.props.onPress}/>
+                      <Card key={i} style={style} data={u} onPress={this.props.onPress} dontAddToCart={this.props.dontAddToCart}/>
                   );
                 })
               }

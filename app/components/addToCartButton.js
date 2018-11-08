@@ -6,6 +6,16 @@ import { Icon } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
 
+/*
+
+<AddToCartButton product={product} style={styles} />
+
+// Expected Properties
+product = {
+	addedToCart: Boolean
+}
+
+*/
 
 class AddToCartButton extends React.Component{
 	render(){

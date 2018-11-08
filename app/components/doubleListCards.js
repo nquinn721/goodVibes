@@ -1,7 +1,11 @@
 import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Card from './card';
+/*
 
+<DoubleListCards title={title} data={data} onPress={onPressMethod} />
+
+*/
 export default class DoubleListCards extends React.Component {
   render(){
     return (

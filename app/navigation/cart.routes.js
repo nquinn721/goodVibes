@@ -7,6 +7,7 @@ import Cart from 'goodVibes/screens/cart';
 
 const CartStack = createStackNavigator({
   Cart: Cart.Cart,
+  Checkout: Cart.Checkout,
 });
 
 CartStack.navigationOptions = {

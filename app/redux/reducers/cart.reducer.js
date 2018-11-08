@@ -22,13 +22,17 @@ export default (state = initialState, action) => {
 
     case 'REMOVE_FROM_CART':
     	const dispensary = state.items[action.data.dispensary];
-    	dispensary.splice(dispensary.indexOf(action.data), 1);
+
+      if(dispensary.length){
+      	dispensary.splice(dispensary.indexOf(action.data), 1);
+        state.totalItems--;
+      }
     	if(dispensary.length === 0){
     		state.totalDispensaries--;
+        delete state.items[action.data.dispensary];
     	}
     	return {
     		...state,
-    		totalItems: state.totalItems - 1,
     	}
     default:
       return state;

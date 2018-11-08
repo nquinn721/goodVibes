@@ -6,6 +6,26 @@ import { bindActionCreators } from 'redux';
 import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
 import AddToCartButton from './addToCartButton';
 
+/*
+
+<Card data={data} style={style} onPress={onPressMethod} />
+
+-- onPress returns the data to parent
+
+// Possible Properties
+data = {
+	name: String,
+	distance: Int,
+	totalRatings: Int,
+	img: String,
+	stars: Int,
+	addedToCart: Boolean,
+	canAddToCart: Boolean,
+	type: String
+}
+
+*/
+
 class ProductCard extends React.Component {
 
 	render(){
@@ -19,8 +39,8 @@ class ProductCard extends React.Component {
 			canAddToCart,
 			type
 		} = this.props.data;
-		console.log(img);
 		const { style } = this.props;
+		const { dontAddToCart } = this.props;
 
 		return (
 			<View style={style || {}}>
@@ -33,7 +53,7 @@ class ProductCard extends React.Component {
                 </TouchableOpacity>
 
 	          	{
-	          		canAddToCart && <AddToCartButton product={this.props.data} style={styles.addToCart}/>
+	          		canAddToCart && !dontAddToCart && <AddToCartButton product={this.props.data} style={styles.addToCart}/>
 
 	          	}
 	        </View>

@@ -21,15 +21,15 @@ class Dispensaries extends React.Component {
         <View style={{height: 200}}>
           <Image style={{height: 250}} source={{uri: img}} />
         </View>
-        <View style={{padding: 15, justifyContent: 'space-between', flexDirection: 'row'}}>
+        <View style={{padding: 15, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
           <View>
             <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img}} />
             <Text style={{fontWeight: '900', color: Layout.purple}}>{name}</Text>
             <Text style={{color: Layout.lightText}}>{distance} mi</Text>
             <Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
           </View>
-          <View sytle={{alignItems: 'center', backgroundColor: 'red'}}>
-            <Icon name="info" type="font-awesome" size={35}/>
+          <View>
+            <Icon name="info-circle" type="font-awesome" size={35} color={Layout.purple}/>
           </View>
         </View>
 

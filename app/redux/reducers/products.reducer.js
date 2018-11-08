@@ -29,7 +29,7 @@ const initialState = {
       id: 2,
       dispensary: 'Potimus Maximus',
       img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      name: 'Lemon Sherbert',
       type: 'oil',
       cost: 45,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
