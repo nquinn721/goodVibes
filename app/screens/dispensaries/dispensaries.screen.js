@@ -11,6 +11,8 @@ class Dispensaries extends React.Component {
   };
 
   render() {
+    const { dispensaries } = this.props.dispensaries;
+
     return (
       <View style={styles.container}>
         <SearchBar />
@@ -26,7 +28,7 @@ class Dispensaries extends React.Component {
         </View>
         <ScrollView style={styles.container}>
          {
-          this.props.dispensaries.map((v, i) => {
+          dispensaries.map((v, i) => {
             return (
               <Card data={v} key={i} onPress={() => this.props.navigation.navigate('Dispensary', {dispensary: v})}/>
             )

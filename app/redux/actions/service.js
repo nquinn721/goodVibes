@@ -1,4 +1,4 @@
-import config from 'app/app/config/config';
+import config from 'goodVibes/constants/Config';
 import axios from 'axios';
 
 export default class Service{

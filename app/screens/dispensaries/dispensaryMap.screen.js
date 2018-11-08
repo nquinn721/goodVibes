@@ -1,7 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { MapView, Constants, Location, Permissions, Marker } from 'expo';
+import { MapView, Location, Permissions } from 'expo';
+import { getLocalDispensaries } from 'goodVibes/redux/actions/dispensary.action';
+import { bindActionCreators } from 'redux';
+import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
 
 
 class DispensaryMap extends React.Component{
@@ -16,7 +19,7 @@ class DispensaryMap extends React.Component{
 	};
 
 	componentWillMount(){
-		this._getLocationAsync();
+		// this._getLocationAsync();
 	}
 
 	_getLocationAsync = async () => {
@@ -28,12 +31,17 @@ class DispensaryMap extends React.Component{
 		}
 
 		let location = await Location.getCurrentPositionAsync({});
+		this.props.getLocalDispensaries(location.coords.latitude, location.coords.longitude);
+
 		this.setState({ location });
 	};
 
 	render() {
-		const coords = this.state.location ? this.state.location.coords : { latitude: 37.78825, longitude: -122.4324};
-		this.state.markers.push({latlng: coords, title: 'Home', description: 'This is where you live'})
+ 		const coords = this.state.location ? this.state.location.coords : { latitude: 37.78825, longitude: -122.4324};
+		const marker = {latlng: coords, title: 'Home', description: 'This is where you live'}
+
+
+		const markers = this.props.dispensaries.dispensariesFromYelp;
 	    return (
 	      <View style={styles.container}>
 	      <MapView
@@ -50,18 +58,16 @@ class DispensaryMap extends React.Component{
 		          ...coords
 		      	}}
       		>
-      		{this.state.markers.map((marker, i) => {
-      			console.log(marker);
-      			return (
-	      		    <Marker
-	      		      key={i}
-	      		      coordinate={marker.latlng}
-	      		      title={marker.title}
-	      		      description={marker.description}
-	      		    />
-      			)
-      		  })}
+					{
+						markers && markers.map((d, i) => (<MapView.Marker
+							coordinate={d.coordinates}
+							key={i}
+							title={d.name}
+						/>))
+					}
+	      		    
       		</MapView>
+					{ markers && <HorizontalScrollCards data={markers} onPress={d => console.log(d)}/> }
 	      </View>
 	    );
 	}
@@ -75,4 +81,6 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
+	({dispensaries}) => ({dispensaries}),
+	(dispatch) => (bindActionCreators({ getLocalDispensaries }, dispatch))
 )(DispensaryMap);

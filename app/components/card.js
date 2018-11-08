@@ -22,6 +22,7 @@ data = {
 	addedToCart: Boolean,
 	canAddToCart: Boolean,
 	type: String
+	image_url: String
 }
 
 */
@@ -33,7 +34,8 @@ class ProductCard extends React.Component {
 			name, 
 			distance, 
 			totalRatings, 
-			img, 
+			img,
+			image_url,
 			stars, 
 			addedToCart, 
 			canAddToCart,
@@ -45,7 +47,7 @@ class ProductCard extends React.Component {
 		return (
 			<View style={style || {}}>
                 <TouchableOpacity onPress={this.props.onPress ? this.props.onPress.bind(this.props, this.props.data) : (() => {})}>
-					<Card image={img ? {uri: img} : {}} containerStyle={style || {}}>
+					<Card image={(img || image_url) ? {uri: img || image_url} : {}} containerStyle={style || {}}>
 		              	<Text style={styles.title}>{name || "Name"}</Text>
 		              	<Text style={styles.distance}>{distance || type || "N/A"}</Text>
 		              	<Text>{stars || "0"} Stars({totalRatings || "0"})</Text>

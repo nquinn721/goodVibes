@@ -11,6 +11,7 @@ class Discover extends React.Component {
   };
 
   render() {
+    const { dispensaries } = this.props.dispensaries;
     return (
       <View style={[styles.container, styles.contentContainer]}>
         <SearchBar />
@@ -19,8 +20,8 @@ class Discover extends React.Component {
             <Image style={{height: 200}} source={require('goodVibes/assets/images/avatar.png')}></Image>
           </View>
 
-          <HorizontalScrollCards title='Dispensaries near Me' data={this.props.dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
-          <HorizontalScrollCards title='Hot Products' data={this.props.dispensaries} />
+          <HorizontalScrollCards title='Dispensaries near Me' data={dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
+          <HorizontalScrollCards title='Hot Products' data={dispensaries} />
         </ScrollView>
       </View>
     );
