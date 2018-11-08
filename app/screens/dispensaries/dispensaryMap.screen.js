@@ -9,7 +9,7 @@ import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
 
 class DispensaryMap extends React.Component{
 	static navigationOptions = {
-		title: null,
+		title: null,  
 	};
 
 	state = {
