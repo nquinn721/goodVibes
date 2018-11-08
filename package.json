@@ -4,14 +4,13 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server/app.js",
+      "deploy": "git add . && git ci -m 'update' && git push master && git push heroku master"
     },
     "author": "",
     "license": "ISC",
 
-    "scripts": { 
-      "start": "node server/app.js"
-    },
     "dependencies": {
       "express": "^4.16.4",
       "mongoose": "^5.3.9",
