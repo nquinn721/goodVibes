@@ -49,10 +49,14 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type){
     case 'GET_LOCAL_DISPENSARIES_SUCCESS':
+    console.log(action);
       return {
         ...state,
         dispensariesFromYelp: action.data
       }
+    case 'GET_LOCAL_DISPERSARIES_FAILED':
+    console.log(action);
+
     default:
       return state;
   }

@@ -19,7 +19,7 @@ class DispensaryMap extends React.Component{
 	};
 
 	componentWillMount(){
-		// this._getLocationAsync();
+		this._getLocationAsync();
 	}
 
 	_getLocationAsync = async () => {
@@ -33,7 +33,7 @@ class DispensaryMap extends React.Component{
 		let location = await Location.getCurrentPositionAsync({});
 		this.props.getLocalDispensaries(location.coords.latitude, location.coords.longitude);
 
-		this.setState({ location });
+		// this.setState({ location });
 	};
 
 	render() {

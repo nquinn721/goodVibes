@@ -1,4 +1,4 @@
 
 export default config = {
-    baseUrl: ''
+    baseUrl: 'http://good-vibes-tech.herokuapp.com'
 }

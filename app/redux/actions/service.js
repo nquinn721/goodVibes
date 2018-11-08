@@ -23,9 +23,10 @@ export default class Service{
 	}
 
 	static async get(url) {
-
+		console.log('get', config.baseUrl + url);
 		try{
 			let data = await axios.get(config.baseUrl + url);
+			console.log('data', data);
 			return data.data
 		}catch(e){
 			return {error: e}
