@@ -7,7 +7,8 @@ import Dispensaries from 'goodVibes/screens/dispensaries';
 
 const DispensariesStack = createStackNavigator({
   Dispensaries: Dispensaries.Dispensaries,
-  Dispensary: Dispensaries.Dispensary
+  Dispensary: Dispensaries.Dispensary,
+  DispensaryMap: Dispensaries.DispensaryMap
 });
 
 DispensariesStack.navigationOptions = {

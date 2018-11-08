@@ -8,13 +8,14 @@ import { bindActionCreators } from 'redux';
 import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
 
 class Cart extends React.Component {
+  static navigationOptions = {
+    title: null,
+  };
+  
   state = {
     delivery: true
   }
 
-  static navigationOptions = {
-    title: null,
-  };
 
   render() {
     const items = this.props.navigation.getParam('items'),

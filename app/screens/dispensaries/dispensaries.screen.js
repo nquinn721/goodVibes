@@ -16,10 +16,10 @@ class Dispensaries extends React.Component {
         <SearchBar />
         <View style={{paddingTop: 15, justifyContent: 'space-around', flexDirection: 'row'}}>
           <View></View>
-          <View style={{alignItems: 'center'}}>
+          <TouchableOpacity style={{alignItems: 'center'}} onPress={() => this.props.navigation.navigate('DispensaryMap')}>
             <Text>Map View</Text>
             <Icon name="map-o" type="font-awesome" size={35}/>
-          </View>
+          </TouchableOpacity>
           <View>
             <Icon name="filter-list" size={35} />
           </View>
