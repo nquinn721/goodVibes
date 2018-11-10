@@ -17,7 +17,7 @@ export default class HorizontalScrollCards extends React.Component {
     return (
       <View style={styles.section}>
           <Text>{this.props.title}</Text>
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} bounces={true} alwaysBounceHorizontal={true} snapToInterval={30}>
               {
                 this.props.data.map((u, i) => {
                   return (

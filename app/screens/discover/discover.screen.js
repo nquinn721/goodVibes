@@ -4,12 +4,16 @@ import { WebBrowser } from 'expo';
 import { connect } from 'react-redux'; 
 import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
 import SearchBar from 'goodVibes/components/search';
+import { bindActionCreators } from 'redux';
+import { getYelpDispensaries } from 'goodVibes/redux/actions/dispensary.action';
 
 class Discover extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
+  componentWillMount(){
+    // this.props.getYelpDispensaries();
+  }
   render() {
     const { dispensaries } = this.props.dispensaries;
     return (
@@ -65,5 +69,6 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({user, dispensaries}) => ({user, dispensaries})
+  ({user, dispensaries}) => ({user, dispensaries}),
+    (dispatch) => (bindActionCreators({ getYelpDispensaries }, dispatch))
 )(Discover);

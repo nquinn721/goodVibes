@@ -1,95 +1,4 @@
 const fetch = require('node-fetch');
-// const details = {
-//     client_id: 'D6he_zcS5JLU6LXIKm3e2w',
-//     client_secret: 'Yx2ewb9NcEP83tjKGdf6KeEPCvF8xg5b7MWSnmSia1nuVP6mJC0sqEBkVtCkkGk2',
-//     grant_type: 'client_credentials'
-// };
-// const headers = {
-//     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-// }
-
-
-// let formBody = [];
-// for (let property in details) {
-//     let encodedKey = encodeURIComponent(property);
-//     let encodedValue = encodeURIComponent(details[property]);
-//     formBody.push(encodedKey + "=" + encodedValue);
-// }
-// formBody = formBody.join("&");
-// let accessToken;
-// let availableSearchParams = {
-//     term: true,
-//     radius: false,
-//     categories: true,
-//     price: true,
-//     limit: true
-// };
-
-// module.exports  = {
-    
-   
-
-//     search: function(term, cb){
-//         if(!accessToken){
-//             this.authorization(() => this.requestYelp(term, cb));
-//         }else{
-//             this.requestYelp(term, cb);
-//         }
-//     },
-
-//     authorization: function (cb) {
-//         fetch('https://api.yelp.com/oauth2/token', {
-//             method: 'POST',
-//             headers: headers,
-//             body: formBody
-//         }).then((res) => res.json())
-//             .then(body => {
-//                 accessToken = body.access_token;
-//                 cb()
-//             });
-//     },
-
-
-//     requestYelp: function(params, cb){
-//         let lat = params.lat || 37.78825; //pos.coords.latitude;
-//         let lng = params.lng || -122.4324; //pos.coords.longitude;
-//         let paramString = 'latitude=' + lat + '&longitude=' + lng;
-
-//         if(typeof params == 'object'){
-//             for(let i in params) {
-//                 if (availableSearchParams[i]) {
-//                     if(i === 'radius')
-//                         params[i] = Math.round(params[i] * 1609.34);
-
-//                     paramString += '&' + i + '=' + params[i];
-//                 }
-//             }
-//         }
-//         paramString += `&limit=10`;
-
-//         if(!params.term)
-//             paramString += '&term=restuarants';
-//         fetch('https://api.yelp.com/v3/businesses/search?' + paramString, {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': 'Bearer ' + accessToken
-//             },
-//             // parameters: 'latitude=' + lat + '&longitude=' + lng
-//         })
-//             .then(d => d.json())
-//             .then(d => {
-//                 console.log(d);
-//                 cb(d.businesses)
-//             })
-//             .catch(e => console.error(e))
-
-//     },
-
-
-
-// }
-
-
 const apiKey = 'u83D7ql4RggokuyKsGHV7noCEF6IWAjIzfK14mqCyUcuqZzVRFl4MXjMfv2FgJEyLMxyICtAfmv9XQNO1-xu1E5n4YtuWc5GqQz6FVlcydzwwOIIsoa2qMQE0WnKWnYx';
 
 
@@ -103,8 +12,9 @@ let availableSearchParams = {
 
 module.exports = class YelpAPI{
 
-    static search(term, cb){
-        this.requestYelp(term, cb);
+    static search(term, apiCall, cb){
+
+        this.getBusinessList(term, cb);
     }
 
     static requestYelp(params, cb){
@@ -151,5 +61,16 @@ module.exports = class YelpAPI{
                 cb(d.businesses)
             })
             .catch(e => console.error(e))
+    }
+
+
+    static async getBusiness(id){
+        const search = await fetch(`https://api.yelp.com/v3/businesses/${id}`, {
+            method: 'GET',
+            headers: {
+                'Authorization':  'Bearer ' + apiKey
+            },
+        })
+        return await search.json();
     }
 }

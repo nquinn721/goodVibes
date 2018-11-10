@@ -12,15 +12,10 @@ export const removeFromCart = (data) => {
 	}
 }
 
-// export const updateSearchIndex = () => {
-// 	return (dispatch) => {
-// 		Service.dispatchGet(dispatch, 'user/update-search-index', {
-// 			init: 'UPDATE_SEARCH_INDEX',
-// 			success: 'UPDATE_SEARCH_INDEX_SUCCESS',
-// 			error: 'UPDATE_SEARCH_INDEX_FAILED'
-// 		});
-// 	}
-// }
-
+export const completeOrder = (id) => {
+	return (dispatch) => {
+		dispatch({type: 'COMPLETE_ORDER', id});
+	}
+}
 
 

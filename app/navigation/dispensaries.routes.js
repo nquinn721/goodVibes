@@ -4,11 +4,13 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import Dispensaries from 'goodVibes/screens/dispensaries';
+import Products from 'goodVibes/screens/products';
 
 const DispensariesStack = createStackNavigator({
   Dispensaries: Dispensaries.Dispensaries,
   Dispensary: Dispensaries.Dispensary,
-  DispensaryMap: Dispensaries.DispensaryMap
+  DispensaryMap: Dispensaries.DispensaryMap,
+  Product: Products.Product
 });
 
 DispensariesStack.navigationOptions = {

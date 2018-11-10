@@ -4,6 +4,9 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
 import store from './redux/store';
+import { getYelpDispensaries } from './redux/actions/dispensary.action';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 export default class App extends React.Component {
   state = {

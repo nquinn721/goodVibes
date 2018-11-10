@@ -9,3 +9,13 @@ export const getLocalDispensaries = (lat, lon) => {
         });
     }
 }
+
+export const getYelpDispensaries = () => {
+        return (dispatch) => {
+        Service.dispatchGet(dispatch, '/yelp-dispensaries', {
+            init: 'GET_DISPENSARIES',
+            success: 'GET_DISPENSARIES_SUCCESS',
+            error: 'GET_DISPENSARIES_FAILED'
+        })
+    }
+}

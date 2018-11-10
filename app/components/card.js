@@ -36,9 +36,10 @@ class ProductCard extends React.Component {
 			totalRatings, 
 			img,
 			image_url,
-			stars, 
+			rating, 
 			addedToCart, 
 			canAddToCart,
+			review_count,
 			type
 		} = this.props.data;
 		const { style } = this.props;
@@ -50,7 +51,7 @@ class ProductCard extends React.Component {
 					<Card image={(img || image_url) ? {uri: img || image_url} : {}} containerStyle={style || {}}>
 		              	<Text style={styles.title}>{name || "Name"}</Text>
 		              	<Text style={styles.distance}>{distance || type || "N/A"}</Text>
-		              	<Text>{stars || "0"} Stars({totalRatings || "0"})</Text>
+		              	<Text>{rating || "0"} Stars({totalRatings || review_count || "0"})</Text>
 		          	</Card>
                 </TouchableOpacity>
 

@@ -1,40 +1,64 @@
 const img = require('../../assets/images/avatar.png');
 const initialState = {
-  items: {},
+  orders: {},
   totalItems: 0,
   totalDispensaries: 0
 }
 
 export default (state = initialState, action) => {
+  let order;
+
   switch(action.type){
     case 'ADD_TO_CART':
-      if(!state.items[action.data.dispensary]){
-      	state.items[action.data.dispensary] = [];
+      order = state.orders[action.data.dispensary];
+      if(!order){
+      	order = state.orders[action.data.dispensary] = {
+          id: Date.now(),
+          items: [],
+          dispensary: action.data.dispensary
+        };
       }
-      state.items[action.data.dispensary].push(action.data);
+      order.items.push(action.data);
 
 
       return {
       	...state,
       	totalItems: state.totalItems + 1,
-      	totalDispensaries: Object.keys(state.items).length
+      	totalDispensaries: Object.keys(state.orders).length
       };
 
     case 'REMOVE_FROM_CART':
-    	const dispensary = state.items[action.data.dispensary];
+    	order = state.orders[action.data.dispensary];
 
-      if(dispensary.length){
-      	dispensary.splice(dispensary.indexOf(action.data), 1);
+      if(order.items.length){
+      	order.items.splice(order.items.indexOf(action.data), 1);
         state.totalItems--;
       }
-    	if(dispensary.length === 0){
+    	if(order.items.length === 0){
     		state.totalDispensaries--;
-        delete state.items[action.data.dispensary];
+        delete state.orders[action.data.dispensary];
     	}
     	return {
     		...state,
-    	}
+      }
+
+    case 'COMPLETE_ORDER':
+      order = getOrderById(action.id, state.orders);
+      order.complete = true;
+      return {
+        ...state
+      }
+      
     default:
       return state;
   }
 }
+
+
+const getOrderById = (id, orders) => {
+  for(let order in orders){
+    if(orders[order].id === id)return orders[order];
+  }
+};
+
+

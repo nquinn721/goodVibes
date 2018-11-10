@@ -1,21 +1,22 @@
 {
-    "name": "goodvibes",
-    "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server/app.js",
-      "deploy": "git add . && git ci -m 'update' && git push master && git push heroku master"
-    },
-    "author": "",
-    "license": "ISC",
-
-    "dependencies": {
-      "express": "^4.16.4",
-      "mongoose": "^5.3.9",
-      "node-fetch": "^2.2.1",
-      "socket.io": "^2.1.1"
-    }
+  "name": "goodvibes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js",
+    "deploy": "git add . && git ci -m 'update' && git push master && git push heroku master"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.9",
+    "node-fetch": "^2.2.1",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "async-request": "^1.2.0"
   }
-  
+}

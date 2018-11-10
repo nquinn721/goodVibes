@@ -13,20 +13,19 @@ class Dispensaries extends React.Component {
 
   render() {
     const { navigation } = this.props,
-          { img, name, distance, stars, totalRatings } = navigation.getParam('dispensary', {}),
+          { img, image_url, name, distance, rating, review_count } = navigation.getParam('dispensary', {}),
           products = this.props.products.filterByDispensary(name);
-
     return (
       <ScrollView style={styles.container}>
         <View style={{height: 200}}>
-          <Image style={{height: 250}} source={{uri: img}} />
+          <Image style={{height: 250}} source={{uri: img || image_url}} />
         </View>
         <View style={{padding: 15, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
           <View>
-            <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img}} />
+            <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img || image_url}} />
             <Text style={{fontWeight: '900', color: Layout.purple}}>{name}</Text>
             <Text style={{color: Layout.lightText}}>{distance} mi</Text>
-            <Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
+            <Text style={{color: Layout.gold}}>{rating} stars ({review_count})</Text>
           </View>
           <View>
             <Icon name="info-circle" type="font-awesome" size={35} color={Layout.purple}/>

@@ -23,8 +23,9 @@ class Cart extends React.Component {
           {this.info(cart)}
           <View>
             {
-              Object.keys(cart.items).map((dispensary, i) => {
-                const items = cart.items[dispensary],
+              Object.keys(cart.orders).map((dispensary, i) => {
+                const order = cart.orders[dispensary],
+                      items = order.items,
                       totalCost = items.reduce((a, b) => a + b.cost, 0);
 
                 return (
@@ -40,9 +41,18 @@ class Cart extends React.Component {
                       </View>
                     </View>
                     <HorizontalScrollCards data={items} dontAddToCart={true}/>
-                    <TouchableOpacity style={Layout.mainButton} onPress={() => this.props.navigation.navigate('Checkout', {dispensary, items})}>
-                      <Text style={Layout.mainButtonText}>PROCEED TO CHECKOUT</Text>
-                    </TouchableOpacity>
+                    {
+                      order.complete ?
+                      <TouchableOpacity style={[Layout.mainButton, {backgroundColor: Layout.green, justifyContent: 'space-between', flexDirection: 'row'}]}>
+                        <View></View>
+                        <Text style={{textAlign: 'center', color: 'white', fontSize: 20}}>Track my order</Text>
+                        <Icon name="check" size={25} color="white" />
+                      </TouchableOpacity>
+                      :
+                      <TouchableOpacity style={Layout.mainButton} onPress={() => this.props.navigation.navigate('Checkout', {order})}>
+                        <Text style={Layout.mainButtonText}>PROCEED TO CHECKOUT</Text>
+                      </TouchableOpacity>
+                    }
                   </View>
                 )
               })

@@ -18,11 +18,10 @@ class Cart extends React.Component {
 
 
   render() {
-    const items = this.props.navigation.getParam('items'),
-          dispensary = this.props.navigation.getParam('dispensary'),
+    const { items, dispensary, id } = this.props.navigation.getParam('order'),
           { products } = this.props.products,
           allItems = {};
-
+          
     items.forEach(item => {
       if(!allItems[item.name])allItems[item.name] = [];
       allItems[item.name].push(item);
@@ -45,7 +44,7 @@ class Cart extends React.Component {
           </TouchableOpacity>
           <View style={{borderBottomWidth: 1, borderBottomColor: '#0076ff', flex: 1}}></View>
         </View>
-        {this.state.delivery ? this.delivery() : this.pickup()}
+        {this.state.delivery ? this.delivery(id) : this.pickup(id)}
       </ScrollView>
     )
   }
@@ -111,7 +110,7 @@ class Cart extends React.Component {
     )
   }
 
-  delivery(){
+  delivery(id){
     return (
       <View style={{padding: 15}}>
         <View>
@@ -125,14 +124,14 @@ class Cart extends React.Component {
           <Text style={{color: Layout.purple, textAlign: 'center'}}>This order will be charged on debit</Text>
           <Text style={{color: Layout.purple, fontWeight: '800', textAlign: 'center'}}>Chase 1234</Text>
         </View>
-        <TouchableOpacity style={Layout.mainButton}>
+        <TouchableOpacity style={Layout.mainButton} onPress={() => this.props.navigation.navigate('CompleteOrder', {id})}>
           <Text style={Layout.mainButtonText}>Place Delivery Order</Text>
         </TouchableOpacity>
       </View>
     )
   }
 
-  pickup(){
+  pickup(id){
     return (
       <View style={{padding: 15}}>
         <Text>Ready to pick up at dispensary</Text>
