@@ -33,10 +33,10 @@ class Dispensaries extends React.Component {
                   <Image source={{uri: v.img}} style={{width: '100%', height: 200}}/>
                 </View>
                 <View style={{height: 0}}>
-                  <SvgUri source={require('goodVibes/assets/images/dispen_filter_layer_top.svg')} style={{width: '100%', height: 200}}/>
+                  <Image source={require('goodVibes/assets/images/dispen_filter_layer_bottom.png')} style={{width: '100%', height: 200}}/>
                 </View>
                 <View style={{height: 0}}>
-                  <SvgUri source={require('goodVibes/assets/images/dispen_filter_layer_bottom.svg')} />
+                  <Image source={require('goodVibes/assets/images/dispen_filter_layer_top.png')} />
                 </View>
                 <View style={{position: 'absolute', bottom: 30, left: 10}}>
                   <Text style={{color: 'white', fontSize: 20}}>{v.name}</Text>

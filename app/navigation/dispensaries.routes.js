@@ -1,7 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import Dispensaries from 'goodVibes/screens/dispensaries';
 import Products from 'goodVibes/screens/products';
@@ -15,11 +14,8 @@ const DispensariesStack = createStackNavigator({
 
 DispensariesStack.navigationOptions = {
   tabBarLabel: 'Dispensaries',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name='list'
-    />
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Image source={require('goodVibes/assets/images/nav_dispen.png')} style={{tintColor}} />
   ),
 };
 

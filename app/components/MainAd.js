@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import Image from 'react-native-image-progress';
 import Config from 'goodVibes/constants/Config';
+import BottomMiddleShadow from './BottomMiddleShadow';
 
 export default class MainAd extends React.Component{
 	render(){
@@ -14,7 +15,7 @@ export default class MainAd extends React.Component{
 		            <View style={styles.learnMore}>
 			            <Text style={styles.learnMoreText}>Learn More</Text>
 		            </View>
-		            <View style={styles.imageShadow}></View>
+		            <BottomMiddleShadow />
 	            </View>
 	        </View>
         )

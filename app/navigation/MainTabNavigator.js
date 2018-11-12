@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import Layout from 'goodVibes/constants/Layout';
 
 import TabBarIcon from 'goodVibes/components/TabBarIcon';
 import ProductsStack from './Products.routes';
@@ -15,4 +16,8 @@ export default createBottomTabNavigator({
   DispensariesStack,
   ProductsStack,
   CartStack,
+}, {
+	tabBarOptions: {
+		activeTintColor: Layout.red
+	}
 });

@@ -14,17 +14,17 @@ import LogExperienceButton from './LogExperienceButton';
 
 export default class HorizontalScrollCards extends React.Component {
   render(){
-    const { log, addToCart, empty } = this.props;
+    const { log, addToCart, empty, onPress, data } = this.props;
     return (
       <View style={styles.section}>
           <Text style={styles.title}>{this.props.title}</Text>
           {this.props.data ? 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} bounces={true} alwaysBounceHorizontal={true} snapToInterval={30}>
                 {
-                  this.props.data.map((obj, i) => {
+                  data.map((obj, i) => {
                     return (
                       <View key={i}>
-                        <TouchableOpacity style={styles.card}onPress={() => this.props.onPress.bind(this.props, this.props.data)}>
+                        <TouchableOpacity style={styles.card}onPress={this.props.onPress.bind(this.props, obj)}>
                           <Image style={styles.cardImage} source={{uri: obj.img || obj.image_url}}/>
                           <View style={{padding: 5}}>
                             <View style={{height: 35}}>

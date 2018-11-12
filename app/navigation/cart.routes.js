@@ -1,7 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import Cart from 'goodVibes/screens/cart';
 
@@ -12,12 +11,9 @@ const CartStack = createStackNavigator({
 });
 
 CartStack.navigationOptions = {
-  tabBarLabel: 'Cart',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name='star'
-    />
+  tabBarLabel: 'Bag',
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Image source={require('goodVibes/assets/images/nav_bag.png')} style={{tintColor}} />
   ),
 };
 

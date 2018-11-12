@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
 	cart: cartStyles,
 	addedToCart: {
 		...cartStyles,
-		backgroundColor: Layout.green,
+		backgroundColor: Layout.red,
+		margin: 0
 	}
 })
 

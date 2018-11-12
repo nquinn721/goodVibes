@@ -1,7 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import Products from 'goodVibes/screens/products';
 
@@ -15,11 +14,9 @@ const ProductsStack = createStackNavigator({
 
 ProductsStack.navigationOptions = {
   tabBarLabel: 'Products',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name='square'
-    />
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Image source={require('goodVibes/assets/images/nav_products.png')} style={{tintColor}} />
+
   ),
 };
 
