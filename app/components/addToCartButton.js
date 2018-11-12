@@ -25,18 +25,13 @@ class AddToCartButton extends React.Component{
 			<View>
 				{
 					product.addedToCart ? 
-					<TouchableOpacity style={[(this.props.style || {borderColor: Layout.purple, padding: 5, borderWidth: 1}), {backgroundColor: Layout.green}]} onPress={() => this.props.removeFromCart(product)}>
-						<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-							<Text style={{color: 'white'}}>In Cart </Text>
-							<Icon name="check" size={30} color="white"/>
-						</View>
+					<TouchableOpacity style={styles.addedToCart} onPress={() => this.props.removeFromCart(product)}>
+						<Text style={{color: 'white'}}>In Cart </Text>
+						<Icon name="check" size={30} color="white"/>
 					</TouchableOpacity>
 					:
-					<TouchableOpacity style={(this.props.style || {borderColor: Layout.purple, padding: 5, borderWidth: 1})} onPress={() => this.props.addToCart(product)}>
-						<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-							<Icon type="font-awesome" name="cart-plus" size={30} />
-							<Text> Add to Cart</Text>
-						</View>
+					<TouchableOpacity style={styles.cart} onPress={() => this.props.addToCart(product)}>
+						<Text style={{color: Layout.red}}> Add to Bag</Text>
 					</TouchableOpacity>
 				}
 			</View>
@@ -44,6 +39,22 @@ class AddToCartButton extends React.Component{
 	}
 }
 
+const cartStyles = {
+	margin: 15, 
+	paddingTop: 10,
+	flexDirection: 'row', 
+	alignItems: 'center', 
+	justifyContent: 'center',
+	borderTopWidth: 1,
+	borderTopColor: '#f0f0f0'
+}
+const styles = StyleSheet.create({
+	cart: cartStyles,
+	addedToCart: {
+		...cartStyles,
+		backgroundColor: Layout.green,
+	}
+})
 
 
 export default connect(

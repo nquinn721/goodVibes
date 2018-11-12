@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="360px" height="200px" viewBox="0 0 360 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
-    <title>dispen_filter_layer_bottom</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">
-            <stop stop-color="#FF9398" stop-opacity="0.2" offset="0%"></stop>
-            <stop stop-color="#424242" stop-opacity="0.867276102" offset="67.7031445%"></stop>
-            <stop stop-color="#292929" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="ui_v1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.64594029">
-        <g id="Artboard" transform="translate(-27.000000, -531.000000)" fill="url(#linearGradient-1)">
-            <rect id="dispen_filter_layer_bottom" transform="translate(207.000000, 631.000000) rotate(-90.000000) translate(-207.000000, -631.000000) " x="107" y="451" width="200" height="360"></rect>
-        </g>
-    </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?><svg width="360px" height="200px" viewBox="0 0 360 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch --><title>dispen_filter_layer_bottom</title><desc>Created with Sketch.</desc><defs><linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-1"><stop stop-color="#FF9398" stop-opacity="0.2" offset="0%"></stop><stop stop-color="#424242" stop-opacity="0.867276102" offset="67.7031445%"></stop><stop stop-color="#292929" offset="100%"></stop></linearGradient></defs><g id="ui_v1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.64594029"><g id="Artboard" transform="translate(-27.000000, -531.000000)" fill="url(#linearGradient-1)"><rect id="dispen_filter_layer_bottom" transform="translate(207.000000, 631.000000) rotate(-90.000000) translate(-207.000000, -631.000000) " x="107" y="451" width="200" height="360"></rect></g></g></svg>

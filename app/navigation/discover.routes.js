@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-import SvgUri from 'react-native-svg-uri';
+import { Platform } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator, Image } from 'react-navigation';
+import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import Discover from 'goodVibes/screens/discover';
 import Dispensaries from 'goodVibes/screens/dispensaries';
@@ -16,8 +16,8 @@ const DiscoverStack = createStackNavigator({
 DiscoverStack.navigationOptions = {
   tabBarLabel: 'Discover',
   tabBarIcon: ({ focused }) => (
-    <SvgUri source={require('goodVibes/assets/images/nav_explore.svg')} />
-  )
+    <Image source={require('goodVibes/assets/images/nav_explore.png')}/>
+  ),
 };
 
 

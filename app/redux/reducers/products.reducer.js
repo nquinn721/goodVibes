@@ -257,7 +257,7 @@ const initialState = {
 }
 
 initialState.products = initialState.originalProducts;
-initialState.hotProducts = initialState.originalProducts.splice(0, 4);
+initialState.hotProducts = initialState.originalProducts.slice(0, 4);
 
 export default (state = initialState, action) => {
   let product;

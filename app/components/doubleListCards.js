@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
+import AddToCartButton from 'goodVibes/components/AddToCartButton';
 /*
 
 <DoubleListCards title={title} data={data} onPress={onPressMethod} />
@@ -9,6 +10,8 @@ import StarRating from 'goodVibes/components/StarRating';
 */
 export default class DoubleListCards extends React.Component {
   render(){
+    const { addToCart } = this.props;
+
     return (
       <View>
           <Text style={styles.title}>{this.props.title}</Text>
@@ -34,6 +37,7 @@ export default class DoubleListCards extends React.Component {
                           <Text>${card.cost}</Text>
                         </View>
                       </View>
+                      { addToCart && <AddToCartButton product={card}/>}
                     </View>
                   );
                 })
@@ -59,13 +63,12 @@ const styles = StyleSheet.create({
     color: Layout.purple
   },
   image: {
-    height: '65%',
+    height: 150,
     padding: 30
   },
   card: {
     flexBasis: '49%',
     backgroundColor: 'white',
-    height: 270,
     borderRadius: 5,
     marginBottom: 10,
     ...Layout.cardShadow,

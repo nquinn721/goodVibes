@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import SearchBar from 'goodVibes/components/SearchBar';
 import Layout from 'goodVibes/constants/Layout';
+import SvgUri from 'react-native-svg-uri';
+import StarRating from 'goodVibes/components/StarRating';
+import RoundedButton from 'goodVibes/components/RoundedButton';
+
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
@@ -16,22 +20,30 @@ class Dispensaries extends React.Component {
     return (
       <View style={Layout.container}>
         <SearchBar navigation={this.props.navigation}/>
-        <View style={{paddingTop: 15, justifyContent: 'space-around', flexDirection: 'row'}}>
-          <View></View>
-          <TouchableOpacity style={{alignItems: 'center'}} onPress={() => this.props.navigation.navigate('DispensaryMap')}>
-            <Text>Map View</Text>
-            <Icon name="map-o" type="font-awesome" size={35}/>
-          </TouchableOpacity>
-          <View>
-            <Icon name="filter-list" size={35} />
-          </View>
+        <View style={{padding: 15, justifyContent: 'space-between', flexDirection: 'row',}}>
+          <RoundedButton onPress={() => this.props.navigation.navigate('DispensaryMap')} text="Map View" icon="map-o" type="font-awesome"/>
+          <RoundedButton text="Filters" icon="filter-list"/>
         </View>
         <ScrollView style={styles.container}>
          {
           dispensaries.map((v, i) => {
             return (
-              <View key={i}>
-              </View>
+              <TouchableOpacity key={i} style={{height: 220}} onPress={() => this.props.navigation.navigate('Dispensary', {dispensary: v})}>
+                <View style={{height: 0}}>
+                  <Image source={{uri: v.img}} style={{width: '100%', height: 200}}/>
+                </View>
+                <View style={{height: 0}}>
+                  <SvgUri source={require('goodVibes/assets/images/dispen_filter_layer_top.svg')} style={{width: '100%', height: 200}}/>
+                </View>
+                <View style={{height: 0}}>
+                  <SvgUri source={require('goodVibes/assets/images/dispen_filter_layer_bottom.svg')} />
+                </View>
+                <View style={{position: 'absolute', bottom: 30, left: 10}}>
+                  <Text style={{color: 'white', fontSize: 20}}>{v.name}</Text>
+                  <Text style={{color: 'white', fontSize: 12}}>{v.distance}</Text>
+                  <StarRating rating={v.rating} />
+                </View>
+              </TouchableOpacity>
             )
           })
          }

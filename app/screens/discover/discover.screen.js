@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { getYelpDispensaries } from 'goodVibes/redux/actions/dispensary.action';
 import Layout from 'goodVibes/constants/Layout';
 import MainAd from 'goodVibes/components/MainAd';
+import UserAd from 'goodVibes/components/UserAd';
 
 class Discover extends React.Component {
   static navigationOptions = {
@@ -30,6 +31,7 @@ class Discover extends React.Component {
             <HorizontalScrollCards title='Dispensaries near by' data={dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
           </View>
           <DoubleListCards title='Hot Products' data={hotProducts} />
+          <UserAd />
         </ScrollView>
       </View>
     );

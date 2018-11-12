@@ -27,6 +27,16 @@ export default {
   gold: '#ffb900',
   darkGrey: '#666666',
   lightText: '#bababa',
+  roundedButton: {
+    borderRadius: 50, 
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center', 
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    ...cardShadow
+  },
   cardShadow: cardShadow,
   emptyCard: {padding: 20, backgroundColor: 'white', borderRadius: 5, ...cardShadow},
   mainButton: {backgroundColor: "#d8d8d8", padding: 15, marginTop: 20, borderRadius: 5, margin: 5},

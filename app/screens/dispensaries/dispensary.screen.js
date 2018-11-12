@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import DoubleListCards from 'goodVibes/components/DoubleListCards';
 import Layout from 'goodVibes/constants/Layout';
+import StarRating from 'goodVibes/components/StarRating';
+import RoundedButton from 'goodVibes/components/RoundedButton';
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
@@ -14,46 +16,42 @@ class Dispensaries extends React.Component {
     const { navigation } = this.props,
           { img, image_url, name, distance, rating, review_count } = navigation.getParam('dispensary', {}),
           products = this.props.products.filterByDispensary(name);
+          console.log('---');
+          console.log(name);
     return (
-      <ScrollView style={styles.container}>
-        <View style={{height: 200}}>
-          <Image style={{height: 250}} source={{uri: img || image_url}} />
-        </View>
-        <View style={{padding: 15, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
-          <View>
-            <Image style={{height: 100, width: 100, borderRadius: 10, borderColor: 'black', borderWidth: 1}} source={{uri : img || image_url}} />
-            <Text style={{fontWeight: '900', color: Layout.purple}}>{name}</Text>
-            <Text style={{color: Layout.lightText}}>{distance} mi</Text>
-            <Text style={{color: Layout.gold}}>{rating} stars ({review_count})</Text>
+      <ScrollView style={Layout.container}>
+        <View style={{backgroundColor: 'white', ...Layout.cardShadow}}>
+          <View style={{height: 130}}>
+            <Image style={{height: 200}} source={{uri: img || image_url}} />
           </View>
-          <View>
-            <Icon name="info-circle" type="font-awesome" size={35} color={Layout.purple}/>
+          <View style={{padding: 15, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
+            <View>
+              <Image style={{height: 100, width: 100, borderRadius: 10, ...Layout.cardShadow}} source={{uri : img || image_url}} />
+              <Text style={{color: Layout.darkGrey, fontSize: 20}}>{name}</Text>
+              <Text style={{color: Layout.lightText}}>{distance}</Text>
+              <StarRating rating={rating} />
+            </View>
+            <View style={{flexDirection: 'row', alignItems: 'center', position: 'absolute', bottom: 15, right: 20}}>
+              <Text style={{color: Layout.purple}}>show details </Text>
+              <Icon name="info-circle" type="font-awesome" size={15} color={Layout.purple}/>
+            </View>
           </View>
         </View>
 
-        <View style={{justifyContent: 'space-around', flexDirection: 'row'}}>
-          <View></View>
-          <View style={{alignItems: 'center'}}>
-            <Text style={{fontSize: 20}}>Menu</Text>
-          </View>
-          <View>
-            <Icon name="filter-list" size={25} />
-          </View>
+
+        <View style={{justifyContent: 'space-around', flexDirection: 'row', marginTop: 20, marginBottom: 20}}>
+          <RoundedButton text="Full Menu" icon="book-open" type="feather"/>
+          <RoundedButton text="Filters" icon="filter-list"/>
         </View>
-        <View style={{paddingHorizontal: 15}}>
-          <Text style={{color: Layout.purple}}>Flower</Text>
-        </View>
-        <DoubleListCards data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})}/>
+
+        <Text style={{color: Layout.purple, paddingLeft: 20}}>Flowers</Text>
+        <DoubleListCards data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})} addToCart/>
       </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
 });
 
 export default connect(
