@@ -1,4 +1,4 @@
-import Discover from './discover.screen';
+import Discover from './Discover.screen';
 
 export default {
 	Discover

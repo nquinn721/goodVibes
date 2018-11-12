@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-na
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import Layout from 'goodVibes/constants/Layout';
-import DoubleListCards from 'goodVibes/components/doubleListCards';
+import DoubleListCards from 'goodVibes/components/DoubleListCards';
 
 class Products extends React.Component {
   static navigationOptions = {
@@ -15,7 +15,7 @@ class Products extends React.Component {
           { products } = this.props.products;
 
   	return (
-  		<ScrollView style={styles.container}>
+  		<ScrollView style={Layout.container}>
         <View style={{justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 30, paddingTop: 35}}>
   			  <Text style={{color: Layout.purple, fontSize: 25}}>{title}</Text>
           <Icon name="filter-list" size={30} color={Layout.purple}/>
@@ -31,10 +31,6 @@ class Products extends React.Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
 });
 
 export default connect(

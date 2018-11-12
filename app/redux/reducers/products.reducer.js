@@ -4,18 +4,22 @@ const initialState = {
     { 
       id: 1,
       dispensary: 'Potimus Maximus',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
-      type: 'oil',
-      cost: 45,
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
+      name: 'Sea Breeze',
+      type: 'Flower',
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
         relaxed: 9,
         euphoric: 8.3,
         giggy: 5
+      },
+      discount: {
+        percent: 10,
+        originalPrice: 39.49
       },
       addedToCart: false,
       canAddToCart: true,
@@ -28,12 +32,12 @@ const initialState = {
     { 
       id: 2,
       dispensary: 'Potimus Maximus',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
-      name: 'Lemon Sherbert',
-      type: 'oil',
-      cost: 45,
+      img: 'https://ddd33q3967xhi.cloudfront.net/3MttCm0UsaX1T77IyziTpLhMrcI=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fQfzvYIfcR8mQ2cgcdvxK_Screen+Shot+2018-10-15+at+5.05.08+PM.png', 
+      name: 'Select CBD Vaporizer Pens',
+      type: 'CBD',
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -52,12 +56,12 @@ const initialState = {
     { 
       id: 3,
       dispensary: 'Potimus Maximus',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
-      type: 'oil',
-      cost: 45,
+      img: 'https://ddd33q3967xhi.cloudfront.net/jpk-JfL_vesIL1-xw5t9zY5QH2A=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fGQZ8Mh5WT2uS2wSrAkUg_24k+brownie.jpg', 
+      name: 'Special Brownies',
+      type: 'Edible',
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -76,12 +80,12 @@ const initialState = {
     { 
       id: 4,
       dispensary: 'Potimus Maximus',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
-      type: 'oil',
-      cost: 45,
+      img: 'https://ddd33q3967xhi.cloudfront.net/wIg3oDmnlI5czSeMDnCTiEVmlDo=/fit-in/168x168/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fsD0OL2lbQoc3qJZmW3CO_K3086-2.jpg', 
+      name: 'Psychodelic Dab Machine',
+      type: 'Dabbing',
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -100,12 +104,12 @@ const initialState = {
     { 
       id: 5,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -124,12 +128,12 @@ const initialState = {
     { 
       id: 6,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -148,12 +152,12 @@ const initialState = {
     { 
       id: 7,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -172,12 +176,12 @@ const initialState = {
     { 
       id: 8,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -196,12 +200,12 @@ const initialState = {
     { 
       id: 9,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -220,12 +224,12 @@ const initialState = {
     { 
       id: 10,
       dispensary: 'New aged weed',
-      img: 'http://www.discovercannabis.ca/wp-content/uploads/2018/07/marijuana-2174302_960_720.jpg', 
+      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
       name: '1:1 [1oz] (150mg CBD/150mg THC)',
       type: 'oil',
-      cost: 45,
+      cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
-      stars: 4.5,
+      rating: 4.5,
       totalRatings: 435,
       moods: {
         happy: 8.5,
@@ -244,6 +248,7 @@ const initialState = {
     
   ],
   products: [],
+  hotProducts: [],
 
   filterByDispensary: function(dispensary) {
     return this.products.filter(p => p.dispensary === dispensary);
@@ -252,6 +257,7 @@ const initialState = {
 }
 
 initialState.products = initialState.originalProducts;
+initialState.hotProducts = initialState.originalProducts.splice(0, 4);
 
 export default (state = initialState, action) => {
   let product;

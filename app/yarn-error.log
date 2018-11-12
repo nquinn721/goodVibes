@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/10.7.0/bin/node /usr/local/bin/yarn add react-native-snap-carousel
+  /usr/local/Cellar/node/10.7.0/bin/node /usr/local/bin/yarn add react-native-svg-uri
 
 PATH: 
   /Users/natedeazy/.rvm/gems/ruby-2.4.4/bin:/Users/natedeazy/.rvm/gems/ruby-2.4.4@global/bin:/Users/natedeazy/.rvm/rubies/ruby-2.4.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natedeazy/.rvm/bin

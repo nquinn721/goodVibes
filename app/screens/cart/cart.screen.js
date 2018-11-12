@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View, Text, Image, TouchableOpacity } from 'rea
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
-import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
+import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
 
 class Cart extends React.Component {
   static navigationOptions = {

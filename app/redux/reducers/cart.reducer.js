@@ -1,6 +1,9 @@
 const img = require('../../assets/images/avatar.png');
 const initialState = {
   orders: {},
+  completeOrders: [],
+  recentlyPurchesedItems: [],
+  recentDispensaries: [],
   totalItems: 0,
   totalDispensaries: 0
 }
@@ -45,8 +48,11 @@ export default (state = initialState, action) => {
     case 'COMPLETE_ORDER':
       order = getOrderById(action.id, state.orders);
       order.complete = true;
+      state.completeOrders.push(order);
+      state.recentlyPurchesedItems.concat(order.items);
+      state.recentDispensaries.push(order.dispensary);
       return {
-        ...state
+        ...state,
       }
       
     default:

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
-import SearchBar from 'goodVibes/components/search';
+import SearchBar from 'goodVibes/components/SearchBar';
 import Layout from 'goodVibes/constants/Layout';
 
 class Products extends React.Component {
@@ -13,8 +13,8 @@ class Products extends React.Component {
   	const { productList } = this.props;
 
   	return (
-  		<ScrollView style={styles.container}>
-  			<SearchBar />
+  		<ScrollView style={Layout.container}>
+        <SearchBar navigation={this.props.navigation}/>
   			{
   				Object.keys(productList).map((list, i) => {
   					return (
@@ -46,10 +46,7 @@ class Products extends React.Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+  
 });
 
 export default connect(

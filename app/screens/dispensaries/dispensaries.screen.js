@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import Card from 'goodVibes/components/card';
 import { Icon } from 'react-native-elements';
-import SearchBar from 'goodVibes/components/search';
+import SearchBar from 'goodVibes/components/SearchBar';
+import Layout from 'goodVibes/constants/Layout';
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
@@ -14,8 +14,8 @@ class Dispensaries extends React.Component {
     const { dispensaries } = this.props.dispensaries;
 
     return (
-      <View style={styles.container}>
-        <SearchBar />
+      <View style={Layout.container}>
+        <SearchBar navigation={this.props.navigation}/>
         <View style={{paddingTop: 15, justifyContent: 'space-around', flexDirection: 'row'}}>
           <View></View>
           <TouchableOpacity style={{alignItems: 'center'}} onPress={() => this.props.navigation.navigate('DispensaryMap')}>
@@ -30,7 +30,8 @@ class Dispensaries extends React.Component {
          {
           dispensaries.map((v, i) => {
             return (
-              <Card data={v} key={i} onPress={() => this.props.navigation.navigate('Dispensary', {dispensary: v})}/>
+              <View key={i}>
+              </View>
             )
           })
          }
@@ -41,10 +42,7 @@ class Dispensaries extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+  
 });
 
 export default connect(

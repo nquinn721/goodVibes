@@ -5,7 +5,9 @@ const express = require('express'),
 
 const DB = require('./db');
 const Yelp = require('./apis/yelp');
-const Leafly = require('./scrapers/leafly');
+
+app.use(express.static(__dirname + '/assets'))
+// const Leafly = require('./scrapers/leafly');
 // const yelpScraper = require('./scrapers/dispensariesFromYelp')(Yelp);
 
 // Yelp.search({apiCall: 'businesses/wP9zn3HkkssRWf7wG4JEag'}, (data) => {
@@ -15,7 +17,6 @@ app.get('/', (req, res) => {
 	res.send('Thanks for visiting Good Vibes Technologies!');
 });
 app.get('/:lat/:lon', (req, res) => {
-	console.log(req.params);
 	Yelp.search({term: 'dispensary', lat: req.params.lat, lon: req.params.lon}, (data) => {
 		res.send({data})
 	});

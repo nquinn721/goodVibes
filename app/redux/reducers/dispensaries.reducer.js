@@ -17,7 +17,7 @@ const initialState = {
     },
     {
       img: 'http://29eybu3o5gak2ec75b4c9aj7.wpengine.netdna-cdn.com/wp-content/uploads/2017/06/o-1.jpg', 
-      name: 'New aged weed',
+      name: 'Get high and fly dispensary',
       distance: '5.4 mi',
       rating: 4.2,
       totalRatings: 350

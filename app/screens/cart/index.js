@@ -1,6 +1,6 @@
-import Cart from './cart.screen';
-import Checkout from './checkout.screen';
-import CompleteOrder from './completeOrder.screen';
+import Cart from './Cart.screen';
+import Checkout from './Checkout.screen';
+import CompleteOrder from './CompleteOrder.screen';
 
 export default {
 	Cart,

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import Card from './card';
+import { Image, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Layout from 'goodVibes/constants/Layout';
+import StarRating from 'goodVibes/components/StarRating';
 /*
 
 <DoubleListCards title={title} data={data} onPress={onPressMethod} />
@@ -10,12 +11,30 @@ export default class DoubleListCards extends React.Component {
   render(){
     return (
       <View>
-          <Text>{this.props.title}</Text>
+          <Text style={styles.title}>{this.props.title}</Text>
             <View style={styles.doubleList}>
               {
-                this.props.data.map((u, i) => {
+                this.props.data.map((card, i) => {
                   return (
-                    <Card key={i} style={styles.card} data={u} onPress={this.props.onPress}/>
+                    <View style={[styles.card, (i % 2 === 0 && styles.margin)]} key={i}>
+                      <View style={styles.image}>
+                        <Image style={{width: '100%', height: '100%'}} source={{uri: card.img || card.image_url}}/>
+                      </View>
+                      <View style={styles.content}>
+                        <View style={{height: 50}}>
+                          <Text style={{color: '#666666'}}>{card.name}</Text>
+                          <Text style={{color: Layout.lightText}}>{card.type}</Text>
+                        </View>
+                        <View style={styles.row}>
+                          <Text style={{color: Layout.red, fontSize: 12, fontWeight: '800'}}>{(card.discount && card.discount.percent + '% off') || ''}</Text>
+                          <Text style={{color: Layout.lightText, fontSize: 12}}>{(card.discount && '$' + card.discount.originalPrice) || ''}</Text>
+                        </View>
+                        <View style={styles.row}>
+                          <StarRating rating={card.rating} />
+                          <Text>${card.cost}</Text>
+                        </View>
+                      </View>
+                    </View>
                   );
                 })
               }
@@ -31,8 +50,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
-  card: {
-    flexBasis: '50%'
+  content: {
+    padding: 10
   },
-  
+  title: {
+    padding: 10, 
+    fontSize: 16, 
+    color: Layout.purple
+  },
+  image: {
+    height: '65%',
+    padding: 30
+  },
+  card: {
+    flexBasis: '49%',
+    backgroundColor: 'white',
+    height: 270,
+    borderRadius: 5,
+    marginBottom: 10,
+    ...Layout.cardShadow,
+  },
+  margin: {
+    marginRight: '2%'
+  },
+  row: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between'
+  }  
 });

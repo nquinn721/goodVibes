@@ -5,7 +5,7 @@ import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
 import { addToCart, removeFromCart } from 'goodVibes/redux/actions/cart.action';
 import { bindActionCreators } from 'redux';
-import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
+import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
 
 class Cart extends React.Component {
   static navigationOptions = {

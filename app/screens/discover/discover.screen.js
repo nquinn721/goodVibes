@@ -2,10 +2,13 @@ import React from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux'; 
-import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
-import SearchBar from 'goodVibes/components/search';
+import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
+import DoubleListCards from 'goodVibes/components/DoubleListCards';
+import SearchBar from 'goodVibes/components/SearchBar';
 import { bindActionCreators } from 'redux';
 import { getYelpDispensaries } from 'goodVibes/redux/actions/dispensary.action';
+import Layout from 'goodVibes/constants/Layout';
+import MainAd from 'goodVibes/components/MainAd';
 
 class Discover extends React.Component {
   static navigationOptions = {
@@ -15,17 +18,18 @@ class Discover extends React.Component {
     // this.props.getYelpDispensaries();
   }
   render() {
-    const { dispensaries } = this.props.dispensaries;
+    const { dispensaries } = this.props.dispensaries,
+          { hotProducts } = this.props.products;
     return (
-      <View style={[styles.container, styles.contentContainer]}>
-        <SearchBar />
+      <View style={[Layout.container, styles.contentContainer]}>
+        <SearchBar navigation={this.props.navigation}/>
         <ScrollView>
-          <View style={{height: 200}}>
-            <Image style={{height: 200}} source={require('goodVibes/assets/images/avatar.png')}></Image>
-          </View>
+          <MainAd />
 
-          <HorizontalScrollCards title='Dispensaries near Me' data={dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
-          <HorizontalScrollCards title='Hot Products' data={dispensaries} />
+          <View style={{padding: 10}}>
+            <HorizontalScrollCards title='Dispensaries near by' data={dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d})}/>
+          </View>
+          <DoubleListCards title='Hot Products' data={hotProducts} />
         </ScrollView>
       </View>
     );
@@ -34,11 +38,6 @@ class Discover extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-
   welcomeImage: {
     width: 100,
     height: 80,
@@ -69,6 +68,6 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({user, dispensaries}) => ({user, dispensaries}),
-    (dispatch) => (bindActionCreators({ getYelpDispensaries }, dispatch))
+  ({user, dispensaries, products}) => ({user, dispensaries, products}),
+  (dispatch) => (bindActionCreators({ getYelpDispensaries }, dispatch))
 )(Discover);

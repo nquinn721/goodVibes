@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, Image, Button } from 'react-native';
 import { connect } from 'react-redux';
-import Card from 'goodVibes/components/card';
 import { Icon } from 'react-native-elements';
-import DoubleListCards from 'goodVibes/components/doubleListCards';
+import DoubleListCards from 'goodVibes/components/DoubleListCards';
 import Layout from 'goodVibes/constants/Layout';
 
 class Dispensaries extends React.Component {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
-import AddToCartButton from 'goodVibes/components/addToCartButton';
+import AddToCartButton from 'goodVibes/components/AddToCartButton';
 
 class Products extends React.Component {
   static navigationOptions = {

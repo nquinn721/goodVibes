@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { MapView, Location, Permissions } from 'expo';
 import { getLocalDispensaries } from 'goodVibes/redux/actions/dispensary.action';
 import { bindActionCreators } from 'redux';
-import HorizontalScrollCards from 'goodVibes/components/horizontalScrollCards';
+import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
 
 
 class DispensaryMap extends React.Component{

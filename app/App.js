@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
@@ -25,10 +25,9 @@ export default class App extends React.Component {
     } else {
       return (
         <Provider store={store}>
-          <View style={styles.container}>
-            <View style={{height: 24}}></View>
+          <SafeAreaView style={[styles.container, styles.droidSafeArea]}>
             <AppNavigator store={store}/>
-          </View>
+          </SafeAreaView>
         </Provider>
       );
     }
@@ -67,4 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  droidSafeArea: {
+        paddingTop: Platform.OS === 'android' ? 25 : 0
+    },
 });

@@ -1,6 +1,6 @@
-import Products from './products.screen';
-import Product from './product.screen';
-import Category from './category.screen';
+import Products from './Products.screen';
+import Product from './Product.screen';
+import Category from './Category.screen';
 
 export default {
 	Products,
