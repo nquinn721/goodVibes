@@ -22,7 +22,7 @@ class AddToCartButton extends React.Component{
 		const { product } = this.props;
 
 		return (
-			<View>
+			<View> 
 				{
 					product.addedToCart ? 
 					<TouchableOpacity style={styles.addedToCart} onPress={() => this.props.removeFromCart(product)}>
