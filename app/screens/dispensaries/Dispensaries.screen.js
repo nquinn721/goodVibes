@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import SearchBar from 'goodVibes/components/SearchBar';
 import Layout from 'goodVibes/constants/Layout';
-import SvgUri from 'react-native-svg-uri';
 import StarRating from 'goodVibes/components/StarRating';
 import RoundedButton from 'goodVibes/components/RoundedButton';
 
