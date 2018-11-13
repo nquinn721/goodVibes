@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SearchBar, Icon } from 'react-native-elements';
+import Layout from 'goodVibes/constants/Layout';
 /*
 	<SearchBar navigation={this.props.navigation} />
 */
 
 export default class Search extends React.Component{
 	render(){
+		const userRoute = this.props.navigation.state.routeName === 'User';
+		
 		return (
 			<View style={styles.container}>
 	            <SearchBar
@@ -24,7 +27,7 @@ export default class Search extends React.Component{
 	              placeholderTextColor='#b8b8b8'
 	              placeholder='Search for good vibes' />
 	              <TouchableOpacity style={{paddingRight: 20}} onPress={() => this.props.navigation.navigate('User')}>
-		              <Icon name='user' size={25} color='#b8b8b8' type='feather' />
+		              <Icon name='user' size={25} color={userRoute ? Layout.red : '#b8b8b8'} type='feather' />
 		          </TouchableOpacity>
 	        </View>
         )

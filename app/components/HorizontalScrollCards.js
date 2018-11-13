@@ -14,7 +14,8 @@ import LogExperienceButton from './LogExperienceButton';
 
 export default class HorizontalScrollCards extends React.Component {
   render(){
-    const { log, addToCart, empty, onPress, data } = this.props;
+    const { log, addToCart, empty, onPress, data = [], isProduct } = this.props;
+
     return (
       <View style={styles.section}>
           <Text style={styles.title}>{this.props.title}</Text>
@@ -24,8 +25,10 @@ export default class HorizontalScrollCards extends React.Component {
                   data.map((obj, i) => {
                     return (
                       <View key={i}>
-                        <TouchableOpacity style={styles.card}onPress={this.props.onPress.bind(this.props, obj)}>
-                          <Image style={styles.cardImage} source={{uri: obj.img || obj.image_url}}/>
+                        <TouchableOpacity style={styles.card} onPress={this.props.onPress.bind(this.props, obj)}>
+                          <View style={[{height: '60%', width: '100%', alignItems: 'center'}, (isProduct && {padding: 10})]}>
+                            <Image style={[styles.cardImage, (isProduct && {width: '60%'})]} source={{uri: obj.img || obj.image_url}}/>
+                          </View>
                           <View style={{padding: 5}}>
                             <View style={{height: 35}}>
                               <Text style={{color: '#666666', fontSize: 14, flexWrap: 'wrap'}}>{obj.name}</Text>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: '100%',
-    height: '60%'
+    height: '100%'
   },
   section: {
     marginBottom: 10

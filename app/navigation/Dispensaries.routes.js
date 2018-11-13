@@ -4,12 +4,14 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import Dispensaries from 'goodVibes/screens/dispensaries';
 import Products from 'goodVibes/screens/products';
+import UserRoutes from './User.routes';
 
 const DispensariesStack = createStackNavigator({
   Dispensaries: Dispensaries.Dispensaries,
   Dispensary: Dispensaries.Dispensary, 
   DispensaryMap: Dispensaries.DispensaryMap,
-  Product: Products.Product
+  Product: Products.Product,
+  ...UserRoutes
 });
 
 DispensariesStack.navigationOptions = {

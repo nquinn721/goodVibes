@@ -26,6 +26,8 @@ export default {
   purple,
   gold: '#ffb900',
   darkGrey: '#666666',
+  mediumGrey: '#b8b8b8',
+  lightGrey: '#f0f0f0',
   lightText: '#bababa',
   roundedButton: {
     borderRadius: 50, 

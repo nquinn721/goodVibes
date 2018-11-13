@@ -3,6 +3,7 @@ import { Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Products from 'goodVibes/screens/products';
+import UserRoutes from './User.routes';
 
 
 
@@ -10,6 +11,7 @@ const ProductsStack = createStackNavigator({
   Products: Products.Products,
   Product: Products.Product, 
   Category: Products.Category,
+  ...UserRoutes
 });
 
 ProductsStack.navigationOptions = {

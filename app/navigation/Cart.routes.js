@@ -3,11 +3,13 @@ import { Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Cart from 'goodVibes/screens/cart';
+import UserRoutes from './User.routes';
 
 const CartStack = createStackNavigator({
   Cart: Cart.Cart, 
   Checkout: Cart.Checkout,
   CompleteOrder: Cart.CompleteOrder,
+  ...UserRoutes
 });
 
 CartStack.navigationOptions = {

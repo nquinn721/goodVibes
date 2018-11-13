@@ -6,24 +6,27 @@ import DoubleListCards from 'goodVibes/components/DoubleListCards';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
 import RoundedButton from 'goodVibes/components/RoundedButton';
+import BackButton from 'goodVibes/components/BackButton';
+import DispensaryFilteredImage from 'goodVibes/components/DispensaryFilteredImage';
 
 class Dispensaries extends React.Component {
   static navigationOptions = {
-    title: ""
+    header: null
   };
 
   render() {
     const { navigation } = this.props,
-          { img, image_url, name, distance, rating, review_count } = navigation.getParam('dispensary', {}),
+          dispensary = navigation.getParam('dispensary', {}),
+          { img, image_url, name, distance, rating, review_count } = dispensary,
           products = this.props.products.filterByDispensary(name);
-          console.log('---');
-          console.log(name);
+          
     return (
       <ScrollView style={Layout.container}>
+        <BackButton navigation={this.props.navigation} />
         <View style={{backgroundColor: 'white', ...Layout.cardShadow}}>
-          <View style={{height: 130}}>
-            <Image style={{height: 200}} source={{uri: img || image_url}} />
-          </View>
+          <DispensaryFilteredImage dispensary={dispensary} style={{height: 120}}/>
+
+          
           <View style={{padding: 15, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
             <View>
               <Image style={{height: 100, width: 100, borderRadius: 10, ...Layout.cardShadow}} source={{uri : img || image_url}} />

@@ -66,10 +66,7 @@ class Cart extends React.Component {
         <View style={styles.container}>
           {this.info(cart)}
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <View style={{height: 0}}>
-              <Image style={{width: 100, height: 100, marginTop: 30}} source={{uri: 'https://cdn.shopify.com/s/files/1/2091/5959/products/PurLoveCbd1_1024x1024.jpg?v=1516738506'}} />
-            </View>
-            <Icon name='cancel' size={175} color='#000000a3' type="material-community" />
+            <Icon name='cancel' size={175} color='#eee' type="material-community" />
             <Text style={{color: '#aaa', fontSize: 18}}>You do not have any orders</Text>
           </View>
         </View>

@@ -12,10 +12,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       discount: {
         percent: 10,
@@ -40,10 +55,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -64,10 +94,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -88,10 +133,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -112,10 +172,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -136,10 +211,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -160,10 +250,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -184,10 +289,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -208,10 +328,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,
@@ -232,10 +367,25 @@ const initialState = {
       rating: 4.5,
       totalRatings: 435,
       moods: {
-        happy: 8.5,
-        relaxed: 9,
-        euphoric: 8.3,
-        giggy: 5
+        'Relaxed': 9,
+        'Happy': 8.5,
+        'Euphoric': 8.3,
+        'Giggy': 5,
+        'Uplifted': 7
+      },
+      medical: {
+        'Depression': 3.5,
+        'Stress': 4,
+        'Fatigue': 5.3,
+        'Pain': 7,
+        'Headaches': 9
+      },
+      cons: {
+        'Dry Mouth': 8.5,
+        'Dry Eyes': 9,
+        'Anxious': 8.3,
+        'Paranoid': 5,
+        'Dizzy': 5
       },
       addedToCart: false,
       canAddToCart: true,

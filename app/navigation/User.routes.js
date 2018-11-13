@@ -5,14 +5,11 @@ import TabBarIcon from 'goodVibes/components/TabBarIcon';
 
 import User from 'goodVibes/screens/user';
 
-const UserStack = createStackNavigator({
+const UserStack = {
   User: User.User,
   Account: User.Account, 
   LoggedExperiences: User.LoggedExperiences,
   Settings: User.Settings,
-});
-
-UserStack.navigationOptions = {
 };
 
 

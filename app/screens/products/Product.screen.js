@@ -1,15 +1,55 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Animated } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 import Layout from 'goodVibes/constants/Layout';
-import { Icon } from 'react-native-elements';
+import { Icon, Divider } from 'react-native-elements';
 import AddToCartButton from 'goodVibes/components/AddToCartButton';
+import BackButton from 'goodVibes/components/BackButton';
+import StarRating from 'goodVibes/components/StarRating';
+import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
 
 class Products extends React.Component {
   static navigationOptions = {
-    title: '',
+    header: null,
   };
+
+  state = {
+  	selectedStats: 'moods',
+  	fade: new Animated.Value(0)
+  }
+
+  slide(stat, num){
+  	Animated.timing(this.state[stat], {
+  		toValue: num,
+  		duration: 1000
+  	}).start();
+  }
+
+  isInViewport(cb) {
+  	if(!this.lastMood) return;
+
+
+    this.lastMood.measure((x, y, width, height, pageX, pageY) => {
+    	cb(Layout.window.height - pageY > y);
+     })
+  }
+
+  onScroll(stats){
+	this.isInViewport((inView) => {
+		if(inView)
+			this.animateStats();
+	})
+  }
+
+  animateStats(){
+  	const product = this.props.navigation.getParam('product'),
+  		  stats = product[this.state.selectedStats];
+
+  	Object.keys(stats).forEach(stat => {
+	  	this.slide(`${stat}Slider`, stats[stat]);
+	});
+  }
 
   render() {
   	const product = this.props.navigation.getParam('product'),
@@ -18,7 +58,7 @@ class Products extends React.Component {
 	  		type, 
 	  		img, 
 	  		images, 
-	  		stars, 
+	  		rating, 
 	  		totalRatings, 
 	  		cost,
 	  		description,
@@ -26,9 +66,25 @@ class Products extends React.Component {
 	  		moods
 	  	} = product;
 
-  	return (
-  		<ScrollView style={styles.container}>
 
+	const stats = product[this.state.selectedStats],
+		selectedStats = this.state.selectedStats,
+		{ products } = this.props.products;
+
+		Object.keys(stats).forEach(stat => {
+		  	this.state[`${stat}Slider`] = new Animated.Value(0);
+		});
+
+
+		this.isInViewport((inView) => {
+			if(inView)
+				this.animateStats();
+		})
+
+
+  	return (
+  		<ScrollView onScroll={() => this.onScroll(stats)} style={styles.container}>
+  			<BackButton color="black" navigation={this.props.navigation}/>
   		    {/* PRODUCT IMAGES */}
   		  	<View style={styles.swiper}>
 				<Swiper>
@@ -54,17 +110,13 @@ class Products extends React.Component {
 					<View style={{flexWrap: 'wrap', flex: 1}}>
 						<Text style={{fontSize: 20, color: Layout.purple}}>{name}</Text>
 						<Text style={{color: Layout.lightText}}>{type}</Text>
-						<Text style={{color: Layout.gold}}>{stars} stars ({totalRatings})</Text>
+						<StarRating rating={rating} />
 					</View>
 					<View>
 					{
 						addedToCart ?
-							(<View style={{backgroundColor: Layout.green, padding: 5, borderRadius: 5}}>
+							(<View style={{backgroundColor: Layout.red, paddingHorizontal: 10, borderRadius: 20}}>
 	 							<Text style={{fontSize: 24, color: 'white'}}>${cost}</Text>
-	 							<View style={{flexDirection: 'row'}}>
-	 								<Text style={{fontSize: 10, color: 'white'}}>In Cart</Text>
-	 								<Icon name="check" color="white" size={10} />
-	 							</View>
 	 						</View>) :
 	 						<View style={{flex: 1, padding: 5}}>  
 								<Text style={{fontSize: 24, color: Layout.purple}}>${cost}</Text>
@@ -73,26 +125,57 @@ class Products extends React.Component {
 					</View>
 				</View>
 				<View style={{marginTop: 15, marginBottom: 10}}>
-					<Text>{description}</Text>
+					<Text style={{color: Layout.mediumGrey}}>{description}</Text>
 				</View>
 		    	{/* END PRODUCT INFO */}
 
 
 				{/* ADD CART BUTTON */}
-				<AddToCartButton product={product}/>
+				<AddToCartButton product={product} productScreen={true}/>
 				{/*END ADD CART BUTTON */}
-				
+
+
+			</View>
+			<Divider style={{ backgroundColor: Layout.lightGrey }} />
+			<View style={{padding: 20}}>
+
 
 				{/* MOODS/MEDICAL/CONS REVIEWS */}
-				<View style={{marginTop: 25}}>
-					<Text style={{fontSize: 15, color: Layout.purple, marginBottom: 15}}>Moods</Text>
+				<View>
+					<View style={{marginBottom: 15, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
+						<TouchableOpacity style={(selectedStats === 'moods' && styles.selectedTitleView)} onPress={() => this.setState({selectedStats: 'moods'}) && this.animateStats()}>
+							<Text style={[styles.statTitle, (selectedStats === 'moods' && styles.selectedTitle)]}>Moods</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={(selectedStats === 'medical' && styles.selectedTitleView)} onPress={() => this.setState({selectedStats: 'medical'}) && this.animateStats()}>
+							<Text style={[styles.statTitle, (selectedStats === 'medical' && styles.selectedTitle)]}>Medical</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={(selectedStats === 'cons' && styles.selectedTitleView)} onPress={() => this.setState({selectedStats: 'cons'}) && this.animateStats()}>
+							<Text style={[styles.statTitle, (selectedStats === 'cons' && styles.selectedTitle)]}>Cons</Text>
+						</TouchableOpacity>
+					</View>
 					<View>
 						{
-							Object.keys(moods).map((mood, i) => {
+							Object.keys(stats).map((mood, i) => {
 								return (
-									<View key={i} style={[{height: 30, backgroundColor: '#eee', marginBottom: 10}, styles.rounded]}>
-										<View style={[styles.rounded, {justifyContent: 'center', paddingLeft: 10, height: 30, backgroundColor: '#999', width: ((moods[mood] * 10) + '%')}]}>
-											<Text style={{fontSize: 20, color: 'white'}}>{mood}</Text>
+									<View key={i} ref={(el) => {
+										if(i == 3)
+											this.lastMood = el
+									}}>
+										<Text style={{fontSize: 14, color: Layout.darkGrey, paddingBottom: 5, fontStyle: 'italic'}}>{mood}</Text>
+										<View style={[{height: 5, backgroundColor: Layout.lightGrey, marginBottom: 10}, styles.rounded]}>
+											<Animated.View style={[styles.rounded, 
+												{
+													justifyContent: 'center', 
+													paddingLeft: 10, 
+													height: 5, 
+													backgroundColor: Layout.purple, 
+													width: this.state[`${mood}Slider`]
+															.interpolate({
+																inputRange: [0, 10], 
+																outputRange: ['0%', '100%']
+															})
+												}
+											]}></Animated.View>
 										</View>
 									</View>
 								)
@@ -103,6 +186,43 @@ class Products extends React.Component {
 					</View>
 				</View>
 				{/* END MOODS/MEDICAL/CONS REVIEWS */}
+
+
+			</View>
+			<Divider style={{ backgroundColor: Layout.lightGrey }} />
+			<View style={{padding: 20}}>
+
+
+			{/* RATING */}
+				<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+					<View>
+						<Text style={{fontSize: 16, marginBottom: 5}}>
+							<Text style={{color: Layout.purple, fontWeight: '800'}}>{rating}</Text>
+							<Text style={{color: Layout.mediumGrey}}> stars</Text>
+						</Text>
+						<View style={{flexDirection: 'row'}}>
+							<StarRating rating={rating} />
+							<Text style={{color: Layout.mediumGrey}}>{totalRatings}</Text>
+							<Icon name="user" type='feather' color={Layout.mediumGrey} size={16}/>
+						</View>
+					</View>
+					<View>
+						<Icon name="ios-arrow-forward" type="ionicon" size={20} color={Layout.mediumGrey}/>
+					</View>
+
+				</View>
+
+			{/* END RATING */}
+
+			</View>
+			<Divider style={{ backgroundColor: Layout.lightGrey }} />
+			<View style={{padding: 20, paddingRight: 0}}>
+
+
+				
+			{/* RELATED PRODUCTS */}
+			<HorizontalScrollCards isProduct={true} title="Related Products" data={products} onPress={(product) => this.props.navigation.navigate('Product', {product})} />
+			{/* END RELATED PRODUCTS */}
 
 
 			 </View>
@@ -123,6 +243,18 @@ const styles = StyleSheet.create({
   rounded: {
   	borderTopRightRadius: 20, 
   	borderBottomRightRadius: 20
+  },
+  selectedTitle: {
+  	fontWeight: '800',
+  	paddingBottom: 5
+  },
+  selectedTitleView: {
+  	borderBottomColor: Layout.purple,
+  	borderBottomWidth: 2,
+  },
+  statTitle: {
+  	fontSize: 15, 
+  	color: Layout.purple,
   }
 });
 

@@ -28,9 +28,9 @@ class Discover extends React.Component {
           <MainAd />
 
           <View style={{padding: 10}}>
-            <HorizontalScrollCards title='Dispensaries near by' data={dispensaries} onPress={(d) => this.props.navigation.navigate('Dispensary', {dispensary: d}) }/>
+            <HorizontalScrollCards title='Dispensaries near by' data={dispensaries} onPress={(dispensary) => this.props.navigation.navigate('Dispensary', {dispensary}) }/>
           </View>
-          <DoubleListCards title='Hot Products' data={hotProducts} />
+          <DoubleListCards title='Hot Products' data={hotProducts} onPress={(product) => this.props.navigation.navigate('Product', {product})}/>
           <UserAd />
         </ScrollView>
       </View>
