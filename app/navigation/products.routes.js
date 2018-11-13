@@ -8,7 +8,7 @@ import Products from 'goodVibes/screens/products';
 
 const ProductsStack = createStackNavigator({
   Products: Products.Products,
-  Product: Products.Product,
+  Product: Products.Product, 
   Category: Products.Category,
 });
 

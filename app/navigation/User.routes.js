@@ -7,7 +7,7 @@ import User from 'goodVibes/screens/user';
 
 const UserStack = createStackNavigator({
   User: User.User,
-  Account: User.Account,
+  Account: User.Account, 
   LoggedExperiences: User.LoggedExperiences,
   Settings: User.Settings,
 });

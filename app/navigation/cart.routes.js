@@ -5,7 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import Cart from 'goodVibes/screens/cart';
 
 const CartStack = createStackNavigator({
-  Cart: Cart.Cart,
+  Cart: Cart.Cart, 
   Checkout: Cart.Checkout,
   CompleteOrder: Cart.CompleteOrder,
 });

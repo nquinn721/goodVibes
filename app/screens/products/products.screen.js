@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import SearchBar from 'goodVibes/components/SearchBar';
 import Layout from 'goodVibes/constants/Layout';
+
+const img = require('goodVibes/assets/images/Products_gradientOnly.jpg');
 
 class Products extends React.Component {
   static navigationOptions = {
@@ -24,12 +26,13 @@ class Products extends React.Component {
   							{
   								productList[list].map((title, j) => {
   									return (
-  										<TouchableHighlight 
+  										<TouchableOpacity 
   											key={j}
   											onPress={() => this.props.navigation.navigate('Category', {title})} 
   											style={{width: '30%', height: 100, backgroundColor: '#f0f0f0', alignItems: 'center', justifyContent: 'center', marginBottom: 15}}>
   											<Text>{title}</Text>
-  										</TouchableHighlight>
+                        <Image source={img} style={{resizeMode: 'stretch', width: 50, height: 50, overflow: 'hidden'}} />
+  										</TouchableOpacity>
   									)
   								})
   							}

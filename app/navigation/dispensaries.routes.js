@@ -7,7 +7,7 @@ import Products from 'goodVibes/screens/products';
 
 const DispensariesStack = createStackNavigator({
   Dispensaries: Dispensaries.Dispensaries,
-  Dispensary: Dispensaries.Dispensary,
+  Dispensary: Dispensaries.Dispensary, 
   DispensaryMap: Dispensaries.DispensaryMap,
   Product: Products.Product
 });
