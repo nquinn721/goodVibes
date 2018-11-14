@@ -43,7 +43,10 @@ const initialState = {
       rating: 4.2,
       totalRatings: 350
     }
-  ]
+  ],
+  getDispensaryByName: function(dispensary) {
+    return this.dispensaries.filter(d => d.name === dispensary)[0]
+  }
 }
 
 export default (state = initialState, action) => {

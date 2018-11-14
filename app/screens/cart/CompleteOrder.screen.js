@@ -14,7 +14,7 @@ class Cart extends React.Component {
   componentDidMount(){
     const orderId = this.props.navigation.getParam('id');
     this.props.completeOrder(orderId);
-    setTimeout(() => this.props.navigation.navigate('Cart'), 3000);
+    setTimeout(() => this.props.navigation.navigate('Cart'), 1000);
   }
 
   render() {

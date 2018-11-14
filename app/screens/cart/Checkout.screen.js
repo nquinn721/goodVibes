@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Image, TouchableOpacity, Input } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
 import { Icon } from 'react-native-elements';
@@ -13,7 +13,8 @@ class Cart extends React.Component {
   };
   
   state = {
-    delivery: true
+    delivery: true,
+    total: 0
   }
 
 
@@ -28,23 +29,28 @@ class Cart extends React.Component {
     });
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={Layout.container}>
         {this.hotItems(dispensary, products)}
-        {this.priceBreakDown(allItems)}
+        {this.productBreakdown(allItems, items.length)}
 
-        
-        <View style={{flexDirection: 'row'}}>
-          <View style={{borderBottomWidth: 1, borderBottomColor: '#0076ff', flex: 1}}></View>
-          <TouchableOpacity onPress={() => this.setState({delivery: true})} style={[{padding: 10, flex: 2, borderBottomWidth: 1, borderBottomColor: '#0076ff'}, (this.state.delivery && styles.selected)]}>
-            <Text style={{fontSize: 18, textAlign: 'center'}}>Delivery</Text>
-          </TouchableOpacity>
-          <View style={{borderBottomWidth: 1, borderBottomColor: '#0076ff', flex: 1}}></View>
-          <TouchableOpacity onPress={() => this.setState({delivery: false})} style={[{padding: 10, flex: 2, borderBottomWidth: 1, borderBottomColor: '#0076ff'}, (!this.state.delivery && styles.selected)]}>
-            <Text style={{fontSize: 18, textAlign: 'center'}}>Pick Up</Text>
-          </TouchableOpacity>
-          <View style={{borderBottomWidth: 1, borderBottomColor: '#0076ff', flex: 1}}></View>
+        {/* DELIVERY OR PICKUP */}
+        <View style={{...Layout.cardShadow, backgroundColor: 'white', padding: 20}}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{borderBottomWidth: 1, borderBottomColor: Layout.red, flex: 1}}></View>
+            <TouchableOpacity onPress={() => this.setState({delivery: true})} style={[{padding: 10, flex: 2, borderBottomWidth: 1, borderBottomColor: Layout.red}, (this.state.delivery && styles.selected)]}>
+              <Text style={[{fontSize: 18, textAlign: 'center'}, (this.state.delivery && {color: Layout.red})]}>Delivery</Text>
+            </TouchableOpacity>
+            <View style={{borderBottomWidth: 1, borderBottomColor: Layout.red, flex: 1}}></View>
+            <TouchableOpacity onPress={() => this.setState({delivery: false})} style={[{padding: 10, flex: 2, borderBottomWidth: 1, borderBottomColor: Layout.red}, (!this.state.delivery && styles.selected)]}>
+              <Text style={[{fontSize: 18, textAlign: 'center'}, (!this.state.delivery && {color: Layout.red})]}>Pick Up</Text>
+            </TouchableOpacity>
+            <View style={{borderBottomWidth: 1, borderBottomColor: Layout.red, flex: 1}}></View>
+          </View>
+          {this.state.delivery ? this.delivery(id) : this.pickup(id)}
         </View>
-        {this.state.delivery ? this.delivery(id) : this.pickup(id)}
+        {/* END DELIVERY OR PICKUP */}
+
+
       </ScrollView>
     )
   }
@@ -52,57 +58,86 @@ class Cart extends React.Component {
 
   hotItems(dispensary, products){
     return (
-      <View style={{padding: 20, borderBottomWidth: 1, borderBottomColor: '#dfdfdf'}}>
+      <View style={{paddingLeft: 20, paddingTop: 10}}>
         <Text style={{color: Layout.purple}}>Hot products from {dispensary}</Text>
-        <HorizontalScrollCards dontAddToCart={true} data={products} style={{width: 170}}/>
+        <HorizontalScrollCards dontAddToCart={true} data={products} isProduct={true} onPress={product => this.navigation.navigate('Product', {product})}/>
       </View>
     )
   }
 
-  priceBreakDown(allItems){
-    let total = 0;
+  productBreakdown(allItems, totalItems){
     return (
-      <View style={{borderBottomWidth: 1, borderBottomColor: '#dfdfdf', marginBottom: 15}}>
+      <View style={{padding: 20}}>
+        <Text style={{color: Layout.purple, marginBottom: 10}}>{totalItems} items</Text>
         {
           Object.keys(allItems).map((itemName, i) => {
             const set = allItems[itemName],
-                  cost = allItems[itemName].reduce((a, b) => a + b.cost, 0);
+                  cost = allItems[itemName].reduce((a, b) => a + b.cost, 0),
+                  item = set[0];
 
-            total += cost;
+            this.state.total += cost;
+            this.state.overAllTotal = this.state.total + 5 + 10.5;
 
             return (
-              <View key={i} style={{flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 25, paddingTop: 25}}>
-                <View style={{flex: 2}}>
-                  <Text style={{color: Layout.purple, fontWeight: '700', fontSize: 16}}>{itemName}</Text>
+              <View key={i} style={Layout.card}>
+
+                {/* IMAGE TYPE AND NAME*/}
+                <View>
+                  <Image source={{uri: item.img}} style={{width: 50, height: 50, margin: 10}}/>
+                  <Text style={{color: Layout.darkGrey, fontWeight: '700', fontSize: 16}}>{itemName}</Text>
+                  <Text style={{color: Layout.mediumGrey, fontSize: 12}}>{item.type}</Text>
+                </View>
+                {/* END IMAGE TYPE AND NAME*/}
+
+
+                <View style={{padding: 10, paddingTop: 30}}>
+                    {/* COST */}
+                    <Text style={{fontSize: 16, color: Layout.purple}}>${cost}</Text>
+                    {/* END COST */}
+
+                  {/* ADD / SUBTRACT */}
                   <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginTop: 10}}>
                    <TouchableOpacity onPress={() => this.props.removeFromCart(set[0])}>
                      <Text style={{color: Layout.purple, fontSize: 30}}>-</Text>
                    </TouchableOpacity>
-                   <View style={{borderWidth: 1, borderColor: Layout.purple, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 5}}>
-                     <Text style={{color: Layout.purple}}>{set.length}</Text>
+                   <View>
+                     <Text style={{color: Layout.purple, fontSize: 20, width: 30, textAlign: 'center'}}>{set.length}</Text>
                    </View>
                    <TouchableOpacity onPress={() => this.props.addToCart(set[0])}>
                      <Text style={{color: Layout.purple, fontSize: 30}}>+</Text>
                    </TouchableOpacity>
                   </View>
-                </View>
-                <View style={{flex: 1}}>
-                  <Text style={{fontSize: 24, position: 'absolute', bottom: 0, color: Layout.purple}}>${cost}.00</Text>
+                  {/* END ADD / SUBTRACT */}
                 </View>
               </View>
             )
           })
         }
 
+        {/* PROMO */}
+        <View style={Layout.card}>
+          <Text style={{color: Layout.mediumGrey, borderBottomWidth: 1, borderBottomColor: Layout.mediumGrey}}>Input your code here</Text>
+          <TouchableOpacity style={{borderColor: Layout.mediumGrey, borderWidth: 1, borderRadius: 5, padding: 10}}>
+            <Text style={{color: Layout.mediumGrey}}>Apply</Text>
+          </TouchableOpacity>
+        </View>
+        {/* END PROMO */}
+
+
         {/* TOTAL */}
-        <View style={{padding: 25}}>
-          <View style={{flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: '#dfdfdf', paddingBottom: 10, marginBottom: 10}}>
-            <Text style={{color: Layout.purple, flex: 2, textAlign: 'right', paddingRight: 20, fontSize: 18}}>Fees</Text>
-            <Text style={{color: Layout.purple, flex: 1, fontSize: 18}}>$5.00</Text>
+        <View style={[Layout.card]}>
+          <View>
+            <Text>Subtotal</Text>
+            <Text>Extra Savings</Text>
+            <Text>Delivery Fee</Text>
+            <Text>Taxes</Text>
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={{color: Layout.purple, flex: 2, textAlign: 'right', paddingRight: 20, fontSize: 25}}>Total</Text>
-            <Text style={{color: Layout.purple, flex: 1, fontSize: 25}}>${total + 5}.00</Text>
+          <View>
+            <Text style={{textAlign: 'right'}}>${this.state.total}</Text>
+            <Text style={{textAlign: 'right'}}>$0.00</Text>
+            <Text style={{textAlign: 'right'}}>$5.00</Text>
+            <Text style={{textAlign: 'right'}}>$10.50</Text>
+            <Text>total ${this.state.total + 5 + 10.5}</Text>
           </View>
         </View>
         {/* END TOTAL */}
@@ -114,7 +149,7 @@ class Cart extends React.Component {
     return (
       <View style={{padding: 15}}>
         <View>
-          <Text>Deliver to Home</Text>
+          <Text>Deliver to <Text style={{fontWeight: '600'}}>Home</Text></Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15}}>
             <Text style={{color: Layout.purple}}>345 E 54th st APT 4D, 10022, NY</Text>
             <Icon name="edit" size={15} type='font-awesome' color={Layout.purple}/>
@@ -122,10 +157,14 @@ class Cart extends React.Component {
         </View>
         <View>
           <Text style={{color: Layout.purple, textAlign: 'center'}}>This order will be charged on debit</Text>
-          <Text style={{color: Layout.purple, fontWeight: '800', textAlign: 'center'}}>Chase 1234</Text>
+          <Text style={{color: Layout.purple, fontWeight: '800', textAlign: 'center'}}>
+            <Text>Chase 1234</Text>
+            <Text style={{fontWeight: '500'}}> for </Text>
+            <Text>${this.state.overAllTotal}</Text>
+          </Text>
         </View>
-        <TouchableOpacity style={Layout.mainButton} onPress={() => this.props.navigation.navigate('CompleteOrder', {id})}>
-          <Text style={Layout.mainButtonText}>Place Delivery Order</Text>
+        <TouchableOpacity style={Layout.mainButtonRounded} onPress={() => this.props.navigation.navigate('CompleteOrder', {id})}>
+          <Text style={Layout.mainButtonRoundedText}>Place Delivery Order</Text>
         </TouchableOpacity>
       </View>
     )
@@ -135,8 +174,8 @@ class Cart extends React.Component {
     return (
       <View style={{padding: 15}}>
         <Text>Ready to pick up at dispensary</Text>
-        <TouchableOpacity style={Layout.mainButton}>
-          <Text style={Layout.mainButtonText}>Place Delivery Order</Text>
+        <TouchableOpacity style={Layout.mainButtonRounded}>
+          <Text style={Layout.mainButtonRoundedText}>Place Pickup Order</Text>
         </TouchableOpacity>
       </View>
     )
@@ -154,11 +193,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#fff',
     borderRightWidth: 1,
-    borderRightColor: '#0076ff',
+    borderRightColor: Layout.red,
     borderLeftWidth: 1,
-    borderLeftColor: '#0076ff',
+    borderLeftColor: Layout.red,
     borderTopWidth: 1,
-    borderTopColor: '#0076ff',
+    borderTopColor: Layout.red,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
   }

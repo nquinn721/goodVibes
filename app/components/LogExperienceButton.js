@@ -17,15 +17,31 @@ class LogExperienceButton extends React.Component{
 			<TouchableOpacity onPress={() => this.props.removeFromCart(product)}>
 				{
 					product.loggedexperience ? 
-						<Text style={{color: Layout.lightText}}>Logged</Text>
+						<Text style={styles.loggedExperience}>Logged</Text>
 						:
-						<Text style={{color: Layout.purple}}>Log Experience</Text>
+						<Text style={styles.logExperience}>Log Experience</Text>
 				}
 			</TouchableOpacity>
 		)
 	}
 }
 
+const baseStyle = {
+	padding: 10,
+	backgroundColor: 'white',
+	borderTopWidth: 1,
+	borderTopColor: Layout.lightText
+}
+const styles = StyleSheet.create({
+	logExperience: {
+		color: Layout.lightText,
+		...baseStyle
+	},
+	loggedExperience: {
+		color: Layout.purple,
+		...baseStyle
+	}
+})
 
 
 export default connect(

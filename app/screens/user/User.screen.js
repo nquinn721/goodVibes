@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text, Image} from 'react-native';
 import { connect } from 'react-redux';
+import { Icon } from 'react-native-elements';
 import Layout from 'goodVibes/constants/Layout';
 import HorizontalScrollCards from 'goodVibes/components/HorizontalScrollCards';
 import SearchBar from 'goodVibes/components/SearchBar';
@@ -10,11 +11,17 @@ class User extends React.Component {
     header: null,
   };
 
-  render() {
-    const { cart } = this.props;
+  state = {
+    links: ['Logged Experiences', 'Account', 'Settings']
+  }
 
+  render() {
+    const { cart, user, dispensaries } = this.props;
+
+    cart.recentDispensaries = [dispensaries.getDispensaryByName.apply(dispensaries, cart.recentDispensaries)].filter(d => typeof d != 'undefined');
+    console.log(cart.recentDispensaries);
     return(
-      <View style={Layout.container}>
+      <ScrollView style={Layout.container}>
         <SearchBar navigation={this.props.navigation}/>
         <View style={{padding: 20}}>
           <Text style={{fontSize: 20, color: Layout.darkGrey}}>Hello Simon</Text>
@@ -32,10 +39,21 @@ class User extends React.Component {
           }
           </View>
 
-          <HorizontalScrollCards title="Order Again" data={cart.recentlyPurchsedItems} log={true} empty="No recently purchased items"/>
-          <HorizontalScrollCards title="My Dispensaries" data={cart.recentlyPurchsedItems} log={true} empty="No recently dispensaries"/>
+          <HorizontalScrollCards title="Order Again" isProduct={true} data={cart.recentlyPurchasedItems} log={true} empty="No recently purchased items"/>
+          <HorizontalScrollCards title="My Dispensaries" data={cart.recentDispensaries} log={true} empty="No recently dispensaries"/>
         </View>
-      </View>
+
+        <View>
+          {
+            this.state.links.map(link => (
+              <View key={link} style={{backgroundColor: 'white', padding: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                <Text style={{color: Layout.darkGrey}}>{link}</Text>
+                <Icon name="ios-arrow-forward" type="ionicon" color={Layout.darkGrey} size={20} />
+              </View>
+            ))
+          }
+        </View>
+      </ScrollView>
     )    
   }
 
@@ -47,6 +65,6 @@ const styles = StyleSheet.create({
 
 
 export default connect(
-  ({cart}) => ({cart}),
+  ({user, cart, dispensaries}) => ({user, cart, dispensaries}),
   // (dispatch) => (bindActionCreators({ completeOrder }, dispatch))
 )(User);

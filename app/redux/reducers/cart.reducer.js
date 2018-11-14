@@ -2,7 +2,7 @@ const img = require('../../assets/images/avatar.png');
 const initialState = {
   orders: {},
   completeOrders: [],
-  recentlyPurchesedItems: [],
+  recentlyPurchasedItems: [],
   recentDispensaries: [],
   totalItems: 0,
   totalDispensaries: 0
@@ -49,8 +49,8 @@ export default (state = initialState, action) => {
       order = getOrderById(action.id, state.orders);
       order.complete = true;
       state.completeOrders.push(order);
-      state.recentlyPurchesedItems.concat(order.items);
-      state.recentDispensaries.push(order.dispensary);
+      state.recentlyPurchasedItems = state.recentlyPurchasedItems.concat(order.items);
+      state.recentDispensaries = state.recentDispensaries.concat(order.dispensary);
       return {
         ...state,
       }

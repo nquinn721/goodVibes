@@ -24,8 +24,8 @@ export default class HorizontalScrollCards extends React.Component {
                 {
                   data.map((obj, i) => {
                     return (
-                      <View key={i}>
-                        <TouchableOpacity style={styles.card} onPress={this.props.onPress.bind(this.props, obj)}>
+                      <View key={i} style={styles.card}>
+                        <TouchableOpacity onPress={this.props.onPress && this.props.onPress.bind(this.props, obj)}>
                           <View style={[{height: '60%', width: '100%', alignItems: 'center'}, (isProduct && {padding: 10})]}>
                             <Image style={[styles.cardImage, (isProduct && {width: '60%'})]} source={{uri: obj.img || obj.image_url}}/>
                           </View>

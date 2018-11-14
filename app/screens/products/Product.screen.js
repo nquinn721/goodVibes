@@ -115,8 +115,9 @@ class Products extends React.Component {
 					<View>
 					{
 						addedToCart ?
-							(<View style={{backgroundColor: Layout.red, paddingHorizontal: 10, borderRadius: 20}}>
-	 							<Text style={{fontSize: 24, color: 'white'}}>${cost}</Text>
+							(<View style={{backgroundColor: Layout.red, paddingHorizontal: 20, paddingVertical: 8, borderRadius: 50, flexDirection: 'row', alignItems: 'center'}}>
+								<Image source={require('goodVibes/assets/images/nav_bag.png')} style={{tintColor: 'white', width: 20, height: 20}}/>
+	 							<Text style={{fontSize: 16, color: 'white'}}> In Bag</Text>
 	 						</View>) :
 	 						<View style={{flex: 1, padding: 5}}>  
 								<Text style={{fontSize: 24, color: Layout.purple}}>${cost}</Text>
