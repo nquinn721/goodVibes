@@ -5,7 +5,7 @@ const express = require('express'),
 
 const DB = require('./db');
 const Yelp = require('./apis/yelp');
-console.log(__dirname + '/web/build');
+console.log(__dirname + '/web/build');  
 
 app.use(express.static(process.cwd() + '/web/build'))
 // const Leafly = require('./scrapers/leafly');
