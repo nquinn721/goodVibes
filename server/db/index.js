@@ -7,7 +7,7 @@ mongoose.connect('mongodb://nate:nate123@ds253713.mlab.com:53713/goodvibes',
 
 
 
-fs.readdir('./db/schema', (err, files) => {
+fs.readdir(process.cwd() + '/server/db/schema', (err, files) => {
   files.forEach(file => {
     require('./schema/' + file);
   });

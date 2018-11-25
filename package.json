@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js",
+    "build": "cd server/web && npm run build && cd ../../ && npm start",
     "deploy": "git add . && git ci -m 'update' && git push master && git push heroku master"
   },
   "author": "",
