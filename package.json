@@ -9,7 +9,7 @@
     "build": "cd web && yarn && yarn build && cd ../",
     "buildAdmin": "cd admin && yarn && yarn build && cd ../",
     "buildSails": "cd sails && yarn && cd ../",
-    "start": "yarn start",
+    "start": "cd sails && yarn start",
     "serve-dev": "nodemon server/app.js",
     "preinstall": "yarn build && yarn buildAdmin && yarn buildSails",
     "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
