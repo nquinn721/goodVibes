@@ -9,7 +9,7 @@
     "build": "cd web && npm run build && cd ../",
     "adminBuild": "cd admin && npm run build && cd ../",
     "serve": "node server/app.js",
-    "deploy": "git add . && git ci -m 'update' && git push master && git push heroku master"
+    "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
   },
   "author": "",
   "license": "ISC",
