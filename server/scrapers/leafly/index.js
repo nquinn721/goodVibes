@@ -1,8 +1,23 @@
 const app = require('express')();
-const ImageLoader = require('./imageLoader');
+const Scrape = require('./scrape');
+const request = require('async-request');
+const regRequest = require('request');
+const cheerio = require('cheerio');
+const fs = require('fs');
+const dispensaries = require('./data/dispensaries');
 
-app.get('/', (req, res) => {
-	res.send(JSON.stringify(ImageLoader.getImageUrls(), null, 4));
+
+
+
+app.get('/', async (req, res) => {
+});
+
+app.get('/:a/:b/:c', async (req, res) => {
+	const { a, b, c } = req.params;
+	
+	const data = await request('https://www.leafly.com/' + a + '/' + b + (c ? '/' + c : ''));
+
+	res.send(cheerio.load(data.body).html());
 })
 
 
