@@ -8,11 +8,10 @@
     "sjf": "npm run build && npm run adminBuild && npm run serve",
     "build": "cd web && npm run build && cd ../",
     "adminBuild": "cd admin && npm run build && cd ../",
-    "start": "cd sails && yarn start",
+    "start": "cd sails && yarn && yarn start",
     "serve-dev": "nodemon server/app.js",
     "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
   },
-  "preinstall": "cd sails && yarn",
   "author": "",
   "license": "ISC",
   "dependencies": {
