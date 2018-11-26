@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sjf": "npm run build && npm run adminBuild && npm run serve",
+    "sjf": "npm run serve",
     "build": "cd web && npm run build && cd ../",
     "adminBuild": "cd admin && npm run build && cd ../",
     "start": "cd sails && yarn && yarn start",
     "serve-dev": "nodemon server/app.js",
+    "preinstall": "yarn build && yarn adminBuild",
     "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
   },
   "author": "",
