@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var YelpDispensarySchema = new Schema({
+const YelpDispensarySchema = new Schema({
 	alias: String,
       categories: [ {
           alias: String,

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import Nav from './nav/navbar';
+import Login from './screens/login';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+      	<Login />
       </div>
     );
   }
 }
 
 export default connect(
-  ({strains}) => ({strains})
+  ({user}) => ({user})
 )(App);

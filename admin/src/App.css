@@ -1,5 +1,8 @@
-.App {
-  text-align: center;
+body, html, #root, .App {
+    height: 100%;
+}
+.full-height{
+  height: 100%;
 }
 
 .App-logo {

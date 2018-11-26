@@ -4,7 +4,6 @@ const express = require('express'),
 	  // DB = require('./db');
 
 require('./global');
-
 app.use(express.static(process.cwd() + '/admin/build'))
 app.use(express.static(process.cwd() + '/web/build'))
 
@@ -24,4 +23,4 @@ routes.forEach(r => {
 
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
