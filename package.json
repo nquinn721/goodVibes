@@ -8,7 +8,7 @@
     "start": "npm run build && npm run adminBuild && npm run serve",
     "build": "cd web && npm run build && cd ../",
     "adminBuild": "cd admin && npm run build && cd ../",
-    "serve": "node sails/app.js",
+    "serve": "cd sails && yarn start",
     "serve-dev": "nodemon server/app.js",
     "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
   },
