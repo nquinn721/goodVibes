@@ -10,7 +10,7 @@
  */
 
 module.exports.sockets = {
-
+  onlyAllowOrigins: ["http://good-vibes-tech.herokuapp.com"],
   /***************************************************************************
   *                                                                          *
   * `transports`                                                             *
