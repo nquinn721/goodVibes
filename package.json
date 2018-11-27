@@ -7,11 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run serve",
     "build": "cd web && yarn && yarn build && cd ../",
-    "buildAdmin": "cd admin && yarn && yarn build && cd ../",
     "serve": "node server/app.js",
     "serve-dev": "nodemon server/app.js",
     "seed": "node server/app.js seed",
-    "preinstall": "yarn build && yarn buildAdmin",
+    "preinstall": "yarn build",
     "deploy": "git add . && git ci -m 'update' && git push origin master && git push heroku master"
   },
   "author": "",
