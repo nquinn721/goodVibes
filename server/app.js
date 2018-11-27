@@ -14,7 +14,7 @@ app.use(session({
 require('./global');
 const DB = require('./db');
 
-app.use(express.static(process.cwd() + '/admin/build'))
+// app.use(express.static(process.cwd() + '/admin/build'))
 app.use(express.static(process.cwd() + '/web/build'))
 
 
