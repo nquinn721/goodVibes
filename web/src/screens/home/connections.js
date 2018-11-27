@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import ContactUs from './contactUs';
-import coolImage from'./assets/wearecool.png';
+import coolImage from'../../assets/wearecool.png';
 
 export default class Connections extends React.Component{
 	render(){
@@ -18,7 +18,7 @@ export default class Connections extends React.Component{
 					</Row>
 					<Row>
 						<Col sm="12" md="6">
-          					<img src={coolImage} className="cool-image" style={{float: 'right'}}/>
+          					<img alt="" src={coolImage} className="cool-image" style={{float: 'right'}}/>
 						</Col>
 						<Col sm="12" md="6">
 							<h3 className="connections-title" style={{color: '#ff4f55', marginTop: '100px'}}>Subscribe</h3>

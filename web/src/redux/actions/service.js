@@ -5,10 +5,8 @@ export default class Service{
 
 	static async dispatchPost(dispatch, url, body, types){
 		dispatch({type: types.init});
-		console.log('posting');
 		
 		const data = await this.post(url, body);
-				console.log(data);
 				
 		data.error ? 
 			dispatch({type: types.error, error: data.error}) : 
@@ -16,6 +14,7 @@ export default class Service{
 	}
 	static async dispatchGet(dispatch, url, types){
 		dispatch({type: types.init});
+		
 		const data = await this.get(url);
 			
 		data.error ? 

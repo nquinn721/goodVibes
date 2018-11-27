@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { login } from '../../redux/actions/user.action';
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   state = {
@@ -10,6 +11,11 @@ class Login extends React.Component {
     password: 'nate123'
   }
   render() {
+    const { user, loggingIn } = this.props.user;
+
+    
+    if(user) return <Redirect to="admin" />;
+
     return (
       <div className="row full-height align-items-center justify-content-center">
         <div className="col-4">
@@ -22,7 +28,7 @@ class Login extends React.Component {
               <Label for="examplePassword">Password</Label>
               <Input type="password" name="password" id="examplePassword" placeholder="password..." onChange={e => this.setState({password: e.target.value})}/>
             </FormGroup>
-              <input type="button" className="btn btn-info form-control" value="Login" onClick={() => this.props.login(this.state)}/>
+            <input type="button" className="btn btn-info form-control" value={ loggingIn ? "Logging in..." : "Login"} onClick={() => this.props.login(this.state)}/>
           </Form>
         </div>
       </div>
@@ -32,6 +38,6 @@ class Login extends React.Component {
 
 
 export default connect(
-  (state) => ({}),
+  ({user}) => ({user}),
   (dispatch) => (bindActionCreators({ login }, dispatch))
  )(Login);

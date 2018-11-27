@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import { InputGroup, InputGroupAddon, InputGroupText, Input, Button, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Button, Form, FormGroup } from 'reactstrap';
 
 export default class ContactUs extends React.Component{
 	render(){
@@ -22,13 +22,13 @@ export default class ContactUs extends React.Component{
 								<Row>
 									<Col sm="12" md="6">
 									<InputGroup>
-										<InputGroupAddon>Name</InputGroupAddon>
+										<InputGroupAddon addonType="prepend">Name</InputGroupAddon>
 										<Input />
 									</InputGroup>
 									</Col>
 									<Col sm="12" md="6">
 									<InputGroup>
-										<InputGroupAddon>Email</InputGroupAddon>
+										<InputGroupAddon addonType="prepend">Email</InputGroupAddon>
 										<Input />
 									</InputGroup>
 									</Col>

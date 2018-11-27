@@ -1,21 +1,25 @@
 const express = require('express'),
 	  app = express(),
 	  fs = require('fs'),
-	  session = require('express-session');
-
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
+	  session = require('express-session'),
+	  MongoStore = require('connect-mongo')(session);
+	  
 
 
 require('./global');
 const DB = require('./db');
 
-// app.use(express.static(process.cwd() + '/admin/build'))
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+  store: new MongoStore({ mongooseConnection: DB })
+}))
+
 app.use(express.static(process.cwd() + '/web/build'))
+app.use(express.json());
 
 
 app.get('/', (req, res) => {
@@ -30,8 +34,6 @@ app.get('/', (req, res) => {
 const routes = fs.readdirSync(SERVER + '/routes');
 routes.forEach(r => {
 	r = '/' + r.replace(/\..+/, '');
-	console.log(r, require(SERVER + '/routes' + r));
-	
 	app.use(r, require(SERVER + '/routes' + r));
 });
 /**

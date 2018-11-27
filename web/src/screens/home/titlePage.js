@@ -1,15 +1,20 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import phone1 from'./assets/phone1.png';
-import titleBackground from'./assets/background.png';
+import phone1 from'../../assets/phone1.png';
+import titleBackground from'../../assets/background.png';
+import { Link } from 'react-router-dom';
 
 export default class TitlePage extends React.Component{
 	render(){
 		return (
 			<div style={{display: 'block', padding: 0, height:'150vh', backgroundColor: '#f6f6f6'}}>
 			<div style={{backgroundImage: "url(" + titleBackground + ")", backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center', height: '80vh'}}>
-				<div style={{backgroundColor: 'rgb(255,79,85, 0.5)', textAlign: 'center', padding: '5px'}}>
-        			<a style={{fontSize: '0.8em', color: '#ffffff'}}><strong>goodvibes</strong></a>
+				<div style={{display: 'flex', backgroundColor: 'rgb(255,79,85, 0.5)', alignItems: 'center', justifyContent: 'space-between', padding: '5px'}}>
+					<span></span>
+        			<span style={{fontSize: '0.8em', color: '#ffffff'}}><strong>goodvibes</strong></span>
+        			<span style={{fontSize: 12}}>
+        				<Link style={{color: 'white'}} to="/login">Login</Link>
+        			</span>
       			</div>
 
 				<Container>
@@ -22,7 +27,7 @@ export default class TitlePage extends React.Component{
 					</Row>
 					<Row>
 						<Col sm="12" md={{size: 6, offset: 6}}>
-          					<img src={phone1} className="cool-image" style={{width: '50%'}}/>
+          					<img alt="" src={phone1} className="cool-image" style={{width: '50%'}}/>
 
 						</Col>
 					</Row>

@@ -15,3 +15,5 @@ function requireFiles(url) {
 		.forEach(file => require(SERVER + url + file));
 }
 
+
+module.exports = mongoose.connection
