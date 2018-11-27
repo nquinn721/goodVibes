@@ -1,5 +1,3 @@
-console.log('included');
-
 global.seedUsers = async () => {
 	await User.dropTable();
 	User.create({

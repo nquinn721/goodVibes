@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../../nav/navbar';
+import { bindActionCreators } from 'redux';
+import { getStrainData } from '../../redux/actions/strains.action';
+import Flavors from './components/flavors';
+
+import './dashboard.css';
 
 class Dashboard extends React.Component {
+  componentDidMount(){
+    this.props.getStrainData();
+  }
   render() {
+    const { strains } = this.props.strains;
+    
+    
     return (
       <div>
         <NavBar />
-        <h1>Welcome to the admin panel</h1>
+        <div className="container dashboard">
+          <Flavors strains={strains}/>
+        </div>
       </div>
     )
   }
@@ -15,6 +28,6 @@ class Dashboard extends React.Component {
 
 
 export default connect(
-  // (state) => ({}),
-  // (dispatch) => (bindActionCreators({ Dashboard }, dispatch))
+  ({strains}) => ({strains}),
+  (dispatch) => (bindActionCreators({ getStrainData }, dispatch))
  )(Dashboard);

@@ -11,10 +11,11 @@ const DB = require('./db');
 
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'aoweifj@$@#}}[{foiwje',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true },
+  cookie: { maxAge: 30 * 60 * 1000 },
+  rolling: true,
   store: new MongoStore({ mongooseConnection: DB })
 }))
 

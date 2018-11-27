@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { login } from '../../redux/actions/user.action';
 import { Redirect } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ class Login extends React.Component {
               <Label for="examplePassword">Password</Label>
               <Input type="password" name="password" id="examplePassword" placeholder="password..." onChange={e => this.setState({password: e.target.value})}/>
             </FormGroup>
-            <input type="button" className="btn btn-info form-control" value={ loggingIn ? "Logging in..." : "Login"} onClick={() => this.props.login(this.state)}/>
+            <Button className="btn btn-info form-control"onClick={() => this.props.login(this.state)}>{ loggingIn ? "Logging in..." : "Login" }</Button>
           </Form>
         </div>
       </div>

@@ -5,7 +5,7 @@ mongoose.connect('mongodb://nate:nate123@ds253713.mlab.com:53713/goodvibes',
          { useNewUrlParser: true },
          () => console.log('DB connected'));
 
-
+mongoose.set('useCreateIndex', true);
 
 requireFiles('/db/schema/');
 requireFiles('/db/seeds/');
@@ -16,4 +16,4 @@ function requireFiles(url) {
 }
 
 
-module.exports = mongoose.connection
+module.exports = mongoose.connection;
