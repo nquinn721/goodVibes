@@ -6,8 +6,8 @@ import { login } from '../../redux/actions/user.action';
 
 class Login extends React.Component {
   state = {
-    username: 'bob',
-    password: 'bob123'
+    username: 'nquinn721',
+    password: 'nate123'
   }
   render() {
     return (

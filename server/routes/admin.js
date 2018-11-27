@@ -8,13 +8,16 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/login', (req, res) => {
-	console.log(req.body);
+router.post('/login', async (req, res) => {
+	console.log('login route', req.body);
+	
+	const user = await UserController.login(req.body);
+	if(user){
+		console.log('logged in');
+		
+		res.send({data: user});
+	}
 });
-
-router.get('/login', (req, res) => {
-	res.send("admin login");
-})
 
 
 module.exports = router;

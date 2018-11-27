@@ -7,8 +7,11 @@ mongoose.connect('mongodb://nate:nate123@ds253713.mlab.com:53713/goodvibes',
 
 
 
-fs.readdir(process.cwd() + '/server/db/schema', (err, files) => {
-  files.forEach(file => {
-    require('./schema/' + file);
-  });
-})
+requireFiles('/db/schema/');
+requireFiles('/db/seeds/');
+
+function requireFiles(url) {
+	fs.readdirSync(SERVER + url)
+		.forEach(file => require(SERVER + url + file));
+}
+
