@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 const routes = fs.readdirSync(SERVER + '/routes');
 routes.forEach(r => {
 	r = '/' + r.replace(/\..+/, '');
+	console.log(r, require(SERVER + '/routes' + r));
+	
 	app.use(r, require(SERVER + '/routes' + r));
 });
 /**
