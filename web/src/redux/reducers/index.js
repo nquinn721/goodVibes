@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import strains from './strains.reducer';
+import data from './data.reducer';
 import user from './user.reducer';
 
 const rootReducer = combineReducers({
-  strains,
+  data,
   user,
 });
 

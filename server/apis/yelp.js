@@ -20,8 +20,8 @@ class YelpAPI{
          const url = this.createUrl(
              "https://api.yelp.com/v3/businesses/search",
                 {
-                    latitude: 37.78825,
-                    longitude: -122.4324
+                    // latitude: 37.78825,
+                    // longitude: -122.4324
                 }, params);
             
 
@@ -61,4 +61,6 @@ async function start() {
     
 }
 
-start();
+
+module.exports = YelpAPI;
+

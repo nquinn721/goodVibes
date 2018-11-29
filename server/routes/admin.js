@@ -18,7 +18,11 @@ router.use((req, res, next) => {
 });
 
 router.get('/strain-data', (req, res) => {
-	res.send({data: StrainDataController.getData()});
+	res.send({data: {
+		strains: DataController.getStrains(),
+		dispensaries: DataController.getDispensaries(),
+		brands: DataController.getBrands()
+	}});
 });
 
 
