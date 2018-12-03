@@ -10,67 +10,57 @@ let availableSearchParams = {
     limit: true
 };
 
-module.exports = class YelpAPI{
-
-    static search(term, apiCall, cb){
-
-        this.getBusinessList(term, cb);
-    }
-
-    static requestYelp(params, cb){
-        let lat = params.lat || 37.78825;
-        let lng = params.lng || -122.4324;
-        let paramString = 'latitude=' + lat + '&longitude=' + lng;
-
-
-        // Filters
-        let limit = 50,
-            radius = 1500,
-            sortBy = 'distance',
-            openNow = true;
-
-
-        if(typeof params == 'object'){
-            for(let i in params) {
-                if (availableSearchParams[i]) {
-                    if(i === 'radius')
-                        params[i] = Math.round(params[i] * mile);
-
-                    paramString += '&' + i + '=' + params[i];
-                }
-            }
-        }
-
-
-
-        paramString += `&limit=${limit}`//&radius=${radius}&sort_by=${sortBy}&open_now=${openNow}`; 
-
-        if(!params.term)
-            paramString += '&term=food';
-
-
-
-        fetch('https://api.yelp.com/v3/businesses/search?' + paramString, {
-            method: 'GET',
-            headers: {
-                'Authorization':  'Bearer ' + apiKey
-            },
-        })
-            .then(d => d.json())
-            .then(d => {
-                cb(d.businesses)
-            })
-            .catch(e => console.error(e))
-    }
-
-
+class YelpAPI{
     static async getBusiness(id){
-        const search = await fetch(`https://api.yelp.com/v3/businesses/${id}`, {
+        return await this.search(`https://api.yelp.com/v3/businesses/${id}`);
+    }
+
+
+     static async getBusinesses(params){
+         const url = this.createUrl(
+             "https://api.yelp.com/v3/businesses/search",
+                {
+                    // latitude: 37.78825,
+                    // longitude: -122.4324
+                }, params);
+            
+
+        const data = await this.search(url);
+        return data.businesses;
+    }
+
+
+    static async search(url){
+        const search = await fetch(url, {
             method: 'GET',
             headers: {
                 'Authorization':  'Bearer ' + apiKey
             },
-        })
+        });
         return await search.json();
     }
+
+
+    static createUrl(baseUrl, defaults, params){
+        const url = new URL(baseUrl),
+              def = Object.assign({
+                 latitude: 37.78825,
+                 longitude: -122.4324
+              }, params);
+            
+        Object.keys(def).forEach(key => url.searchParams.append(key, def[key]))        
+        return url;
+    }
 }
+
+
+async function start() {
+    const data = await YelpAPI.getBusinesses({term: 'dispensaries', limit: 50});
+
+    console.log(data.length);
+    
+}
+
+
+module.exports = YelpAPI;
+

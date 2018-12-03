@@ -1,36 +1,58 @@
 const express = require('express'),
-	  app = express();
+	  app = express(),
+	  fs = require('fs'),
+	  session = require('express-session'),
+	  MongoStore = require('connect-mongo')(session);
+	  
 
 
-
+require('./global');
 const DB = require('./db');
-const Yelp = require('./apis/yelp');
 
-app.use(express.static(__dirname + '/assets'))
-// const Leafly = require('./scrapers/leafly');
-// const yelpScraper = require('./scrapers/dispensariesFromYelp')(Yelp);
 
-// Yelp.search({apiCall: 'businesses/wP9zn3HkkssRWf7wG4JEag'}, (data) => {
-// 	console.log(data);
-// })
+app.use(session({
+  secret: 'aoweifj@$@#}}[{foiwje',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 30 * 60 * 1000 },
+  rolling: true,
+  store: new MongoStore({ mongooseConnection: DB })
+}))
+
+app.use(express.static(process.cwd() + '/web/build'))
+app.use(express.json());
+
+
 app.get('/', (req, res) => {
-	res.send('Thanks for visiting Good Vibes Technologies!');
-});
-app.get('/:lat/:lon', (req, res) => {
-	Yelp.search({term: 'dispensary', lat: req.params.lat, lon: req.params.lon}, (data) => {
-		res.send({data})
-	});
+	res.sendFile(process.cwd() + '/web/build/index.html');
 });
 
 
-app.get('/yelp-dispensaries', (req, res) => {
-	YelpDispensary.find({}, (e, data) => {
-		res.send({data});
-	});
+
+/**
+ * ROUTES
+ */
+const routes = fs.readdirSync(SERVER + '/routes');
+routes.forEach(r => {
+	r = '/' + r.replace(/\..+/, '');
+	app.use(r, require(SERVER + '/routes' + r));
 });
+/**
+ * END ROUTES
+ */
 
-app.get('/leafly', async (req, res) => {
-	res.send( await Leafly());
-})
 
-app.listen(process.env.PORT || 3000);
+/**
+ * CONTROLLERS
+ */
+const controllers = fs.readdirSync(SERVER + '/controllers');
+controllers.forEach(c => {
+	global[c.replace(/\w/, c => c.toUpperCase()).replace('.js', 'Controller')] = require(SERVER + '/controllers/' + c)
+});
+/**
+ * END CONTROLLERS
+ */
+
+
+
+app.listen(process.env.PORT || 5000);

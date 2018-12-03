@@ -3,23 +3,23 @@ import axios from 'axios';
 
 export default class Service{
 
-	static dispatchPost(dispatch, url, body, types){
+	static async dispatchPost(dispatch, url, body, types){
 		dispatch({type: types.init});
-		Service.post(url, body)
-			.then(data => {
-				data.error ? 
-					dispatch({type: types.error, error: data.error}) : 
-					dispatch({type: types.success, data: data.data})
-			})
+
+		const data = await this.post(url, body);
+
+		data.error ? 
+			dispatch({type: types.error, error: data.error}) : 
+			dispatch({type: types.success, data: data.data})
 	}
-	static dispatchGet(dispatch, url, types){
+	static async dispatchGet(dispatch, url, types){
 		dispatch({type: types.init});
-		Service.get(url)
-			.then(data => {
-				data.error ? 
-					dispatch({type: types.error, error: data.error}) : 
-					dispatch({type: types.success, data: data.data})
-			})
+
+		const data = await this.get(url);
+
+		data.error ? 
+			dispatch({type: types.error, error: data.error}) : 
+			dispatch({type: types.success, data: data.data})
 	}
 
 	static async get(url) {
