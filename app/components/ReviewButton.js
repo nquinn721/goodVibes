@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import SvgUri from 'react-native-svg-uri';
 
-export default class BottomMiddleShadow extends React.Component{
+export default class ReviewButton extends React.Component{
 	render(){
 		const { onPress = () => ({}) } = this.props;
 		return (

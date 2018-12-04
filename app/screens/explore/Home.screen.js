@@ -18,11 +18,11 @@ class HomeScreen extends React.Component {
     const { products : { products }, dispensaries: { dispensaries } } = this.props;
 
     return (
-      <View style={Layout.container}>
-        <ScrollView style={[Layout.container]}>
-          <HorizontalList title="Popular Strains" data={products}/>
+      <View style={[Layout.container]}>
+        <ScrollView style={[Layout.container, {backgroundColor: Layout.bgColor}]}>
+          <HorizontalList title="Popular Strains" data={products.slice(0, 4)}/>
           <View style={styles.separator}></View>
-          <HorizontalList title="Popular Products" type="product" data={products}/>
+          <HorizontalList title="Popular Products" type="product" data={products.slice(0, 4)}/>
           <View style={styles.separator}></View>
           <QuestionCard title="Need Help?" question="I want to feel" answers='["Energized", "relaxed"]'/>
           <View style={styles.separator}></View>

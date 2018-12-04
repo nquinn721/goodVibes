@@ -13,7 +13,8 @@ export default class StarRating extends React.Component{
 		const fullStarSize = 16,
 			  stars = this.props.rating ? this.props.rating.toString().split('.') : [0],
 			  starsView = [],
-			  backgroundStars = [1,2,3,4,5];
+			  backgroundStars = [1,2,3,4,5],
+			  { loaded, textStyle, rating } = this.props;
 
 		for(let i = 0; i < stars[0]; i++){
 			starsView.push(<Icon key={i} name='star' size={fullStarSize} color={Layout.primaryColor} />);
@@ -25,10 +26,22 @@ export default class StarRating extends React.Component{
 
 
 		return (
-			<View style={{flexDirection: 'row'}}>
-				{backgroundStars.map((v, i) => <Icon key={i} name='star' size={fullStarSize} color={Layout.lightGrey} />)}
-				<View style={{position: 'absolute', left: 0, flexDirection: 'row'}}>
-					{starsView}
+			<View>
+				{
+					loaded ?
+						<Text style={[{fontSize: 24, textAlign: 'center'}, textStyle]}>{rating}</Text>
+						:
+						<View style={{flexDirection: 'row', justifyContent: 'center'}}>
+							<View style={{height: 16, width: 14, marginRight: 4, backgroundColor: Layout.ice}}></View>
+							<View style={{height: 16, width: 14, backgroundColor: Layout.ice}}></View>
+						</View>
+					
+				}
+				<View style={{flexDirection: 'row'}}>
+					{backgroundStars.map((v, i) => <Icon key={i} name='star' size={fullStarSize} color={Layout.lightGrey} />)}
+					{loaded && <View style={{position: 'absolute', left: 0, flexDirection: 'row'}}>
+						{starsView}
+					</View>}
 				</View>
 			</View>
 		)

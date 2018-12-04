@@ -3,8 +3,8 @@ import { Text, View, FlatList, Image, StyleSheet } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
 import BottomMiddleShadow from 'goodVibes/components/BottomMiddleShadow';
-import RoundedImage from './RoundedImage';
 import { Icon } from 'react-native-elements';
+import Item from './Item';
 
 export default class HorizontalList extends React.Component {
   render() {
@@ -29,24 +29,7 @@ export default class HorizontalList extends React.Component {
 			    		data={data}
 		    			horizontal={true}
 		    			keyExtractor={(item, index) => index.toString()}
-						renderItem={({item}) => (
-							<View style={styles.item}>
-								<RoundedImage source={{uri: item.img}} type={this.props.type} />
-								<BottomMiddleShadow/>
-								<View style={styles.nameContainer}>
-									<Text style={styles.name}>{item.name}</Text>
-								</View>
-								<View>
-									<Text style={{color: Layout.lightText}}>{item.type}</Text>
-								</View>
-								<View style={styles.starRating}>
-								 	<StarRating rating={item.rating}/>
-								</View>
-								<View>
-									<Text style={styles.rating}>{item.rating}</Text>
-								</View>
-							</View>
-						)}
+						renderItem={({item}) => <Item item={item} type={type} />}
 	    			/>
 	    		:
 	    		<View>
@@ -92,7 +75,7 @@ const styles = StyleSheet.create({
 		height: 40,
 		marginTop: 10
 	},
-	rating: {
-		fontSize: 22
-	}
+	name: {
+		textAlign: 'center'
+	},
 });

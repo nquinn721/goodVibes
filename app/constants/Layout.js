@@ -7,6 +7,7 @@ const cardShadow = {
   shadowOffset: {  width: 0,  height: 0,  },
   shadowColor: 'black',
   shadowOpacity: .17,
+  elevation: 1,
   shadowRadius: 4
 }
 

@@ -2,14 +2,47 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 
+/*
+ * <RoundedImage 
+ *		source={Object || {uri: String}} 
+ * 		onLoad={Function} 
+ *		onLoadStart={Function} 
+ *		onLoadEnd={Function} />
+ */
+
 export default class RoundedImage extends React.Component{
+	state = {
+		loaded: false
+	}
+
+	async componentWillMount(){
+		const { source } = this.props;
+		await Image.prefetch({source});
+	}
+
 	render(){
-		let { source } = this.props,
+		let { source, onLoad, onLoadStart, onLoadEnd } = this.props,
 			width = this.setWidthOfImage();
 
 		return (
 			<View style={[styles.image, {borderRadius: this.setBorderRadiusForImage()}]}>
-				<Image source={source} style={{width: width, height: 85}}/>
+				<View style={{height: !this.state.loaded ? 0 : 85}}>
+				<Image 
+					source={source} 
+					style={{width: width, height: 85}}
+					onLoad={() => {}}
+				  	onLoadStart={() => {}}
+				  	onLoadEnd={() => {
+				  		if(!this.state.loaded){
+				  			console.log('setting state');
+					  		this.setState({loaded: true});
+					  		onLoadEnd && onLoadEnd()
+				  		}
+				  	}}
+
+					/>
+				</View>
+				{!this.state.loaded &&  <View style={{width: width, height: 85, backgroundColor: Layout.ice}}></View>}
 			</View>
         )
 	}
@@ -35,6 +68,6 @@ export default class RoundedImage extends React.Component{
 const styles = StyleSheet.create({
 	image: {
 		overflow: 'hidden'
-	},
+	}
 })
 

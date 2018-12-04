@@ -13,9 +13,7 @@ const Stack = createStackNavigator({
 Stack.navigationOptions = {
   tabBarLabel: 'Explore',
   tabBarIcon: ({ focused, tintColor }) => (
-    <SvgUri
-      source={require('goodVibes/assets/images/Artboard.svg')}
-    />
+    <SvgUri source={require('goodVibes/assets/images/Artboard.svg')} />
   ),
 };
 
