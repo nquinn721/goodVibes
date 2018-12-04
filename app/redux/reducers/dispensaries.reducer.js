@@ -1,4 +1,3 @@
-const img = require('../../assets/images/avatar.png');
 const initialState = {
   dispensaries: [
     { 

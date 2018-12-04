@@ -1,14 +1,16 @@
-const tintColor = '#2f95dc';
+const primaryColor = '#00c853',
+      secondaryColor = '#212121',
+      thirdaryColor = '#b0b0b0',
+      bgColor = '#f3f6f3',
+	  ice = '#e7ede7';
 
 export default {
-  tintColor,
-  tabIconDefault: '#ccc',
-  tabIconSelected: tintColor,
-  tabBar: '#fefefe',
-  errorBackground: 'red',
-  errorText: '#fff',
-  warningBackground: '#EAEB5E',
-  warningText: '#666804',
-  noticeBackground: tintColor,
-  noticeText: '#fff',
+	darkText: '#212121',
+	lightText: '#717171',
+	primaryColor,
+	secondaryColor,
+	thirdaryColor,
+	bgColor,
+	ice,
+	lightGrey: ice
 };

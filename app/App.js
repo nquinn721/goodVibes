@@ -23,13 +23,12 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <SafeAreaView style={[styles.container, styles.droidSafeArea]}>
-            <AppNavigator store={store}/>
+            <AppNavigator />
           </SafeAreaView>
         </Provider>
       );
     }
   }
-
 
   _loadResourcesAsync = async () => {
     return Promise.all([
@@ -63,7 +62,4 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  droidSafeArea: {
-        paddingTop: Platform.OS === 'android' ? 25 : 0
-    },
 });

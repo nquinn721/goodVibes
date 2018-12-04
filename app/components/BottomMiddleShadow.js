@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
+import { BlurView } from 'expo';
 
 export default class BottomMiddleShadow extends React.Component{
 	render(){
 		const { intensity, size } = this.props;
 		return (
-	        <View style={[styles.imageShadow, (intensity && {shadowRadius: intensity * 10}), (size && {shadowOffset: {height: size}})]}></View>
+			<View style={styles.container}>
+				<BlurView tint="dark" intensity={10} style={styles.imageShadow}>
+				</BlurView>
+			</View>
         )
 	}
 
@@ -15,18 +19,25 @@ export default class BottomMiddleShadow extends React.Component{
 
 
 const styles = StyleSheet.create({
-	imageShadow: {
-		shadowOffset: {  width: 0,  height: 10,  },
-		shadowColor: 'black',
-		shadowOpacity: .7,
-		shadowRadius: 10,
+	container: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '100%',
+		height: 6,
 		position: 'absolute',
-		bottom: 0,
-		height: 10,
-		width: '76%',
-		marginLeft: '12%',
-		zIndex: -1,
-		backgroundColor: Layout.container.backgroundColor
+		zIndex: -1
+	},
+	imageShadow: {
+		height: 6,
+		width: '50%',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 10
+	},
+	imageShadowShadow: {
+		height: 6,
+		width: '20%',
+		borderRadius: 10
 	}
 })
 

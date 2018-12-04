@@ -1,10 +1,9 @@
-const img = require('../../assets/images/avatar.png');
 const initialState = {
   originalProducts: [
     { 
       id: 1,
       dispensary: 'Potimus Maximus',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
       name: 'Sea Breeze',
       type: 'Flower',
       cost: 44.99,
@@ -47,7 +46,7 @@ const initialState = {
     { 
       id: 2,
       dispensary: 'Potimus Maximus',
-      img: 'https://ddd33q3967xhi.cloudfront.net/3MttCm0UsaX1T77IyziTpLhMrcI=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fQfzvYIfcR8mQ2cgcdvxK_Screen+Shot+2018-10-15+at+5.05.08+PM.png', 
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
       name: 'Select CBD Vaporizer Pens',
       type: 'CBD',
       cost: 44.99,
@@ -86,7 +85,7 @@ const initialState = {
     { 
       id: 3,
       dispensary: 'Potimus Maximus',
-      img: 'https://ddd33q3967xhi.cloudfront.net/jpk-JfL_vesIL1-xw5t9zY5QH2A=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fGQZ8Mh5WT2uS2wSrAkUg_24k+brownie.jpg', 
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
       name: 'Special Brownies',
       type: 'Edible',
       cost: 44.99,
@@ -125,7 +124,7 @@ const initialState = {
     { 
       id: 4,
       dispensary: 'Potimus Maximus',
-      img: 'https://ddd33q3967xhi.cloudfront.net/wIg3oDmnlI5czSeMDnCTiEVmlDo=/fit-in/168x168/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2fsD0OL2lbQoc3qJZmW3CO_K3086-2.jpg', 
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
       name: 'Psychodelic Dab Machine',
       type: 'Dabbing',
       cost: 44.99,
@@ -164,8 +163,8 @@ const initialState = {
     { 
       id: 5,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
@@ -203,8 +202,8 @@ const initialState = {
     { 
       id: 6,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
@@ -242,8 +241,8 @@ const initialState = {
     { 
       id: 7,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
@@ -281,8 +280,8 @@ const initialState = {
     { 
       id: 8,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
@@ -320,8 +319,8 @@ const initialState = {
     { 
       id: 9,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',
@@ -359,8 +358,8 @@ const initialState = {
     { 
       id: 10,
       dispensary: 'New aged weed',
-      img: 'https://ddd33q3967xhi.cloudfront.net/4CtN-0wO0aGYhHAezkU0YbydYgw=/fit-in/400x400/https%3a%2f%2fs3.amazonaws.com%2fleafly-s3%2fproducts%2fphotos%2feVjSEjGqQt2BHDeU4HLx_Hash+Haze.jpg', 
-      name: '1:1 [1oz] (150mg CBD/150mg THC)',
+      img: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg', 
+      name: 'Afghan',
       type: 'oil',
       cost: 44.99,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin velit at vehicula efficitur. Mauris pulvinar aliquet elit non venenatis. Curabitur nec sollicitudin sem, eget sagittis massa. ',

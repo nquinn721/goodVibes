@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "goodVibes",
-    "description": "Delivery platform ",
-    "slug": "goodvibes",
+    "description": "A very interesting project.",
+    "slug": "goodVibes",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/images/Home_smile_2x.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,7 +25,6 @@
     ],
     "ios": {
       "supportsTablet": true
-    },
-    "githubUrl": "https://github.com/nquinn721/goodVibes"
+    }
   }
 }
