@@ -7,7 +7,7 @@ export default class BottomMiddleShadow extends React.Component{
 	render(){
 		let { title, question, answers } = this.props;
 		answers = JSON.parse(answers);
-		console.log(answers, typeof answers);
+		
 		return (
 			<View style={styles.container}>
 				<View>

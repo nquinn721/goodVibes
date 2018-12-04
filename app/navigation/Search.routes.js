@@ -4,17 +4,17 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import SvgUri from 'react-native-svg-uri';
 
 
-import Explore from 'goodVibes/screens/explore';
+import Search from 'goodVibes/screens/search';
 
 const Stack = createStackNavigator({
-  Home: Explore.Home, 
+  Search: Search.Search, 
 });
 
 Stack.navigationOptions = {
-  tabBarLabel: 'Explore',
+  tabBarLabel: 'Search',
   tabBarIcon: ({ focused, tintColor }) => (
     <SvgUri
-      source={require('goodVibes/assets/images/Artboard.svg')}
+      source={require('goodVibes/assets/images/Search_Nav.svg')}
     />
   ),
 };
