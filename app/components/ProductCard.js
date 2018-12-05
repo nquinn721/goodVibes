@@ -20,7 +20,6 @@ export default class ProductCard extends React.Component{
 		return (
 			<View style={styles.container}>
 				<View style={styles.card}>
-					{!this.state.loaded && <WhiteLoadingBar />}
 					<View style={styles.image}>
 						<RoundedImage source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} loaded={this.state.loaded} onLoadEnd={() => {
 							{!this.state.loaded && this.setState({loaded: true})}

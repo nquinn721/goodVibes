@@ -15,10 +15,7 @@ export default class RoundedImage extends React.Component{
 		loaded: false
 	}
 
-	async componentWillMount(){
-		const { source } = this.props;
-		await Image.prefetch({source});
-	}
+	
 
 	render(){
 		let { source, onLoad, onLoadStart, onLoadEnd } = this.props,
@@ -34,7 +31,6 @@ export default class RoundedImage extends React.Component{
 				  	onLoadStart={() => {}}
 				  	onLoadEnd={() => {
 				  		if(!this.state.loaded){
-				  			console.log('setting state');
 					  		this.setState({loaded: true});
 					  		onLoadEnd && onLoadEnd()
 				  		}
@@ -67,7 +63,8 @@ export default class RoundedImage extends React.Component{
 
 const styles = StyleSheet.create({
 	image: {
-		overflow: 'hidden'
+		overflow: 'hidden',
+		zIndex: 1
 	}
 })
 

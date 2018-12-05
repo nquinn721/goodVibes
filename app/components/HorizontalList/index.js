@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList, Image, StyleSheet } from 'react-native';
+import { Text, View, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
 import BottomMiddleShadow from 'goodVibes/components/BottomMiddleShadow';
@@ -8,7 +8,9 @@ import Item from './Item';
 
 export default class HorizontalList extends React.Component {
   render() {
-	const { data, title, type } = this.props;
+	const { data = [], title, type } = this.props;
+
+	data.push({});
 
     return (
     	<View style={styles.mainContainer}>
@@ -24,12 +26,23 @@ export default class HorizontalList extends React.Component {
     				</View>}
     		</View>
     		{
-    			data.length ? 
+    			data.length > 1 ? 
 		    		<FlatList 
 			    		data={data}
 		    			horizontal={true}
 		    			keyExtractor={(item, index) => index.toString()}
-						renderItem={({item}) => <Item item={item} type={type} />}
+						renderItem={({item}) => {
+							
+							if(item.id)
+								return <Item item={item} type={type} />;
+							else
+								return (
+									<TouchableOpacity style={styles.showMoreButton}>
+										<Text style={{color: Layout.primaryColor, textAlign: 'center'}}>Show More</Text>
+									</TouchableOpacity> 
+								);
+							
+						}}
 	    			/>
 	    		:
 	    		<View>
@@ -44,7 +57,7 @@ export default class HorizontalList extends React.Component {
 
 const styles = StyleSheet.create({
 	mainContainer: {
-		height: 320,
+		height: 340,
 		backgroundColor: 'white',
 		...Layout.cardShadow
 	},
@@ -78,4 +91,16 @@ const styles = StyleSheet.create({
 	name: {
 		textAlign: 'center'
 	},
+
+	showMoreButton: {
+
+		borderRadius: 100, 
+		backgroundColor: Layout.bgColor, 
+		width: 85, 
+		height: 85, 
+		alignItems: 'center', 
+		justifyContent: 'center', 
+		padding: 10, 
+		marginHorizontal: 18
+	}
 });

@@ -16,14 +16,13 @@ export default class HorizontalList extends React.Component {
 
     return (
 		<View style={styles.item}>
-			{!this.state.loaded && <WhiteLoadingBar />}
 			<RoundedImage 
 				source={{uri: item.img}} 
 				type={type} 
 				onLoadEnd={() => {
 					this.setState({loaded: true})
 				}}/>
-
+			<View style={[styles.shadow, ((/dispensaries/).test(type)  && {width: '75%'}), ((/product/).test(type) && {width: '60%'})]}></View>
 			<View style={styles.nameContainer}>
 				{this.state.loaded ? 
 					<Text style={styles.name}>{item.name}</Text>:
@@ -33,7 +32,7 @@ export default class HorizontalList extends React.Component {
 			<View>
 				{this.state.loaded ? 
 					<Text style={{color: Layout.lightText}}>{item.type}</Text> :
-					<View style={{backgroundColor: Layout.ice, height: 10, width: 32}}></View>
+					<View style={{backgroundColor: Layout.ice, height: 10, width: 32, marginBottom: 10}}></View>
 				}
 			</View>
 			<View style={styles.starRating}>
@@ -48,11 +47,6 @@ export default class HorizontalList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	mainContainer: {
-		height: 320,
-		backgroundColor: 'white',
-		...Layout.cardShadow
-	},
 	topImage: {
 		height: 45,
 	},
@@ -83,4 +77,19 @@ const styles = StyleSheet.create({
 	name: {
 		textAlign: 'center'
 	},
+	shadow: {
+		backgroundColor: 'rgba(206,206,206,0.7)',
+		height: 3,
+		width: '40%',
+		alignSelf: 'center',
+		marginHorizontal: 10,
+		borderRadius: 10,
+		marginTop: -2,
+		zIndex: -1,
+		shadowOffset: {  width: 0,  height: 0,  },
+		shadowColor: 'black',
+		shadowOpacity: 1,
+		elevation: 1,
+		shadowRadius: 5
+	}
 });
