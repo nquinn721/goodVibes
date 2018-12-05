@@ -27,6 +27,12 @@ export default class StarRating extends React.Component{
 
 		return (
 			<View>
+				<View style={{flexDirection: 'row'}}>
+					{backgroundStars.map((v, i) => <Icon key={i} name='star' size={fullStarSize} color={Layout.lightGrey} />)}
+					{loaded && <View style={{position: 'absolute', left: 0, flexDirection: 'row'}}>
+						{starsView}
+					</View>}
+				</View>
 				{
 					loaded ?
 						<Text style={[{fontSize: 24, textAlign: 'center'}, textStyle]}>{rating}</Text>
@@ -37,12 +43,6 @@ export default class StarRating extends React.Component{
 						</View>
 					
 				}
-				<View style={{flexDirection: 'row'}}>
-					{backgroundStars.map((v, i) => <Icon key={i} name='star' size={fullStarSize} color={Layout.lightGrey} />)}
-					{loaded && <View style={{position: 'absolute', left: 0, flexDirection: 'row'}}>
-						{starsView}
-					</View>}
-				</View>
 			</View>
 		)
 	}

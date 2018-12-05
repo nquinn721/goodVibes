@@ -16,7 +16,7 @@ export default class MainButton extends React.Component{
 		return (
 			<TouchableOpacity style={[styles.container, (this.state.pressed && styles.pressedContainer)]} onPress={() => {
 				this.setState({pressed: !this.state.pressed});
-				onPress && onPress();
+				onPress && onPress(text);
 			}}>
 				<Text style={{fontSize: 14, color: (this.state.pressed ? 'white' : Layout.primaryColor)}}>{text}</Text>
 			</TouchableOpacity>

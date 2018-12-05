@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Platform, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 
 /*
@@ -18,27 +18,42 @@ export default class RoundedImage extends React.Component{
 	
 
 	render(){
-		let { source, onLoad, onLoadStart, onLoadEnd } = this.props,
+		let { source, onLoad, onLoadStart, onLoadEnd, type, text, onPress = () => {} } = this.props,
 			width = this.setWidthOfImage();
 
 		return (
-			<View style={[styles.image, {borderRadius: this.setBorderRadiusForImage()}]}>
-				<View style={{height: !this.state.loaded ? 0 : 85}}>
-				<Image 
-					source={source} 
-					style={{width: width, height: 85}}
-					onLoad={() => {}}
-				  	onLoadStart={() => {}}
-				  	onLoadEnd={() => {
-				  		if(!this.state.loaded){
-					  		this.setState({loaded: true});
-					  		onLoadEnd && onLoadEnd()
-				  		}
-				  	}}
+			<View>
+				<View style={[styles.image, {borderRadius: this.setBorderRadiusForImage()}]}>
+					<View style={{height: !this.state.loaded && !text ? 0 : 85}}>
+					{ !text ? 
+						<Image 
+							source={source} 
+							style={{width: width, height: 85}}
+							onLoad={() => {}}
+						  	onLoadStart={() => {}}
+						  	onLoadEnd={() => {
+						  		if(!this.state.loaded){
+							  		this.setState({loaded: true});
+							  		onLoadEnd && onLoadEnd()
+						  		}
+						  	}}
 
-					/>
+							/>
+						:
+						<TouchableOpacity style={styles.showMoreButton} onPress={onPress}>
+							<Text style={{color: Layout.primaryColor, textAlign: 'center'}}>{text}</Text>
+						</TouchableOpacity> 
+					}
+					</View>
+
+
+					{/* LOADING PLACEHOLDER */}
+					{!this.state.loaded && !text &&  <View style={{width: width, height: 85, backgroundColor: Layout.ice}}></View>}
 				</View>
-				{!this.state.loaded &&  <View style={{width: width, height: 85, backgroundColor: Layout.ice}}></View>}
+
+
+				{/** SHADOW */}
+				{ !this.props.noShadow && <View style={[styles.block, {width: (type === 'product' ? width - 20 : width - 40)}]}></View>}
 			</View>
         )
 	}
@@ -46,7 +61,7 @@ export default class RoundedImage extends React.Component{
 	setBorderRadiusForImage(){
 		const { type } = this.props;
 		return(
-			(/product|dispensaries/).test(type) ? 10 : 100
+			(/product|dispensaries/).test(type) ? 4 : 100
 		)
 	}
 
@@ -63,8 +78,44 @@ export default class RoundedImage extends React.Component{
 
 const styles = StyleSheet.create({
 	image: {
-		overflow: 'hidden',
-		zIndex: 1
+		overflow: 'hidden'
+	},
+	block: {
+		width: 40,
+		alignSelf: 'center',
+		marginHorizontal: 10,
+		borderRadius: 10,
+		...Platform.select({
+			ios: {
+				marginTop: -1,
+				backgroundColor: 'rgba(206,206,206,0.7)',
+				height: 2,
+			},
+			android: {
+				marginTop: -2,
+				backgroundColor: 'rgba(206,206,206,0)',
+				height: 1,
+			},
+		}),
+		zIndex: -1,
+		shadowOffset: {  width: 0,  height: 0,  },
+		shadowColor: 'black',
+		shadowOpacity: 1,
+		elevation: 7,
+		shadowRadius: 5
+	},
+	shadow: {
+	},
+	showMoreButton: {
+
+		borderRadius: 100, 
+		backgroundColor: Layout.bgColor, 
+		width: 85, 
+		height: 85, 
+		alignItems: 'center', 
+		justifyContent: 'center', 
+		padding: 10, 
+		marginHorizontal: 18
 	}
 })
 

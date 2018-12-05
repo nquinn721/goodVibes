@@ -19,7 +19,7 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={[Layout.container]}>
-        <ScrollView style={[Layout.container, {backgroundColor: Layout.bgColor}]}>
+        <ScrollView style={[Layout.container, {backgroundColor: Layout.bgColor}]} showsVerticalScrollIndicator={false}>
           <HorizontalList title="Popular Strains" data={products}/>
           <View style={styles.separator}></View>
           <HorizontalList title="Popular Products" type="product" data={products}/>

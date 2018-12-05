@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
-import AppNavigator from './navigation/AppNavigator';
 import store from './redux/store';
+import IndexScreen from './screens';
 
 export default class App extends React.Component {
   state = {
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <SafeAreaView style={[styles.container, styles.droidSafeArea]}>
-            <AppNavigator />
+            <IndexScreen />
           </SafeAreaView>
         </Provider>
       );
@@ -39,7 +39,9 @@ export default class App extends React.Component {
         ...Icon.Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
+        'sfpro': require('./assets/fonts/SF-Pro-Text-Regular.otf'),
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'america': require('./assets/fonts/America.ttf'),
       }),
     ]);
   };

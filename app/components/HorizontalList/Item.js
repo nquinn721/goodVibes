@@ -22,7 +22,6 @@ export default class HorizontalList extends React.Component {
 				onLoadEnd={() => {
 					this.setState({loaded: true})
 				}}/>
-			<View style={[styles.shadow, ((/dispensaries/).test(type)  && {width: '75%'}), ((/product/).test(type) && {width: '60%'})]}></View>
 			<View style={styles.nameContainer}>
 				{this.state.loaded ? 
 					<Text style={styles.name}>{item.name}</Text>:
@@ -77,19 +76,5 @@ const styles = StyleSheet.create({
 	name: {
 		textAlign: 'center'
 	},
-	shadow: {
-		backgroundColor: 'rgba(206,206,206,0.7)',
-		height: 3,
-		width: '40%',
-		alignSelf: 'center',
-		marginHorizontal: 10,
-		borderRadius: 10,
-		marginTop: -2,
-		zIndex: -1,
-		shadowOffset: {  width: 0,  height: 0,  },
-		shadowColor: 'black',
-		shadowOpacity: 1,
-		elevation: 1,
-		shadowRadius: 5
-	}
+	
 });
