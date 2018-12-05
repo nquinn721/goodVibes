@@ -20,9 +20,9 @@ class HomeScreen extends React.Component {
     return (
       <View style={[Layout.container]}>
         <ScrollView style={[Layout.container, {backgroundColor: Layout.bgColor}]}>
-          <HorizontalList title="Popular Strains" data={products.slice(0, 4)}/>
+          <HorizontalList title="Popular Strains" data={products}/>
           <View style={styles.separator}></View>
-          <HorizontalList title="Popular Products" type="product" data={products.slice(0, 4)}/>
+          <HorizontalList title="Popular Products" type="product" data={products}/>
           <View style={styles.separator}></View>
           <QuestionCard title="Need Help?" question="I want to feel" answers='["Energized", "relaxed"]'/>
           <View style={styles.separator}></View>
