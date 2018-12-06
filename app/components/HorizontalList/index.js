@@ -38,11 +38,7 @@ export default class HorizontalList extends React.Component {
 			    			horizontal={true}
 			    			showsHorizontalScrollIndicator={false}
 			    			keyExtractor={(item, index) => index.toString()}
-							renderItem={({item}) => {
-								if(item.text)
-									console.log(item.text);
-								return item.text ? <RoundedImage text={item.text} noShadow={true}/> :  <Item item={item} type={type} /> 
-							}}
+							renderItem={({item}) => item.text ? <RoundedImage text={item.text} noShadow={true}/> :  <Item item={item} type={type} />}
 		    			/>
 			    		:
 			    		<View></View>
@@ -71,7 +67,7 @@ export default class HorizontalList extends React.Component {
   		<View style={styles.quizHeaderContainer}>
 			<Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>Your Selection</Text>
 			<Text style={{color: Layout.bgColor, textAlign: 'center'}}>{title}</Text>
-			<TouchableOpacity style={{borderRadius: 18, borderWidth: 1, borderColor: 'white', width: 72, height: 20, marginTop: 6}} onPress={this.props.onPress}>
+			<TouchableOpacity style={{borderRadius: 18, borderWidth: 1, borderColor: 'white', width: 72, height: 21, marginTop: 6}} onPress={this.props.onPress}>
 				<Text style={{textAlign: 'center', color: 'white'}}>Change</Text>
 			</TouchableOpacity>
 		</View>
@@ -102,7 +98,7 @@ export default class HorizontalList extends React.Component {
 
 const styles = StyleSheet.create({
 	mainContainer: {
-		height: 330,
+		height: 320,
 		backgroundColor: 'white',
 		...Layout.cardShadow
 	},
@@ -112,6 +108,7 @@ const styles = StyleSheet.create({
 	title: {
 		color: 'white',
 		fontSize: 16,
+		fontFamily: 'circular'
 	},
 	topInfo: {
 		flexDirection: 'row',

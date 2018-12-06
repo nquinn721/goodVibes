@@ -15,7 +15,7 @@ export default class Card extends React.Component{
 					<Text style={{fontSize: 12, textAlign: 'center', marginBottom: 10, color: Layout.lightText}}>{title}</Text>
 				</View>
 				<View style={{flex: 2}}>
-					<Text style={{fontStyle: 'italic', fontSize: 16, textAlign: 'center'}}>{question}</Text>
+					<Text style={{fontFamily: 'sfproitalic', fontSize: 16, textAlign: 'center'}}>{question}</Text>
 					<View style={{justifyContent: spacing, flexDirection: 'row', flexWrap: 'wrap'}}>
 						
 							{answers.map((v, i) => (

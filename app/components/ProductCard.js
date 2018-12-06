@@ -32,7 +32,7 @@ export default class ProductCard extends React.Component{
 							{
 								this.state.loaded ? 
 								<View>
-									<Text>{data.name}</Text>
+									<Text style={{fontFamily: 'sfprobold'}}>{data.name}</Text>
 								 	<Text style={{color: Layout.lightText}}>{data.type}</Text>
 								</View>
 								:

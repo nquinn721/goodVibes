@@ -35,7 +35,7 @@ export default class StarRating extends React.Component{
 				</View>
 				{
 					loaded ?
-						<Text style={[{fontSize: 24, textAlign: 'center'}, textStyle]}>{rating}</Text>
+						<Text style={[{fontSize: 24, textAlign: 'center', fontFamily: 'sfprolight'}, textStyle]}>{rating}</Text>
 						:
 						<View style={{flexDirection: 'row', justifyContent: 'center'}}>
 							<View style={{height: 16, width: 14, marginRight: 4, backgroundColor: Layout.ice}}></View>

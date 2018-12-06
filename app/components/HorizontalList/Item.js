@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
 		marginTop: 10
 	},
 	name: {
-		textAlign: 'center'
+		textAlign: 'center',
+		fontFamily: 'sfprobold'
 	},
 	
 });

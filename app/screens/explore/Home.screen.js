@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
 import HorizontalList from 'goodVibes/components/HorizontalList';
@@ -13,13 +13,35 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  y = 0;
+
+
+  state = {
+    scrollDirection: 'up'
+  }
+
+  scroll(e){
+    const { y } = e.nativeEvent.contentOffset;
+    const scrollDirection = y > this.y ? 'down' : 'up';
+    
+    if(scrollDirection !== this.state.scrollDirection && y > 0)
+      this.setState({scrollDirection});
+
+    this.y = y;
+  }
+
 
   render() {
     const { products : { products }, dispensaries: { dispensaries } } = this.props;
-
     return (
       <View style={[Layout.container]}>
-        <ScrollView style={[Layout.container, {backgroundColor: Layout.bgColor}]} showsVerticalScrollIndicator={false}>
+        <ScrollView 
+            style={[Layout.container, {backgroundColor: Layout.bgColor}]} 
+            scrollEventThrottle={300}
+            showsVerticalScrollIndicator={false} 
+            onMomentumScrollBegin={this.momentum}
+            onScroll={this.scroll.bind(this)}>
+
           <HorizontalList title="Popular Strains" data={products}/>
           <View style={styles.separator}></View>
           <HorizontalList title="Popular Products" type="product" data={products}/>
@@ -35,7 +57,7 @@ class HomeScreen extends React.Component {
           <LookingForSomething />
           <View style={{height: 50}}></View>
         </ScrollView>
-        <ReviewButton />
+        {this.state.scrollDirection === 'up' && <ReviewButton />}
       </View>
     );
   }

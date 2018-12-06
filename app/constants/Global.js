@@ -7,9 +7,10 @@ import {
 
 setCustomText({
 	style: {
+		fontFamily: 'sfpro',
 		...Platform.select({
 			ios: {
-				fontFamily: 'space-mono'
+				// fontFamily: 'sfpro'
 			},
 			android: {
 			}
