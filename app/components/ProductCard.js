@@ -4,7 +4,7 @@ import Layout from 'goodVibes/constants/Layout';
 import RoundedImage from './RoundedImage';
 import StarRating from './StarRating';
 import BarSlider from './BarSlider';
-import WhiteLoadingBar from './WhiteLoadingBar';
+import ProductInfo from './generic/ProductInfo';
 
 export default class ProductCard extends React.Component{
 	state = {
@@ -16,6 +16,7 @@ export default class ProductCard extends React.Component{
 		let review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel dolor dolor. Ut lacinia sed lectus porttitor sagittis. Sed scelerisque tristique justo, et vestibulum lectus luctus quis. Praesent iaculis odio vitae ex sollicitudin, ut mattis risus pulvinar.';
 		let reviewedBy = 'Nate Q';
 
+		data.rightText = ['Reviewed & Effects Recorded', '11.12.18'];
 
 		return (
 			<View style={styles.container}>
@@ -27,38 +28,7 @@ export default class ProductCard extends React.Component{
 					</View>
 
 					{/** TOP **/}
-					<View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20}}>
-						<View style={styles.infoSection}>
-							{
-								this.state.loaded ? 
-								<View>
-									<Text style={{fontFamily: 'sfprobold'}}>{data.name}</Text>
-								 	<Text style={{color: Layout.lightText}}>{data.type}</Text>
-								</View>
-								:
-								<View>
-									<View style={{width: 100, height: 10, backgroundColor: Layout.ice, marginBottom: 5}}></View>
-									<View style={{width: 50, height: 10, backgroundColor: Layout.ice}}></View>
-								</View>
-							}
-						</View>
-						
-						<View style={styles.infoSection}>
-							<Text></Text>
-							<StarRating rating={data.rating} loaded={this.state.loaded}/>
-						</View>
-						
-						{
-							this.state.loaded ?
-							<View style={styles.infoSection}>
-								<Text></Text>
-								<Text style={{color: Layout.lightText, fontSize: 10, textAlign: 'right'}}>Reviewed & Effects Recorded</Text>
-								<Text style={{color: Layout.secondaryColor, textAlign: 'right'}}>11.12.18</Text>
-							</View>
-							: <View style={styles.infoSection}></View>
-						}
-
-					</View>
+					<ProductInfo data={data} loaded={this.state.loaded} />
 					{/** END TOP **/}
 
 
@@ -107,9 +77,7 @@ const styles = StyleSheet.create({
 		marginTop: 40,
 		...Layout.cardShadow
 	},
-	infoSection: {
-		width: '30%'
-	},
+	
 	image: {
 		position: 'absolute',
 		alignItems: 'center',

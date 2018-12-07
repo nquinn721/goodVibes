@@ -41,9 +41,11 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         sfpro: require('./assets/fonts/SF_Pro/SF-Pro-Display-Regular.otf'),
         sfprobold: require('./assets/fonts/SF_Pro/SF-Pro-Display-Semibold.otf'),
+        sfpromedium: require('./assets/fonts/SF_Pro/SF-Pro-Display-Medium.otf'),
         sfprolight: require('./assets/fonts/SF_Pro/SF-Pro-Display-Light.otf'),
         sfproitalic: require('./assets/fonts/SF_Pro/SF-Pro-Text-LightItalic.otf'),
         circular: require('./assets/fonts/circular/CircularStd-Medium.otf'),
+        circularbook: require('./assets/fonts/circular/CircularStd-Book.otf'),
       }),
     ]);
   };

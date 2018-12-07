@@ -20,7 +20,7 @@ export default class Card extends React.Component{
 						
 							{answers.map((v, i) => (
 								<View key={i} style={{margin: 10}}>
-									<MainButton text={v} onPress={this.props.onPress}/>
+									<MainButton text={v} onPress={this.props.onPress} style={{width: 90, height: 35}}/>
 								</View>
 							))}
 						

@@ -5,9 +5,12 @@ import SvgUri from 'react-native-svg-uri';
 
 
 import Explore from 'goodVibes/screens/explore';
+import Product from 'goodVibes/screens/product';
+
 
 const Stack = createStackNavigator({
-  Home: Explore.Home, 
+ 	Product: Product.Product,
+  	Home: Explore.Home, 
 });
 
 Stack.navigationOptions = {

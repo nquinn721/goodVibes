@@ -2,9 +2,7 @@ import React from 'react';
 import { Text, View, FlatList, Image, StyleSheet } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
-import BottomMiddleShadow from 'goodVibes/components/BottomMiddleShadow';
 import RoundedImage from 'goodVibes/components/RoundedImage';
-import WhiteLoadingBar from 'goodVibes/components/WhiteLoadingBar';
 import { Icon } from 'react-native-elements';
 
 export default class HorizontalList extends React.Component {

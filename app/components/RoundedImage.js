@@ -4,7 +4,10 @@ import Layout from 'goodVibes/constants/Layout';
 
 /*
  * <RoundedImage 
- *		source={Object || {uri: String}} 
+ *		source={Object || {uri: String}}
+ *		type={String} // Determines size and rounding
+ *		onPress={Function}
+ *		text={String} // If you just want text instead of image
  * 		onLoad={Function} 
  *		onLoadStart={Function} 
  *		onLoadEnd={Function} />

@@ -6,6 +6,7 @@ const primaryColor = '#00c853',
 
 export default {
 	darkText: '#212121',
+	mediumText: '#666666',
 	lightText: '#717171',
 	primaryColor,
 	secondaryColor,

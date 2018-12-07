@@ -12,9 +12,6 @@ class SearchScreen extends React.Component {
 
     return (
       <View style={Layout.container}>
-        <ScrollView style={[Layout.container]}>
-        	<Text>Search</Text>
-        </ScrollView>
       </View>
     );
   }

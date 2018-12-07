@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 
-export default class RoundedImage extends React.Component{
+export default class BarSlider extends React.Component{
 	render(){
 		let { left, right, value, loaded } = this.props;
 

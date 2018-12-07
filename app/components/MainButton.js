@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 
 /**
- * <MainButton text={String} onPress={Function} />
+ * <MainButton text={String} onPress={Function} style={Object} textStyle={Object} />
  */
 
 export default class MainButton extends React.Component{
@@ -12,13 +12,13 @@ export default class MainButton extends React.Component{
 	}
 
 	render(){
-		const { text, onPress = () => ({}) } = this.props;
+		const { text, style = {}, textStyle = {}, onPress = () => ({}) } = this.props;
 		return (
-			<TouchableOpacity style={[styles.container, (this.state.pressed && styles.pressedContainer)]} onPress={() => {
+			<TouchableOpacity style={[styles.container, (this.state.pressed && styles.pressedContainer), style]} onPress={() => {
 				this.setState({pressed: !this.state.pressed});
 				onPress && onPress(text);
 			}}>
-				<Text style={{fontSize: 14, color: (this.state.pressed ? 'white' : Layout.primaryColor)}}>{text}</Text>
+				<Text style={[{fontSize: 14, color: (this.state.pressed ? 'white' : Layout.primaryColor)}, textStyle]}>{text}</Text>
 			</TouchableOpacity>
         )
 	}
@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
 		borderColor: Layout.thirdaryColor,
 		borderWidth: 1,
 		borderRadius: 18,
-		width: 90,
-		height: 35
 	},
 	pressedContainer: {
 		backgroundColor: Layout.primaryColor,
