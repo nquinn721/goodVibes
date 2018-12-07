@@ -10,13 +10,14 @@ export default class HorizontalList extends React.Component {
 		loaded: false
 	}
   render() {
-	const { item, type } = this.props;
+	const { item, type, onPress = () => {} } = this.props;
 
     return (
 		<View style={styles.item}>
 			<RoundedImage 
 				source={{uri: item.img}} 
 				type={type} 
+				onPress={onPress}
 				onLoadEnd={() => {
 					this.setState({loaded: true})
 				}}/>

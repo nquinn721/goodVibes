@@ -7,15 +7,18 @@ import Item from './Item';
 import RoundedImage from 'goodVibes/components/RoundedImage';
 
 /**     
- *  <HorizontalList title={String} data={Array<Products>|<Dispensaries>} type={String(dispensaries|quiz)/>
+ *  <HorizontalList 
+ * 		title={String} 
+ * 		data={Array<Products>|<Dispensaries>} 
+ * 		type={String(dispensaries|quiz)/>
  */
 
 export default class HorizontalList extends React.Component {
   render() {
-	const { data = [], title, type } = this.props;
+	const { data = [], title, type, onPress } = this.props;
 	if(!~data.map(v => v.text).indexOf('Show More'))
 		data.push({text: 'Show More'});
-
+	
     return (
     	<View style={styles.mainContainer}>
     		
@@ -37,7 +40,7 @@ export default class HorizontalList extends React.Component {
 			    			horizontal={true}
 			    			showsHorizontalScrollIndicator={false}
 			    			keyExtractor={(item, index) => index.toString()}
-							renderItem={({item}) => item.text ? <RoundedImage text={item.text} noShadow={true}/> :  <Item item={item} type={type} />}
+							renderItem={({item}) => item.text ? <RoundedImage text={item.text} noShadow={true} onPress={onPress}/> :  <Item item={item} type={type} onPress={onPress} />}
 		    			/>
 			    		:
 			    		<View></View>

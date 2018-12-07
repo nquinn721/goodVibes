@@ -42,9 +42,12 @@ class HomeScreen extends React.Component {
             onMomentumScrollBegin={this.momentum}
             onScroll={this.scroll.bind(this)}>
 
-          <HorizontalList title="Popular Strains" data={products}/>
+          <HorizontalList title="Popular Strains" data={products} onPress={() => {
+            console.log('woeifh');
+            this.props.navigation.navigate('ProductDetail')
+          }}/>
           <View style={styles.separator} />
-          <HorizontalList title="Popular Products" type="product" data={products}/>
+          <HorizontalList title="Popular Products" type="product" data={products} onPress={() => this.props.navigation.navigate('ProductDetail')}/>
           <View style={styles.separator} />
           <QuestionCard title="Need Help?" question="I want to feel" answers='["Energized", "relaxed"]'/>
           <View style={styles.separator} />

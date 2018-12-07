@@ -1,15 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 import Layout from 'goodVibes/constants/Layout';
 
-export default class RoundedImage extends React.Component{
+/*
+ * <GreenHeader
+ *		title={String}
+ *		rightIcon={String}
+ *		navigation={NavigationObject} />
+ */
+
+export default class GreenHeader extends React.Component{
 	render(){
-		let { title, rightIcon } = this.props;
+		let { title, rightIcon, navigation } = this.props;
 
         return (
         	<View style={styles.container}>
-        		<SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="white"/>
+        		<TouchableOpacity onPress={() => navigation.goBack()}>
+	        		<SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="white"/>
+	        	</TouchableOpacity>
         		<Text style={styles.titleText}>{title}</Text>
         		<SvgUri source={require('goodVibes/assets/images/Heart.svg')} fill="white" />
         	</View>

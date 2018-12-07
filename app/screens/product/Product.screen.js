@@ -40,7 +40,7 @@ class SearchScreen extends React.Component {
           style={{backgroundColor: Layout.bgColor}}
           showsVerticalScrollIndicator={false} 
           >
-          <GreenHeader title="Blue Dream"/>
+          <GreenHeader title="Blue Dream" navigation={this.props.navigation}/>
 
         {/* TOP SECTION */}
           <View style={[styles.section, {paddingTop: 0}]}>

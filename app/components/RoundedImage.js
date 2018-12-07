@@ -29,19 +29,21 @@ export default class RoundedImage extends React.Component{
 				<View style={[styles.image, {borderRadius: this.setBorderRadiusForImage()}]}>
 					<View style={{height: !this.state.loaded && !text ? 0 : 85}}>
 					{ !text ? 
-						<Image 
-							source={source} 
-							style={{width: width, height: 85}}
-							onLoad={() => {}}
-						  	onLoadStart={() => {}}
-						  	onLoadEnd={() => {
-						  		if(!this.state.loaded){
-							  		this.setState({loaded: true});
-							  		onLoadEnd && onLoadEnd()
-						  		}
-						  	}}
+						<TouchableOpacity onPress={onPress}>
+							<Image 
+								source={source} 
+								style={{width: width, height: 85}}
+								onLoad={() => {}}
+							  	onLoadStart={() => {}}
+							  	onLoadEnd={() => {
+							  		if(!this.state.loaded){
+								  		this.setState({loaded: true});
+								  		onLoadEnd && onLoadEnd()
+							  		}
+							  	}}
 
-							/>
+								/>
+						</TouchableOpacity>
 						:
 						<TouchableOpacity style={styles.showMoreButton} onPress={onPress}>
 							<Text style={{color: Layout.primaryColor, textAlign: 'center'}}>{text}</Text>
