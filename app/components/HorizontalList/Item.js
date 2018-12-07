@@ -17,7 +17,7 @@ export default class HorizontalList extends React.Component {
 			<RoundedImage 
 				source={{uri: item.img}} 
 				type={type} 
-				onPress={onPress}
+				onPress={onPress.bind(item, item)}
 				onLoadEnd={() => {
 					this.setState({loaded: true})
 				}}/>

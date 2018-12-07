@@ -19,7 +19,16 @@ export default {
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.bgColor,
+  },
+  card: {
+    backgroundColor: 'white',
+    ...cardShadow
+  },
+  paddedCard: {
+    backgroundColor: 'white',
+    padding: 30,
+    ...cardShadow
   },
   cardShadow,
   centered: {

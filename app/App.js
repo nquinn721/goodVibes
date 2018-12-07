@@ -22,7 +22,7 @@ export default class App extends React.Component {
     } else {
       return (
         <Provider store={store}>
-          <SafeAreaView style={[styles.container, styles.droidSafeArea]}>
+          <SafeAreaView style={[styles.container]}>
             <IndexScreen />
           </SafeAreaView>
         </Provider>
@@ -64,6 +64,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    marginTop: 24
   },
 });

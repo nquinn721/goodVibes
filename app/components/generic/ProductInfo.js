@@ -35,8 +35,10 @@ export default class ProductInfo extends React.Component{
 					loaded ?
 					<View style={styles.infoSection}>
 						<Text></Text>
-						<Text style={{color: Layout.lightText, fontSize: 10, textAlign: 'right'}}>{data.rightText[0]}</Text>
-						<Text style={{color: Layout.secondaryColor, textAlign: 'right'}}>{data.rightText[1]}</Text>
+						<View style={{position: 'absolute', bottom: 2, right: 0}}>
+							<Text style={{color: Layout.lightText, fontSize: 10, textAlign: 'right'}}>{data.rightText[0]}</Text>
+							<Text style={{color: Layout.secondaryColor, textAlign: 'right'}}>{data.rightText[1]}</Text>
+						</View>
 					</View>
 					: <View style={styles.infoSection}></View>
 				}

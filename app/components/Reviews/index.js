@@ -4,13 +4,22 @@ import Layout from 'goodVibes/constants/Layout';
 import Review from './Review';
 import SvgUri from 'react-native-svg-uri';
 
+/*
+ * <Reviews
+ *    navigation={Navigation} // required
+ *    reviews={Collection}
+ *    full={Boolean} 
+ *    product={Object}
+ *
+ */
+
 export default class Reviews extends React.Component{
 	state = {
     selected: 'Helpful'
 	}
 	render(){
-		const { length, reviews=[{}, {},{}, {}, {}, {}] } = this.state;
-
+		const { reviews=[{}, {},{}], full, product, navigation } = this.props;
+    
 		return (
       <View style={[Layout.container, styles.container]}>
   			<ScrollView>
@@ -41,16 +50,18 @@ export default class Reviews extends React.Component{
               reviews.map((v, i) => {
                 return (
                   <View key={i}>
-                    <Review length={length} />
+                    <Review full={full} product={product}/>
                     {i !== reviews.length - 1 && <View style={{height: 1, backgroundColor: '#f0f0f0', marginVertical: 16}}/>}
                   </View>
                   )
               })
             }
 
-            <View style={{marginTop: 15}}>
-              <Text style={{fontFamily: 'sfpromedium', color: Layout.primaryColor, textAlign: 'center'}}>Show All Reviews</Text>
-            </View>
+            {!full && 
+              <TouchableOpacity style={{marginTop: 15}} onPress={() => navigation.navigate('AllReviews', {product})}>
+                <Text style={{fontFamily: 'sfpromedium', color: Layout.primaryColor, textAlign: 'center'}}>Show All Reviews</Text>
+              </TouchableOpacity>
+            }
   			</ScrollView>
       </View>
     )

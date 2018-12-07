@@ -6,17 +6,23 @@ import StarRating from './StarRating';
 import BarSlider from './BarSlider';
 import ProductInfo from './generic/ProductInfo';
 
+/*
+ * <ProductCard
+ *		product={Object} // required
+ *		navigation={Navigation} // required
+ */
+
 export default class ProductCard extends React.Component{
 	state = {
 		loaded: false
 	}
 
 	render(){
-		let { data } = this.props;
+		let { product, navigation } = this.props;
 		let review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel dolor dolor. Ut lacinia sed lectus porttitor sagittis. Sed scelerisque tristique justo, et vestibulum lectus luctus quis. Praesent iaculis odio vitae ex sollicitudin, ut mattis risus pulvinar.';
 		let reviewedBy = 'Nate Q';
 
-		data.rightText = ['Reviewed & Effects Recorded', '11.12.18'];
+		product.rightText = ['Reviewed & Effects Recorded', '11.12.18'];
 
 		return (
 			<View style={styles.container}>
@@ -24,11 +30,11 @@ export default class ProductCard extends React.Component{
 					<View style={styles.image}>
 						<RoundedImage source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} loaded={this.state.loaded} onLoadEnd={() => {
 							{!this.state.loaded && this.setState({loaded: true})}
-						}}/>
+						}} onPress={() => navigation.navigate('ProductDetail', {product, type: 'product'})}/>
 					</View>
 
 					{/** TOP **/}
-					<ProductInfo data={data} loaded={this.state.loaded} />
+					<ProductInfo data={product} loaded={this.state.loaded} />
 					{/** END TOP **/}
 
 

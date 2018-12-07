@@ -1,5 +1,5 @@
-import Product from './Product.screen';
+import ProductDetail from './ProductDetail.screen';
 
 export default {
-	Product
+	ProductDetail
 }

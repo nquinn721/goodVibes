@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
-import GreenHeader from 'goodVibes/components/GreenHeader';
+import Header from 'goodVibes/components/Header';
 import RoundedImage from 'goodVibes/components/RoundedImage';
 import ProductInfo from 'goodVibes/components/generic/ProductInfo';
 import MainButton from 'goodVibes/components/MainButton';
@@ -12,6 +12,7 @@ import Reviews from 'goodVibes/components/Reviews';
 import HorizontalList from 'goodVibes/components/HorizontalList';
 import HorizontalPicsList from 'goodVibes/components/HorizontalPicsList';
 import LookingForSomething from 'goodVibes/components/LookingForSomething';
+import ImageSlider from 'react-native-image-slider';
 
 class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -24,8 +25,15 @@ class SearchScreen extends React.Component {
           minDistance: 10,
           maxDistance: 100
   }
+  onScroll(e){
+    const { y } = e.nativeEvent.contentOffset;
+    this.setState({y});
+  }
 
   render() {
+    const product = this.props.navigation.getParam('product'),
+          type = this.props.navigation.getParam('type');
+
     const data = {
       name: 'Blue Dream',
       type: 'Indica',
@@ -39,20 +47,31 @@ class SearchScreen extends React.Component {
         <ScrollView 
           style={{backgroundColor: Layout.bgColor}}
           showsVerticalScrollIndicator={false} 
+          onScroll={this.onScroll.bind(this)}
+          scrollEventThrottle={300}
           >
-          <GreenHeader title="Blue Dream" navigation={this.props.navigation}/>
+          {type === 'strain' ? 
+              <Header navigation={this.props.navigation} title={data.name} ypos={this.state.y}/>
+              :
+              <View style={{height: 40, position: 'absolute', zIndex: 1, width: '100%', padding: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                  <SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="black"/>
+                </TouchableOpacity>
+                <SvgUri source={require('goodVibes/assets/images/Heart.svg')} fill="black" />
+              </View>
+            }
 
+          {type !== 'strain' && <ImageSlider images={product.images} style={{height: 250}}/>}
         {/* TOP SECTION */}
           <View style={[styles.section, {paddingTop: 0}]}>
-            <View style={{justifyContent: 'center', alignItems: 'center', marginTop: -40}}>
-            	<RoundedImage source={{uri: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg'}} />
-              <View style={{position: 'absolute', right: 20, top: 50}}>
-                <Text style={styles.reviewedText}>Reviewed on</Text>
-                <Text style={styles.reviewedText}>11.12.18</Text>
-              </View>
-            </View>
-          <View>
-            <ProductInfo data={data} loaded={this.state.loaded}/>
+              {
+                type === 'strain' &&
+                  <View style={{justifyContent: 'center', alignItems: 'center', marginTop: -40}}>
+                    <RoundedImage source={{uri: 'https://www.alchimiaweb.com/images/xl/cookies-and-weed_8736_1_.jpg'}} />
+                  </View>
+              }
+          <View style={{marginTop: (type === 'product' ? 20 : 0)}}>
+            <ProductInfo data={data} loaded={this.state.loaded} style={{height: 300}}/>
           </View>
           <View>
             <Text>
@@ -64,6 +83,10 @@ class SearchScreen extends React.Component {
         </View>
         {/* END TOP SECTION */}
 
+        <View style={{position: 'absolute', right: 30, top: (type === 'strain' ? 90 : 210)}}>
+          <Text style={styles.reviewedText}>Reviewed on</Text>
+          <Text style={styles.reviewedText}>11.12.18</Text>
+        </View>
         <View style={styles.separator} />
 
 
@@ -79,9 +102,9 @@ class SearchScreen extends React.Component {
           </View>
 
           <View style={{padding: 40}}>
-              <Slider text="Relaxed"/>
-              <Slider text="Sleepy" style={{marginTop: 10}}/>
-              <Slider text="Happy" style={{marginTop: 10}}/>
+              <Slider text="Relaxed" disabled={true} value={8}/>
+              <Slider text="Sleepy" style={{marginTop: 10}} disabled={true}/>
+              <Slider text="Happy" style={{marginTop: 10}} disabled={true} value={9}/>
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -100,7 +123,7 @@ class SearchScreen extends React.Component {
         {/* END EFFECTS */}
 
         <View style={styles.separator} />
-        <Reviews length="short"/>        
+        <Reviews product={product} navigation={this.props.navigation}/>        
         <View style={styles.separator} />
         <HorizontalPicsList product={this.props.products.products[0]}/>
         <View style={styles.separator} />

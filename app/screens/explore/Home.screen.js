@@ -42,16 +42,15 @@ class HomeScreen extends React.Component {
             onMomentumScrollBegin={this.momentum}
             onScroll={this.scroll.bind(this)}>
 
-          <HorizontalList title="Popular Strains" data={products} onPress={() => {
-            console.log('woeifh');
-            this.props.navigation.navigate('ProductDetail')
+          <HorizontalList title="Popular Strains" data={products} onPress={(product) => {
+            this.props.navigation.navigate('ProductDetail', {product, type: 'strain'})
           }}/>
           <View style={styles.separator} />
-          <HorizontalList title="Popular Products" type="product" data={products} onPress={() => this.props.navigation.navigate('ProductDetail')}/>
+          <HorizontalList title="Popular Products" type="product" data={products} onPress={(product) => this.props.navigation.navigate('ProductDetail', {product, type: 'product'})}/>
           <View style={styles.separator} />
           <QuestionCard title="Need Help?" question="I want to feel" answers='["Energized", "relaxed"]'/>
           <View style={styles.separator} />
-          <ProductCard data={products[0]} />
+          <ProductCard product={products[0]} navigation={this.props.navigation}/>
           <View style={styles.separator} />
           <QuestionCard title="Medical Use" question="I am looking to better my" answers='["Depression", "Stress", "Fatigue", "Pain", "Headache", "Appetite"]'/>
           <View style={styles.separator} />

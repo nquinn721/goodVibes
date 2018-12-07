@@ -14,7 +14,7 @@ export default class BudSlider extends React.Component{
 
 
 	render(){
-		const { text, style = {} } = this.props;
+		const { text, style = {}, disabled = false, value = 5} = this.props;
 		const textLeft = (this.state.value * 10 -10);
 		
 		return (
@@ -28,7 +28,9 @@ export default class BudSlider extends React.Component{
 					minimumTrackTintColor={Layout.thirdaryColor}
 					minumValue={0}
 					maximumValue={10}
+					value={value}
                 	onValueChange={(value) => this.setState({value})}
+                	disabled={disabled}
               	/>
 			</View>
 			

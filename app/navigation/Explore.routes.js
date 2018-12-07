@@ -6,17 +6,19 @@ import SvgUri from 'react-native-svg-uri';
 
 import Explore from 'goodVibes/screens/explore';
 import Product from 'goodVibes/screens/product';
+import Review  from 'goodVibes/screens/review';
 
 
 const Stack = createStackNavigator({
   	Home: Explore.Home, 
- 	ProductDetail: Product.Product,
+ 	ProductDetail: Product.ProductDetail,
+	AllReviews: Review.AllReviews,
 });
 
 Stack.navigationOptions = {
   tabBarLabel: 'Explore',
   tabBarIcon: ({ focused, tintColor }) => (
-    <SvgUri source={require('goodVibes/assets/images/Artboard.svg')} />
+    <SvgUri source={require('goodVibes/assets/images/Explore.svg')} fill={tintColor}/>
   ),
 };
 
