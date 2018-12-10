@@ -27,7 +27,7 @@ export default class Header extends React.Component{
 		      this.state.fadeAnim,            
 		      {
 		        toValue: 1,                  
-		        duration: 500,             
+		        duration: 300,             
 		      }
 		    ).start();  
 			
@@ -48,7 +48,7 @@ export default class Header extends React.Component{
 
         return (
         	<Animated.View style={[styles.container, style, (short && {height: 50}), (sticky && {opacity: this.state.fadeAnim, ...styles.sticky})]}>
-        		<TouchableOpacity onPress={() => back ? back() : navigation.goBack()}>
+        		<TouchableOpacity onPress={() => back ? back() : navigation.goBack()} style={{paddingLeft: 20}}>
 	        		<SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="white"/>
 	        	</TouchableOpacity>
         		{showTitle && <Text style={[styles.titleText, textStyle]}>{title}</Text>}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		paddingHorizontal: 20,
+		paddingRight: 20,
 		paddingTop: 14,
 		backgroundColor: Layout.primaryColor,
 		height: 80

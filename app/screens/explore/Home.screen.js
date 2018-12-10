@@ -42,11 +42,13 @@ class HomeScreen extends React.Component {
             onMomentumScrollBegin={this.momentum}
             onScroll={this.scroll.bind(this)}>
 
-          <HorizontalList title="Popular Strains" data={products} onPress={(product) => {
+          <HorizontalList title="Popular Strains" data={products} onPress={(product) => 
             this.props.navigation.navigate('ProductDetail', {product, type: 'strain'})
-          }}/>
+          }/>
           <View style={styles.separator} />
-          <HorizontalList title="Popular Products" type="product" data={products} onPress={(product) => this.props.navigation.navigate('ProductDetail', {product, type: 'product'})}/>
+          <HorizontalList title="Popular Products" type="product" data={products} onPress={(product) => 
+            this.props.navigation.navigate('ProductDetail', {product, type: 'product'})
+          }/>
           <View style={styles.separator} />
           <QuestionCard title="Need Help?" question="I want to feel" answers='["Energized", "relaxed"]'/>
           <View style={styles.separator} />
@@ -54,7 +56,9 @@ class HomeScreen extends React.Component {
           <View style={styles.separator} />
           <QuestionCard title="Medical Use" question="I am looking to better my" answers='["Depression", "Stress", "Fatigue", "Pain", "Headache", "Appetite"]'/>
           <View style={styles.separator} />
-          <HorizontalList title="Despensaries Near by" type="dispensaries" data={dispensaries}/>
+          <HorizontalList title="Despensaries Near by" type="dispensary" data={dispensaries} onPress={(product) => 
+            this.props.navigation.navigate('ProductDetail', {product, type: 'dispensary'})
+          }/>
           <View style={styles.separator} />
           <LookingForSomething />
           <View style={{height: 50}}></View>

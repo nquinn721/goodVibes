@@ -25,9 +25,9 @@ export default class HorizontalList extends React.Component {
 
     			{ 
     				// Header
-    				(!type || type === 'product') ?
+    				(!type || type !== 'dispensary') ?
     					this.listHeader(title) :
-    				type === 'dispensaries' ?
+    				type === 'dispensary' ?
     					this.dispensaryHeader(title) :
     				type === 'quiz' && this.quizHeader(title)
     			}
@@ -88,7 +88,9 @@ export default class HorizontalList extends React.Component {
   }
 
   headerImage(){
+  	const { headerColor } = this.props;
   	return (
+  		headerColor ? <View style={{height: 150, backgroundColor: Layout.primaryColor, marginBottom: -110}}/> :
 	  	<View style={styles.topImage}>
 			<Image source={require('goodVibes/assets/images/grey.jpg')} style={{height: 150}}/>
 		</View>

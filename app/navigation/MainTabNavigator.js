@@ -15,6 +15,7 @@ export default createBottomTabNavigator({
 }, {
 	tabBarOptions: {
 		activeTintColor: Layout.primaryColor,
+	  	showLabel: false,
 		style: {
 			paddingHorizontal: 40
 		}

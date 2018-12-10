@@ -10,12 +10,13 @@ export default class ProductInfo extends React.Component{
 		const { data, loaded } = this.props;
 
 		return (
+		<View>
+			<Text style={{fontFamily: 'sfprobold'}}>{data.name}</Text>
 			<View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20}}>
 				<View style={styles.infoSection}>
 					{
 						loaded ? 
 						<View>
-							<Text style={{fontFamily: 'sfprobold'}}>{data.name}</Text>
 						 	<Text style={{color: Layout.lightText}}>{data.type}</Text>
 						</View>
 						:
@@ -44,6 +45,7 @@ export default class ProductInfo extends React.Component{
 				}
 
 			</View>
+		</View>
 			
 		)
 	}

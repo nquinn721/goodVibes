@@ -66,14 +66,14 @@ export default class RoundedImage extends React.Component{
 	setBorderRadiusForImage(){
 		const { type } = this.props;
 		return(
-			(/product|dispensaries/).test(type) ? 4 : 100
+			(/product|dispensary/).test(type) ? 4 : 100
 		)
 	}
 
 	setWidthOfImage(){
 		const { type } = this.props;
 		return(
-			(/dispensaries/).test(type) ? 120:  85
+			(/dispensary/).test(type) ? 120:  85
 		)
 	}
 
