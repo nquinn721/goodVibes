@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import SvgUri from 'react-native-svg-uri';
 import RoundedImage from 'goodVibes/components/RoundedImage';
 
 export default class HorizontalPicList extends React.Component{
 	render(){
-		let { images=[] } = this.props.product;
+		let { images=[] } = this.props.product,
+			{ navigation, product } = this.props;
+
 		images = images.concat(images).concat(images);
+
 		return (
-			<View style={[Layout.container, styles.container]}>
+			<View style={[Layout.card, styles.container]}>
 				<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, paddingHorizontal: 30}}>
 					<Text style={{fontFamily: 'circularbook', color: Layout.secondaryColor, fontSize: 14}}>Pictures</Text>
 					<View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -26,7 +29,7 @@ export default class HorizontalPicList extends React.Component{
 					renderItem={({item, index}) => {
 						return (
 							<View style={{marginRight: 23, flexDirection: 'row'}}>
-								<RoundedImage source={{uri: item}} type='product' />
+								<RoundedImage source={{uri: item}} type='product'  onPress={() => navigation.navigate('ImageGallery', {product})}/>
 							</View> 
 						)
 					}}
@@ -43,7 +46,6 @@ export default class HorizontalPicList extends React.Component{
 const styles = StyleSheet.create({
 	container: {
 		paddingVertical: 30,
-		...Layout.cardShadow
 	},
 })
 

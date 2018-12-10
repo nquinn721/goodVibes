@@ -21,7 +21,7 @@ export default class Reviews extends React.Component{
 		const { reviews=[{}, {},{}], full, product, navigation } = this.props;
     
 		return (
-      <View style={[Layout.container, styles.container]}>
+      <View style={[Layout.card, styles.container]}>
   			<ScrollView>
   				  <Text style={styles.title}>Reviews</Text>
             <View style={{justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginBottom: 14}}>
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     paddingVertical: 20,
-    ...Layout.cardShadow
   },
 	title: {
     color: Layout.secondaryColor,

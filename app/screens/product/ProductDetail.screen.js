@@ -34,13 +34,8 @@ class SearchScreen extends React.Component {
     const product = this.props.navigation.getParam('product'),
           type = this.props.navigation.getParam('type');
 
-    const data = {
-      name: 'Blue Dream',
-      type: 'Indica',
-      rating: 3.4,
-      rightText: ['THC', '18%-21%'],
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel dolor dolor. Ut lacinia sed lectus porttitor sagittis. Sed scelerisque tristique justo, et vestibulum lectus luctus quis. Praesent iaculis odio vitae ex sollicitudin, ut mattis risus'
-    }
+
+          product.rightText = ['THC', '18%-21%']
 
     return (
       <View style={Layout.container}>
@@ -51,7 +46,7 @@ class SearchScreen extends React.Component {
           scrollEventThrottle={300}
           >
           {type === 'strain' ? 
-              <Header navigation={this.props.navigation} title={data.name} ypos={this.state.y}/>
+              <Header navigation={this.props.navigation} title={product.name} ypos={this.state.y}/>
               :
               <View style={{height: 40, position: 'absolute', zIndex: 1, width: '100%', padding: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
                 <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
@@ -71,11 +66,11 @@ class SearchScreen extends React.Component {
                   </View>
               }
           <View style={{marginTop: (type === 'product' ? 20 : 0)}}>
-            <ProductInfo data={data} loaded={this.state.loaded} style={{height: 300}}/>
+            <ProductInfo data={product} loaded={this.state.loaded} style={{height: 300}}/>
           </View>
           <View>
             <Text>
-            <Text style={{fontSize: 14, color: Layout.darkText}}>{data.description}</Text>
+            <Text style={{fontSize: 14, color: Layout.darkText}}>{product.description}</Text>
               <Text style={{color: Layout.primaryColor, fontSize: 14}}>... Read More</Text>
             </Text>
           </View>
@@ -125,7 +120,7 @@ class SearchScreen extends React.Component {
         <View style={styles.separator} />
         <Reviews product={product} navigation={this.props.navigation}/>        
         <View style={styles.separator} />
-        <HorizontalPicsList product={this.props.products.products[0]}/>
+        <HorizontalPicsList product={this.props.products.products[0]} navigation={this.props.navigation}/>
         <View style={styles.separator} />
         <HorizontalList title="Similar Strains" data={this.props.products.products} />
         <View style={styles.separator} />

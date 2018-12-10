@@ -16,17 +16,19 @@ import Layout from 'goodVibes/constants/Layout';
 
 export default class Header extends React.Component{
 	render(){
-		let { title, rightIcon, navigation, style, showTitle, short } = this.props;
-		console.log('showTitle', showTitle);
+		let { title, rightIcon, navigation, style={}, textStyle={}, showTitle, short, back } = this.props;
+		
         return (
-        	<View style={[styles.container, {style}, (short && {height: 50})]}>
-        		<TouchableOpacity onPress={() => navigation.goBack()}>
+        	<View style={[styles.container, style, (short && {height: 50})]}>
+        		<TouchableOpacity onPress={() => back ? back() : navigation.goBack()}>
 	        		<SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="white"/>
 	        	</TouchableOpacity>
-        		{showTitle && <Text style={styles.titleText}>{title}</Text>}
+        		{showTitle && <Text style={[styles.titleText, textStyle]}>{title}</Text>}
         		{
         			rightIcon === 'edit' ?
         			<SvgUri source={require('goodVibes/assets/images/Edit_s.svg')} fill="white" width={20} height={20} />:
+        			rightIcon === 'camera' ?
+        			<SvgUri source={require('goodVibes/assets/images/Camera.svg')} fill="white" width={20} height={20} />:
         			<SvgUri source={require('goodVibes/assets/images/Heart.svg')} fill="white"/>
         		}
         	</View>

@@ -13,6 +13,7 @@ const Stack = createStackNavigator({
   	Home: Explore.Home, 
  	ProductDetail: Product.ProductDetail,
 	AllReviews: Review.AllReviews,
+	ImageGallery: Product.ImageGallery
 });
 
 Stack.navigationOptions = {

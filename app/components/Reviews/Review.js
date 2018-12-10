@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Layout from 'goodVibes/constants/Layout';
 import StarRating from 'goodVibes/components/StarRating';
 import SvgUri from 'react-native-svg-uri';
+import LikeButton from 'goodVibes/components/generic/LikeButton';
 
 export default class Review extends React.Component{
 	state = {
@@ -34,10 +35,7 @@ export default class Review extends React.Component{
 							<Text style={{color: Layout.thirdaryColor, fontSize: 10}}>{age}</Text>
 						</View>
 					</View>
-					<TouchableOpacity style={[styles.defaultLike, (this.state.liked && styles.liked)]} onPress={() => this.setState({liked: !this.state.liked})}>
-						<SvgUri source={require('goodVibes/assets/images/Helpful.svg')} fill={this.state.liked ? "white" : "#e0e0e0"} width="17" height="17"/>
-						{this.state.liked && <Text style={{color: 'white', fontSize: 16}}> {likes}</Text>}
-					</TouchableOpacity>
+					<LikeButton onPress={() => this.setState({liked: !this.state.liked})} liked={this.state.liked} totalLikes={likes}/>
 				</View>
 			</View>
     )
