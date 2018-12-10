@@ -16,7 +16,17 @@ import Layout from 'goodVibes/constants/Layout';
 
 export default class Header extends React.Component{
 	render(){
-		let { title, rightIcon, navigation, style={}, textStyle={}, showTitle, short, back } = this.props;
+		let { 
+			title, 
+			rightIcon, 
+			navigation, 
+			style={}, 
+			textStyle={}, 
+			showTitle, 
+			short, 
+			back,
+			sticky
+		} = this.props;
 		
         return (
         	<View style={[styles.container, style, (short && {height: 50})]}>

@@ -23,7 +23,8 @@ class SearchScreen extends React.Component {
     loaded: true,
           distance: 30,
           minDistance: 10,
-          maxDistance: 100
+          maxDistance: 100,
+          y: 0
   }
   onScroll(e){
     const { y } = e.nativeEvent.contentOffset;
@@ -39,14 +40,19 @@ class SearchScreen extends React.Component {
 
     return (
       <View style={Layout.container}>
+      {
+        this.state.y > 80 && 
+                <Header short={true} navigation={this.props.navigation} showTitle={true} title={product.name} style={{position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1}}/>
+      }
         <ScrollView 
           style={{backgroundColor: Layout.bgColor}}
           showsVerticalScrollIndicator={false} 
           onScroll={this.onScroll.bind(this)}
-          scrollEventThrottle={300}
+          scrollEventThrottle={100}
           >
           {type === 'strain' ? 
-              <Header navigation={this.props.navigation} title={product.name} ypos={this.state.y}/>
+                <Header navigation={this.props.navigation} title={product.name} ypos={this.state.y}/>
+
               :
               <View style={{height: 40, position: 'absolute', zIndex: 1, width: '100%', padding: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
                 <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
