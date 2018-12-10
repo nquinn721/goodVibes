@@ -40,8 +40,8 @@ class SearchScreen extends React.Component {
                       }
                     renderContent={() => 
                       <View>
-                        <Image source={{uri: v}} style={{height: 300}} resizeMode="contain"/>
-                        <View style={{justifyConent: 'flex-end', alignItems: 'flex-end', paddingRight: 20}}>
+                        <Image source={{uri: v}} style={{height: 300}}/>
+                        <View style={{justifyConent: 'flex-end', alignItems: 'flex-end', paddingRight: 20, marginTop: 20}}>
                           <LikeButton totalLikes={1} showLikes={true}/>
                         </View>
                       </View>
