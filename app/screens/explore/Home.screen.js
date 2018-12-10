@@ -59,7 +59,7 @@ class HomeScreen extends React.Component {
           <LookingForSomething />
           <View style={{height: 50}}></View>
         </ScrollView>
-        {this.state.scrollDirection === 'up' && <ReviewButton />}
+        <ReviewButton show={this.state.scrollDirection !== 'up'}/>
       </View>
     );
   }
