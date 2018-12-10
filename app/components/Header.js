@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 import Layout from 'goodVibes/constants/Layout';
 
@@ -15,6 +15,24 @@ import Layout from 'goodVibes/constants/Layout';
  */
 
 export default class Header extends React.Component{
+	state = {
+		fadeAnim: new Animated.Value(0)
+	}
+
+	componentDidMount(){
+		const { sticky } = this.props;
+
+		if(sticky){
+			Animated.timing(                  
+		      this.state.fadeAnim,            
+		      {
+		        toValue: 1,                  
+		        duration: 500,             
+		      }
+		    ).start();  
+			
+		}
+	}
 	render(){
 		let { 
 			title, 
@@ -27,9 +45,9 @@ export default class Header extends React.Component{
 			back,
 			sticky
 		} = this.props;
-		
+
         return (
-        	<View style={[styles.container, style, (short && {height: 50})]}>
+        	<Animated.View style={[styles.container, style, (short && {height: 50}), (sticky && {opacity: this.state.fadeAnim, ...styles.sticky})]}>
         		<TouchableOpacity onPress={() => back ? back() : navigation.goBack()}>
 	        		<SvgUri source={require('goodVibes/assets/images/Back.svg')} fill="white"/>
 	        	</TouchableOpacity>
@@ -41,7 +59,7 @@ export default class Header extends React.Component{
         			<SvgUri source={require('goodVibes/assets/images/Camera.svg')} fill="white" width={20} height={20} />:
         			<SvgUri source={require('goodVibes/assets/images/Heart.svg')} fill="white"/>
         		}
-        	</View>
+        	</Animated.View>
         )
 	}
 
@@ -63,6 +81,13 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 17,
 		fontFamily: 'sfpromedium'
+	},
+	sticky: {
+		position: 'absolute', 
+		top: 0, 
+		left: 0, 
+		right: 0, 
+		zIndex: 1
 	}
 	
 })

@@ -41,8 +41,8 @@ class SearchScreen extends React.Component {
     return (
       <View style={Layout.container}>
       {
-        this.state.y > 80 && 
-                <Header short={true} navigation={this.props.navigation} showTitle={true} title={product.name} style={{position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1}}/>
+        this.state.y > (type === 'strain' ? 80 : 250) && 
+                <Header short={true} navigation={this.props.navigation} showTitle={true} title={product.name} sticky={true}/>
       }
         <ScrollView 
           style={{backgroundColor: Layout.bgColor}}
