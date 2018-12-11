@@ -46,6 +46,7 @@ export default class App extends React.Component {
         sfproitalic: require('./assets/fonts/SF_Pro/SF-Pro-Text-LightItalic.otf'),
         circular: require('./assets/fonts/circular/CircularStd-Medium.otf'),
         circularbook: require('./assets/fonts/circular/CircularStd-Book.otf'),
+        circularbold: require('./assets/fonts/circular/CircularStd-Bold.otf'),
       }),
     ]);
   };

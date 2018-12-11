@@ -8,6 +8,7 @@ import Search from 'goodVibes/screens/search';
 
 const Stack = createStackNavigator({
   Search: Search.Search, 
+  MapView: Search.MapView, 
 });
 
 Stack.navigationOptions = {

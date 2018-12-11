@@ -18,9 +18,10 @@ export default class ProductCard extends React.Component{
 	}
 
 	render(){
-		let { product, navigation } = this.props;
+		let { product, navigation, type='product' } = this.props;
 		let review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel dolor dolor. Ut lacinia sed lectus porttitor sagittis. Sed scelerisque tristique justo, et vestibulum lectus luctus quis. Praesent iaculis odio vitae ex sollicitudin, ut mattis risus pulvinar.';
 		let reviewedBy = 'Nate Q';
+
 
 		product.rightText = ['Reviewed & Effects Recorded', '11.12.18'];
 
@@ -28,9 +29,13 @@ export default class ProductCard extends React.Component{
 			<View style={styles.container}>
 				<View style={styles.card}>
 					<View style={styles.image}>
-						<RoundedImage source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} loaded={this.state.loaded} onLoadEnd={() => {
-							{!this.state.loaded && this.setState({loaded: true})}
-						}} onPress={() => navigation.navigate('ProductDetail', {product, type: 'product'})}/>
+						<RoundedImage 
+							source={{uri: product.img || 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} 
+							type={type}
+							loaded={this.state.loaded} onLoadEnd={() => {
+								{!this.state.loaded && this.setState({loaded: true})}
+							}} 
+							onPress={() => navigation.navigate('ProductDetail', {product, type})}/>
 					</View>
 
 					{/** TOP **/}
@@ -40,7 +45,15 @@ export default class ProductCard extends React.Component{
 
 
 					{/** SLIDER **/}
-					<BarSlider left="Lorem" right="Lorem" value={3} loaded={this.state.loaded}/>
+					{
+						product.address ?
+						<View style={{flexDirection: 'row', alignItems: 'center'}}>
+          					<Image source={require('goodVibes/assets/images/Location.png')} style={{width: 7, height: 11, tintColor: Layout.lightText}}/>
+          					<Text style={{color: Layout.lightText}}> {product.address}</Text>
+						</View>
+						:
+						<BarSlider left="Lorem" right="Lorem" value={3} loaded={this.state.loaded}/>
+					}
 					{/** END SLIDER **/}
 
 					{/** REVIEW **/}

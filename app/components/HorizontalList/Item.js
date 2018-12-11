@@ -29,7 +29,7 @@ export default class HorizontalList extends React.Component {
 			</View>
 			<View>
 				{this.state.loaded ? 
-					<Text style={{color: Layout.lightText}}>{item.type}</Text> :
+					<Text style={{color: Layout.lightText}}>{item.type || item.distance}</Text> :
 					<View style={{backgroundColor: Layout.ice, height: 10, width: 32, marginBottom: 10}}></View>
 				}
 			</View>

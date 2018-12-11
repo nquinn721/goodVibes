@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		padding: 20,
 		position: 'absolute',
-		bottom: 20,
+		bottom: 0,
 		right: 20
 	}
 })

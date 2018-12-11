@@ -7,41 +7,19 @@ import SvgUri from 'react-native-svg-uri';
 import QuestionCard from 'goodVibes/components/QuestionCard';
 import ProductCard from 'goodVibes/components/ProductCard';
 import LookingForSomething from 'goodVibes/components/LookingForSomething';
-import ReviewButton from 'goodVibes/components/ReviewButton';
+import ScrollViewAction from 'goodVibes/components/ScrollViewAction';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-  y = 0;
-
-
-  state = {
-    scrollDirection: 'up'
-  }
-
-  scroll(e){
-    const { y } = e.nativeEvent.contentOffset;
-    const scrollDirection = y > this.y ? 'down' : 'up';
-    
-    if(scrollDirection !== this.state.scrollDirection && y > 0)
-      this.setState({scrollDirection});
-
-    this.y = y;
-  }
+  
 
 
   render() {
     const { products : { products }, dispensaries: { dispensaries } } = this.props;
     return (
-      <View style={[Layout.container]}>
-        <ScrollView 
-            style={[Layout.container, {backgroundColor: Layout.bgColor}]} 
-            scrollEventThrottle={300}
-            showsVerticalScrollIndicator={false} 
-            onMomentumScrollBegin={this.momentum}
-            onScroll={this.scroll.bind(this)}>
-
+        <ScrollViewAction>
           <HorizontalList title="Popular Strains" data={products} onPress={(product) => 
             this.props.navigation.navigate('ProductDetail', {product, type: 'strain'})
           }/>
@@ -62,9 +40,7 @@ class HomeScreen extends React.Component {
           <View style={styles.separator} />
           <LookingForSomething />
           <View style={{height: 50}}></View>
-        </ScrollView>
-        <ReviewButton show={this.state.scrollDirection !== 'up'}/>
-      </View>
+        </ScrollViewAction>
     );
   }
 

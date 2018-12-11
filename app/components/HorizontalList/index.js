@@ -10,20 +10,22 @@ import RoundedImage from 'goodVibes/components/RoundedImage';
  *  <HorizontalList 
  * 		title={String} 
  * 		data={Array<Products>|<Dispensaries>} 
+ * 		noHeader={Boolean} 
+ * 		onPress={Function} 
  * 		type={String(dispensaries|quiz)/>
  */
 
 export default class HorizontalList extends React.Component {
   render() {
-	const { data = [], title, type, onPress } = this.props;
+	const { data = [], title, type, onPress, noHeader } = this.props;
 	if(!~data.map(v => v.text).indexOf('Show More'))
 		data.push({text: 'Show More'});
 	
     return (
-    	<View style={styles.mainContainer}>
+    	<View style={[styles.mainContainer, (noHeader && {height: 170})]}>
     		
 
-    			{ 
+    			{ !noHeader &&
     				// Header
     				(!type || type !== 'dispensary') ?
     					this.listHeader(title) :

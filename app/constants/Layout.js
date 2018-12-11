@@ -30,6 +30,11 @@ export default {
     padding: 30,
     ...cardShadow
   },
+  paddedCard: {
+    backgroundColor: 'white',
+    padding: 30,
+    ...cardShadow
+  },
   cardShadow,
   centered: {
   	alignItems: 'center', 
