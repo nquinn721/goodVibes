@@ -11,11 +11,14 @@ class MapViewScreen extends React.Component {
     header: null,
   };
 
+  
 
   render() {
-    const { dispensaries } = this.props.dispensaries;
-    const markers = [];
+    const { dispensaries: {dispensaries} } = this.props,
+          { coords } = this.props.navigation.getParam('location');
 
+    const markers = dispensaries;
+    if(!dispensaries)return <View></View>
     return (
       <View style={Layout.container}>
         <View style={{flex: 1}}>
@@ -27,7 +30,13 @@ class MapViewScreen extends React.Component {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
+            region={{
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421, 
+              ...coords
+            }}
           >
+
           {
             markers && markers.map((d, i) => (<MapView.Marker
               coordinate={d.coordinates}
@@ -62,5 +71,5 @@ const styles = StyleSheet.create({
 
 
 export default connect(
-  ({dispensaries}) => ({dispensaries})
+  ({dispensaries}) => ({dispensaries}),
 )(MapViewScreen);

@@ -36,6 +36,7 @@ class SearchScreen extends React.Component {
     let similar = type !== 'dispensary' ? products : dispensaries;
 
     let effects, listTitle;
+    console.log(product);
 
     if(type !== 'dispensary'){
       product.rightText = ['THC', '18%-21%'];
@@ -71,10 +72,13 @@ class SearchScreen extends React.Component {
             <ProductInfo data={product} loaded={this.state.loaded} style={{height: 300}}/>
           </View>
           <View>
+          {
+            product.description && 
             <Text>
-            <Text style={{fontSize: 14, color: Layout.darkText}}>{product.description}</Text>
+              <Text style={{fontSize: 14, color: Layout.darkText}}>{product.description}</Text>
               <Text style={{color: Layout.primaryColor, fontSize: 14}}>... Read More</Text>
             </Text>
+          }
           </View>
           <MainButton text="Log Experience" style={{padding: 10, marginTop: 25}} textStyle={{fontSize: 14}} />
         </View>
@@ -92,7 +96,7 @@ class SearchScreen extends React.Component {
         <View style={styles.separator} />
         <Reviews product={product} navigation={this.props.navigation}/>        
         <View style={styles.separator} />
-        <HorizontalPicsList product={this.props.products.products[0]} navigation={this.props.navigation}/>
+        <HorizontalPicsList product={product} navigation={this.props.navigation}/>
         <View style={styles.separator} />
         <HorizontalList title={listTitle} data={similar} headerColor={true} type={type} onPress={(product) =>{
           const setParamsAction = NavigationActions.setParams({

@@ -24,13 +24,12 @@ export default class ProductCard extends React.Component{
 
 
 		product.rightText = ['Reviewed & Effects Recorded', '11.12.18'];
-
 		return (
 			<View style={styles.container}>
 				<View style={styles.card}>
 					<View style={styles.image}>
 						<RoundedImage 
-							source={{uri: product.img || 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} 
+							source={{uri: product.img || product.image_url || 'https://upload.wikimedia.org/wikipedia/commons/9/95/Big_Pine_landscape.jpg'}} 
 							type={type}
 							loaded={this.state.loaded} onLoadEnd={() => {
 								{!this.state.loaded && this.setState({loaded: true})}
@@ -46,10 +45,10 @@ export default class ProductCard extends React.Component{
 
 					{/** SLIDER **/}
 					{
-						product.address ?
+						product.location && this.state.loaded ?
 						<View style={{flexDirection: 'row', alignItems: 'center'}}>
           					<Image source={require('goodVibes/assets/images/Location.png')} style={{width: 7, height: 11, tintColor: Layout.lightText}}/>
-          					<Text style={{color: Layout.lightText}}> {product.address}</Text>
+          					<Text style={{color: Layout.lightText}}> {product.location.display_address.join(' ')}</Text>
 						</View>
 						:
 						<BarSlider left="Lorem" right="Lorem" value={3} loaded={this.state.loaded}/>

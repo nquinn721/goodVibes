@@ -11,14 +11,16 @@ class SearchScreen extends React.Component {
     location: null
   }
 
-  render() {
+  
 
+  render() {
+    const { dispensaries: {dispensaries} } = this.props;
     return (
       <View style={Layout.container}>
           {
             !this.state.location ?
-            <LocationFinder onPress={() => this.setState({location: true})}/> :
-            <DispensaryList navigation={this.props.navigation}/>
+            <LocationFinder onPress={(location) => this.setState({location})}/> :
+            <DispensaryList navigation={this.props.navigation} location={this.state.location} dispensaries={dispensaries}/>
 
           }
           
@@ -35,5 +37,5 @@ const styles = StyleSheet.create({
 
 
 export default connect(
-  // ({products, dispensaries}) => ({products, dispensaries})
+  ({dispensaries}) => ({dispensaries})
 )(SearchScreen);

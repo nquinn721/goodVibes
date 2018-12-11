@@ -13,8 +13,8 @@ export default class StarRating extends React.Component{
 		const fullStarSize = 16,
 			  stars = this.props.rating ? this.props.rating.toString().split('.') : [0],
 			  starsView = [],
-			  backgroundStars = [1,2,3,4,5],
-			  { loaded, textStyle, rating, noText } = this.props;
+			  backgroundStars = [1,2,3,4,5];
+		let { loaded, textStyle, rating, noText } = this.props;
 
 		for(let i = 0; i < stars[0]; i++){
 			starsView.push(<Icon key={i} name='star' size={fullStarSize} color={Layout.primaryColor} />);
@@ -24,6 +24,7 @@ export default class StarRating extends React.Component{
 			starsView.push(<View key={5} style={{width: (fullStarSize * (stars[1]/10))}}><Icon name='star' size={fullStarSize} color={Layout.primaryColor} /></View>)
 		}
 
+		if(rating.toString().length === 1)rating = rating + '.0';
 
 		return (
 			<View style={{alignItems: 'center', alignItems: 'center'}}>

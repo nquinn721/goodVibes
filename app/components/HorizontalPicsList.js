@@ -6,9 +6,9 @@ import RoundedImage from 'goodVibes/components/RoundedImage';
 
 export default class HorizontalPicList extends React.Component{
 	render(){
-		let { images=[] } = this.props.product,
-			{ navigation, product } = this.props;
-
+		let { navigation, product } = this.props;
+		let images = product.images || product.photos || [];
+		
 		images = images.concat(images).concat(images);
 
 		return (

@@ -14,7 +14,7 @@ class SearchScreen extends React.Component {
 
   render() {
     const product = this.props.navigation.getParam('product');
-    let images = product.images;
+    let images = product.images || product.photos || [];
 
     images = images.concat(images).concat(images);
     

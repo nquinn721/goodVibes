@@ -25,8 +25,15 @@ class YelpAPI{
                 }, params);
             
 
-        const data = await this.search(url);
-        return data.businesses;
+        let data = await this.search(url);
+        let businesses = [];
+
+        data = data.businesses;
+
+        for(let i = 0; i < data.length; i++)
+            businesses.push(await this.getBusiness(data[i].id))
+        // businesses = data;
+        return businesses;
     }
 
 

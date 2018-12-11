@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Layout from 'goodVibes/constants/Layout';
 import MainButton from 'goodVibes/components/MainButton';
+import { Location, Permissions } from 'expo';
+import { getDispensaries } from 'goodVibes/redux/actions/dispensaries.action';
 
 class LocationFinder extends React.Component {
   static navigationOptions = {
@@ -12,6 +15,23 @@ class LocationFinder extends React.Component {
 
   state = {
     location: null
+  }
+
+  getDispensaries({ coords }){
+    this.props.getDispensaries(coords);
+  }
+
+  async getLocation(onPress){
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    this.getDispensaries(location);
+    onPress(location);
   }
 
   render() {
@@ -24,10 +44,10 @@ class LocationFinder extends React.Component {
         <View style={{marginTop: 13}}>
           <MainButton text="Enter Location" style={{paddingHorizontal: 50, paddingVertical: 10}} onPress={onPress}/>
         </View>
-        <View style={{flexDirection: 'row', marginTop: 13, alignItems: 'center'}}>
+        <TouchableOpacity onPress={() => this.getLocation(onPress)} style={{flexDirection: 'row', marginTop: 13, alignItems: 'center'}}>
           <Image source={require('goodVibes/assets/images/Location.png')} style={{width: 7, height: 11, tintColor: Layout.primaryColor}}/>
           <Text style={{color: Layout.primaryColor}}> Find me</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -41,6 +61,7 @@ const styles = StyleSheet.create({
 
 
 export default connect(
-  // ({products, dispensaries}) => ({products, dispensaries})
+  (state) => ({}),
+  (dispatch) => bindActionCreators({ getDispensaries }, dispatch)
 )(LocationFinder);
 
