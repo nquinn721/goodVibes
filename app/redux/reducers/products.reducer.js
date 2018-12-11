@@ -409,23 +409,24 @@ initialState.products = initialState.originalProducts;
 initialState.hotProducts = initialState.originalProducts.slice(0, 4);
 
 export default (state = initialState, action) => {
-  let product;
+  console.log(action.type);
   switch(action.type){
-    case 'ADD_TO_CART':
-       product = findProduct(action.data.id, state);
-      product.addedToCart = true;
+    case 'GET_DATA_SUCCESS':
+    const products = parseProducts(action.data.products);
+
       return {
-        ...state
-      }
-    case 'REMOVE_FROM_CART':
-      product = findProduct(action.data.id, state);
-      product.addedToCart = false;
-      return {
-        ...state
+        ...state,
+        products 
       }
     default:
       return state;
   }
 }
 
-const findProduct = (id, state) => state.products.filter(p => p.id === id)[0];
+
+const parseProducts = (data) => {
+  for(let i = 0; i < data.length; i++)
+    data[i].img = data[i].avatar_image.small_url;
+  return data;
+}
+

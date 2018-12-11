@@ -14,7 +14,8 @@ class LocationFinder extends React.Component {
 
 
   state = {
-    location: null
+    location: null,
+    text: 'Find me'
   }
 
   getDispensaries({ coords }){
@@ -28,7 +29,7 @@ class LocationFinder extends React.Component {
         errorMessage: 'Permission to access location was denied',
       });
     }
-
+    this.setState({text: 'Getting Location'})
     let location = await Location.getCurrentPositionAsync({});
     this.getDispensaries(location);
     onPress(location);
@@ -46,7 +47,7 @@ class LocationFinder extends React.Component {
         </View>
         <TouchableOpacity onPress={() => this.getLocation(onPress)} style={{flexDirection: 'row', marginTop: 13, alignItems: 'center'}}>
           <Image source={require('goodVibes/assets/images/Location.png')} style={{width: 7, height: 11, tintColor: Layout.primaryColor}}/>
-          <Text style={{color: Layout.primaryColor}}> Find me</Text>
+          <Text style={{color: Layout.primaryColor}}> {this.state.text}</Text>
         </TouchableOpacity>
       </View>
     );

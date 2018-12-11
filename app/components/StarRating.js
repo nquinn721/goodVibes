@@ -16,6 +16,8 @@ export default class StarRating extends React.Component{
 			  backgroundStars = [1,2,3,4,5];
 		let { loaded, textStyle, rating, noText } = this.props;
 
+		if(!rating)rating = 0;
+
 		for(let i = 0; i < stars[0]; i++){
 			starsView.push(<Icon key={i} name='star' size={fullStarSize} color={Layout.primaryColor} />);
 		}
@@ -25,6 +27,7 @@ export default class StarRating extends React.Component{
 		}
 
 		if(rating.toString().length === 1)rating = rating + '.0';
+		if(rating.toString().length > 3)rating = rating.toString().substr(0, 3);
 
 		return (
 			<View style={{alignItems: 'center', alignItems: 'center'}}>
