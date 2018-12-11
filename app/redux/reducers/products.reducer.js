@@ -412,11 +412,13 @@ export default (state = initialState, action) => {
   console.log(action.type);
   switch(action.type){
     case 'GET_DATA_SUCCESS':
-    const products = parseProducts(action.data.products);
+    const products = parseProducts(action.data.products),
+          strains = parseProducts(action.data.strains);
 
       return {
         ...state,
-        products 
+        products,
+        strains
       }
     default:
       return state;
@@ -425,8 +427,10 @@ export default (state = initialState, action) => {
 
 
 const parseProducts = (data) => {
-  for(let i = 0; i < data.length; i++)
+  for(let i = 0; i < data.length; i++){
     data[i].img = data[i].avatar_image.small_url;
+    data[i].images = data[i].gallery_images.map(v => v.medium_url);
+  }
   return data;
 }
 

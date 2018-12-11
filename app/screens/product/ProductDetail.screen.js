@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, FlatList, Image, TouchableOpacity, WebView } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
 import Header from 'goodVibes/components/Header';

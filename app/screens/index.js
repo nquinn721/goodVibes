@@ -6,7 +6,7 @@ import AppNavigator from 'goodVibes/navigation/AppNavigator';
 import Global from 'goodVibes/constants/Global';
 import { bindActionCreators } from 'redux';
 import { getData } from 'goodVibes/redux/actions/data';
-console.log(getData);
+
 class IndexScreen extends React.Component {
 	componentDidMount(){
 		this.props.getData();

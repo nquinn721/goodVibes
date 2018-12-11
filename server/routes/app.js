@@ -7,10 +7,10 @@ router.get('/get/:longitude/:latitude', async (req, res) => {
 })
 
 
-router.get('/strain-data', (req, res) => {
+router.get('/strain-data', (req, res) => { 
 	res.send({data: {
-		// strains: DataController.getStrains(),
-		products: DataController.getBrands().slice(0, 20)
+		strains: DataController.getBrands()[0].categories[0].products,
+		products: DataController.getBrands()[4].categories[0].products
 	}});
 });
 
