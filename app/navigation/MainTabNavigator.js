@@ -9,8 +9,8 @@ import MyVibesStack from './MyVibes.routes';
 
 
 export default createBottomTabNavigator({
-  SearchStack,
   ExploreStack,
+  SearchStack,
   MyVibesStack,
 }, {
 	tabBarOptions: {

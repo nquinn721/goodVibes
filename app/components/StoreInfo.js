@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, Platform, Linking, TouchableOpacity } fr
 import Layout from 'goodVibes/constants/Layout';
 import { WebBrowser } from 'expo';
 import Communications from 'react-native-communications';
+import openMap from 'react-native-open-maps';
 
 /*
  * <StoreInfo 
@@ -18,6 +19,10 @@ export default class StoreInfo extends React.Component{
 		Communications.phonecall('6148048521', true);
 	}
 
+	openMap(){
+		openMap({ latitude: 37.865101, longitude: -119.538330 });
+	}
+
 	render(){
 		const { product } = this.props;
 
@@ -27,12 +32,12 @@ export default class StoreInfo extends React.Component{
 				<View>
 					<Image source={{uri : 'https://s11986.pcdn.co/wp-content/uploads/2016/09/navigation-map.jpg'}} style={{height: 120, width: '100%'}}/>
 					<View style={{alignItems: 'flex-end', marginTop: -20}}>
-						<View style={{alignItems: 'center'}}>
+						<TouchableOpacity style={{alignItems: 'center'}} onPress={this.openMap}>
 							<View style={{width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 100, backgroundColor: Layout.primaryColor}}>
 								<Image source={require('goodVibes/assets/images/Direction.png')} style={{tintColor: 'white', width: 22, height: 22}}/>
 							</View>
 							<Text style={{color: Layout.primaryColor, fontFamily: 'sfpromedium'}}>Directions</Text>
-						</View>
+						</TouchableOpacity>
 					</View>
 				</View>
 

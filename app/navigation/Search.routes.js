@@ -5,10 +5,12 @@ import SvgUri from 'react-native-svg-uri';
 
 
 import Search from 'goodVibes/screens/search';
+import Product from 'goodVibes/screens/product';
 
 const Stack = createStackNavigator({
   Search: Search.Search, 
-  MapView: Search.MapView, 
+  MapView: Search.MapView,
+  ProductDetail: Product.ProductDetail
 });
 
 Stack.navigationOptions = {

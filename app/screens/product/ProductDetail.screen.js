@@ -15,6 +15,8 @@ import LookingForSomething from 'goodVibes/components/LookingForSomething';
 import ImageSlider from 'react-native-image-slider';
 import Effects from 'goodVibes/components/Effects';
 import StoreInfo from 'goodVibes/components/StoreInfo';
+import { NavigationActions } from 'react-navigation';
+import ScrollViewHeader from 'goodVibes/components/ScrollViewHeader';
 
 class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -23,14 +25,6 @@ class SearchScreen extends React.Component {
 
   state = {
     loaded: true,
-          distance: 30,
-          minDistance: 10,
-          maxDistance: 100,
-          y: 0
-  }
-  onScroll(e){
-    const { y } = e.nativeEvent.contentOffset;
-    this.setState({y});
   }
 
   render() {
@@ -55,16 +49,7 @@ class SearchScreen extends React.Component {
 
     return (
       <View style={Layout.container}>
-      {
-        this.state.y > (type !== 'product' ? 80 : 250) && 
-                <Header short={true} navigation={this.props.navigation} showTitle={true} title={product.name} sticky={true}/>
-      }
-        <ScrollView 
-          style={{backgroundColor: Layout.bgColor}}
-          showsVerticalScrollIndicator={false} 
-          onScroll={this.onScroll.bind(this)}
-          scrollEventThrottle={100}
-          >
+          <ScrollViewHeader type={type} product={product} navigation={this.props.navigation}>
           {type !== 'product' ? 
                 <Header navigation={this.props.navigation} title={product.name}/>:
                 <View>
@@ -102,19 +87,26 @@ class SearchScreen extends React.Component {
         {/* END TOP SECTION */}
 
 
-        {type === 'dispensary' && <StoreInfo product={product} />}
+        {type === 'dispensary' && <View><StoreInfo product={product} /><View style={styles.separator}/></View>}
         <Effects type={type} effects={effects} disabled={true}/>
         <View style={styles.separator} />
         <Reviews product={product} navigation={this.props.navigation}/>        
         <View style={styles.separator} />
         <HorizontalPicsList product={this.props.products.products[0]} navigation={this.props.navigation}/>
         <View style={styles.separator} />
-        <HorizontalList title={listTitle} data={similar} headerColor={true} type={type} />
+        <HorizontalList title={listTitle} data={similar} headerColor={true} type={type} onPress={(product) =>{
+          const setParamsAction = NavigationActions.setParams({
+            params: { product, type },
+            key: product.id
+          });
+          this.props.navigation.dispatch(setParamsAction);
+        }
+        }/>
         <View style={styles.separator} />
         <LookingForSomething />
         <View style={{height: 50}}/>
 
-        </ScrollView>
+        </ScrollViewHeader>
       </View>
     );
   }
