@@ -409,7 +409,6 @@ initialState.products = initialState.originalProducts;
 initialState.hotProducts = initialState.originalProducts.slice(0, 4);
 
 export default (state = initialState, action) => {
-  console.log(action.type);
   switch(action.type){
     case 'GET_DATA_SUCCESS':
     const products = parseProducts(action.data.products),

@@ -32,7 +32,10 @@ class LocationFinder extends React.Component {
     this.setState({text: 'Getting Location'})
     let location = await Location.getCurrentPositionAsync({});
     this.getDispensaries(location);
-    onPress(location);
+    onPress({
+      latitude: 37.78825,
+      longitude: -122.4324,
+    });
   }
 
   render() {

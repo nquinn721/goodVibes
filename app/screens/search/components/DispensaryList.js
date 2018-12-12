@@ -28,6 +28,7 @@ class DispensaryList extends React.Component {
             </View>
             )
         }
+        <View style={{height: 20}}/>
       </View>
     );
   }
