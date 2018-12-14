@@ -23,19 +23,23 @@ class LocationFinder extends React.Component {
   }
 
   async getLocation(onPress){
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
-      this.setState({
-        errorMessage: 'Permission to access location was denied',
-      });
+    // let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    // if (status !== 'granted') {
+    //   this.setState({
+    //     errorMessage: 'Permission to access location was denied',
+    //   });
+    // }
+    // this.setState({text: 'Getting Location'})
+    // let location = await Location.getCurrentPositionAsync({});
+    let location = {
+      coords: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+      }
     }
-    this.setState({text: 'Getting Location'})
-    let location = await Location.getCurrentPositionAsync({});
+    this.setState({location})
     this.getDispensaries(location);
-    onPress({
-      latitude: 37.78825,
-      longitude: -122.4324,
-    });
+    onPress(location);
   }
 
   render() {
@@ -52,6 +56,7 @@ class LocationFinder extends React.Component {
           <Image source={require('goodVibes/assets/images/Location.png')} style={{width: 7, height: 11, tintColor: Layout.primaryColor}}/>
           <Text style={{color: Layout.primaryColor}}> {this.state.text}</Text>
         </TouchableOpacity>
+        <Text>{this.state.location && JSON.stringify(this.state.location)}</Text>
       </View>
     );
   }

@@ -9,9 +9,9 @@ import MyVibesStack from './MyVibes.routes';
 
 
 export default createBottomTabNavigator({
+  MyVibesStack,
   SearchStack,
   ExploreStack,
-  MyVibesStack,
 }, {
 	tabBarOptions: {
 		activeTintColor: Layout.primaryColor,

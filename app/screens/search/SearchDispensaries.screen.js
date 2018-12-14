@@ -15,6 +15,7 @@ class SearchScreen extends React.Component {
 
   render() {
     const { dispensaries: {dispensaries} } = this.props;
+    console.log(this.state.location);
     return (
       <View style={Layout.container}>
           {
