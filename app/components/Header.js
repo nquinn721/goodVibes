@@ -57,6 +57,8 @@ export default class Header extends React.Component{
         			<SvgUri source={require('goodVibes/assets/images/Edit_s.svg')} fill="white" width={20} height={20} />:
         			rightIcon === 'camera' ?
         			<SvgUri source={require('goodVibes/assets/images/Camera.svg')} fill="white" width={20} height={20} />:
+        			rightIcon === false ?
+        			<View /> :
         			<SvgUri source={require('goodVibes/assets/images/Heart.svg')} fill="white"/>
         		}
         	</Animated.View>

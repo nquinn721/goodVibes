@@ -2,19 +2,22 @@ import React from 'react';
 import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
-import RoundedImage from 'goodVibes/components/RoundedImage';
-import SvgUri from 'react-native-svg-uri';
+import FilterHeader from './components/FilterHeader';
 
 
-const Record = require('goodVibes/assets/images/Record.svg');
-
-
-class MyReviews extends React.Component {
+class MyVibesScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
 
   render() {
 
     return (
-      <View style={styles.reviewCard}>
+      <View style={Layout.container}>
+        <ScrollView style={[Layout.container]}>
+          <FilterHeader />
+
+        </ScrollView>
       </View>
     );
   }
@@ -23,13 +26,10 @@ class MyReviews extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  reviewCard: {
-    ...Layout.card
-  }
 });
 
 
 
 export default connect(
   // ({products, dispensaries}) => ({products, dispensaries})
-)(MyReviews);
+)(MyVibesScreen);

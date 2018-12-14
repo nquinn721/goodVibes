@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Layout from 'goodVibes/constants/Layout';
 import RoundedImage from 'goodVibes/components/RoundedImage';
@@ -16,7 +16,8 @@ class MyVibesScreen extends React.Component {
   };
 
   render() {
-
+    const { navigate } = this.props.navigation;
+    
     return (
       <View style={Layout.container}>
         <ScrollView style={[Layout.container]}>
@@ -35,29 +36,29 @@ class MyVibesScreen extends React.Component {
                 <Text style={{fontFamily: 'circularbold', fontSize: 16}}>Cannabeast234</Text>
               </Text>
             </View>
-            <SvgUri source={Record} style={{marginTop: 70}} width={20} height={20}/>
+            <SvgUri source={require('goodVibes/assets/images/Settings.svg')} style={{marginTop: 70}} width={20} height={20}/>
           </View>
 
-          <View style={styles.listItem}>
+          <TouchableOpacity style={styles.listItem} onPress={() => navigate('ReviewsAndNotes')}>
             <SvgUri width={11} height={11} source={require('goodVibes/assets/images/Edit_s.svg')} style={styles.listItemIcon} fill={Layout.primaryColor}/>
             <Text style={{fontSize: 14, flexGrow: 3, marginLeft: 10}}>Reviews & Notes</Text>
             <Text style={{fontFamily: 'sfpromedium', fontSize: 14, color: Layout.thirdaryColor}}>10</Text>
-          </View>
-          <View style={styles.listItem}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.listItem}>
             <SvgUri width={11} height={11} source={Record} style={styles.listItemIcon} fill={Layout.primaryColor}/>
             <Text style={{fontSize: 14, flexGrow: 3, marginLeft: 10}}>Record Effects</Text>
             <Text style={{fontFamily: 'sfpromedium', fontSize: 14, color: Layout.thirdaryColor}}>4</Text>
-          </View>
-          <View style={styles.listItem}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.listItem}>
             <SvgUri width={11} height={11} source={require('goodVibes/assets/images/Heart.svg')} style={styles.listItemIcon} fill={Layout.primaryColor}/>
             <Text style={{fontSize: 14, flexGrow: 3, marginLeft: 10}}>Favorites</Text>
             <Text style={{fontFamily: 'sfpromedium', fontSize: 14, color: Layout.thirdaryColor}}>10</Text>
-          </View>
-          <View style={styles.listItem}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.listItem}>
             <SvgUri width={11} height={11} source={require('goodVibes/assets/images/Camera.svg')} style={styles.listItemIcon} fill={Layout.primaryColor}/>
             <Text style={{fontSize: 14, flexGrow: 3, marginLeft: 10}}>My Pictures</Text>
             <Text style={{fontFamily: 'sfpromedium', fontSize: 14, color: Layout.thirdaryColor}}>2</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         {/* END TOP */}
 

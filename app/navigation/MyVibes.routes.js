@@ -7,7 +7,7 @@ import SvgUri from 'react-native-svg-uri';
 import MyVibes from 'goodVibes/screens/myVibes';
 
 const Stack = createStackNavigator({
-  MyVibes: MyVibes.MyVibes, 
+  ...MyVibes 
 });
 
 Stack.navigationOptions = {

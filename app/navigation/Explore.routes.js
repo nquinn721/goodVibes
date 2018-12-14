@@ -10,10 +10,9 @@ import Review  from 'goodVibes/screens/review';
 
 
 const Stack = createStackNavigator({
-  	Home: Explore.Home, 
- 	ProductDetail: Product.ProductDetail,
-	AllReviews: Review.AllReviews,
-	ImageGallery: Product.ImageGallery
+  	...Explore,
+  	...Product,
+  	...Review
 });
 
 Stack.navigationOptions = {
